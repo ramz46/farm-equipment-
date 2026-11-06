@@ -75,6 +75,10 @@
         <button type="button" class="control-btn header-search-open-btn" aria-label="Search Catalog" title="Search Equipment">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
+        <button type="button" class="control-btn header-cart-btn" aria-label="View Equipment Cart" title="Equipment Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="header-cart-badge">0</span>
+        </button>
         <button type="button" class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
           <i class="fa-solid fa-moon"></i>
         </button>
@@ -194,7 +198,10 @@
 
           <!-- Quick Action Buttons -->
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-            <button type="button" id="p-detail-quote-btn" class="btn btn-primary btn-lg">
+            <button type="button" id="p-detail-add-cart-btn" class="btn btn-primary btn-lg" style="background: #1B4332; border-color: #1B4332;">
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button type="button" id="p-detail-quote-btn" class="btn btn-secondary btn-lg">
               Request Sized Quotation <i class="fa-solid fa-file-invoice"></i>
             </button>
             <button type="button" class="btn btn-outline btn-lg" onclick="window.showToast('Spec Sheet Downloaded', 'Technical CAD specifications & installation manual downloaded.', 'check')">

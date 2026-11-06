@@ -397,14 +397,341 @@
     }, 3200);
   }
 
+  /* --------------------------------------------------------------------------
+     CART MANAGEMENT SYSTEM (FULL PERSISTENCE & INTERACTIVE DRAWER)
+     -------------------------------------------------------------------------- */
+  const Cart = {
+    STORAGE_KEY: 'avitech_cart_v1',
+
+    getItems() {
+      try {
+        const data = localStorage.getItem(this.STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+      } catch (e) {
+        console.error('Error reading cart from localStorage', e);
+        return [];
+      }
+    },
+
+    saveItems(items) {
+      try {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
+      } catch (e) {
+        console.error('Error saving cart to localStorage', e);
+      }
+      this.updateBadges();
+      this.renderDrawer();
+    },
+
+    addItem(productId, qty = 1) {
+      const product = PRODUCTS_DATA.find(p => p.id === productId);
+      if (!product) return;
+
+      const items = this.getItems();
+      const existing = items.find(item => item.id === productId);
+
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        items.push({
+          id: product.id,
+          name: product.name,
+          categoryLabel: product.categoryLabel,
+          image: product.image,
+          price: product.price || 0,
+          qty: qty
+        });
+      }
+
+      this.saveItems(items);
+      this.bounceBadges();
+      this.openDrawer();
+      showOrderToast(`Added <strong>${product.name}</strong> to equipment cart`);
+    },
+
+    updateQty(productId, delta) {
+      const items = this.getItems();
+      const item = items.find(i => i.id === productId);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        const filtered = items.filter(i => i.id !== productId);
+        this.saveItems(filtered);
+        showOrderToast(`Removed <strong>${item.name}</strong> from cart`);
+      } else {
+        this.saveItems(items);
+      }
+    },
+
+    removeItem(productId) {
+      const items = this.getItems();
+      const item = items.find(i => i.id === productId);
+      const filtered = items.filter(i => i.id !== productId);
+      this.saveItems(filtered);
+      if (item) {
+        showOrderToast(`Removed <strong>${item.name}</strong> from cart`);
+      }
+    },
+
+    clearCart() {
+      this.saveItems([]);
+      showOrderToast(`Equipment cart cleared`);
+    },
+
+    getTotalCount() {
+      return this.getItems().reduce((sum, item) => sum + (item.qty || 0), 0);
+    },
+
+    getSubtotal() {
+      return this.getItems().reduce((sum, item) => sum + ((item.price || 0) * (item.qty || 0)), 0);
+    },
+
+    updateBadges() {
+      const count = this.getTotalCount();
+      document.querySelectorAll('#header-cart-badge, .header-cart-badge, .mobile-cart-badge-count').forEach(badge => {
+        badge.textContent = count;
+        if (count > 0) {
+          badge.classList.add('has-items');
+        } else {
+          badge.classList.remove('has-items');
+        }
+      });
+    },
+
+    bounceBadges() {
+      document.querySelectorAll('#header-cart-badge, .header-cart-badge').forEach(badge => {
+        badge.classList.remove('bounce');
+        void badge.offsetWidth;
+        badge.classList.add('bounce');
+      });
+    },
+
+    ensureDrawerDOM() {
+      if (document.getElementById('cart-drawer')) return;
+
+      const overlay = document.createElement('div');
+      overlay.id = 'cart-drawer-overlay';
+      overlay.className = 'cart-drawer-overlay';
+
+      const drawer = document.createElement('aside');
+      drawer.id = 'cart-drawer';
+      drawer.className = 'cart-drawer';
+      drawer.setAttribute('aria-label', 'Equipment Shopping Cart');
+
+      drawer.innerHTML = `
+        <div class="cart-drawer-header">
+          <div class="cart-header-title-wrap">
+            <div class="cart-header-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+            <div>
+              <h3 class="cart-drawer-title">Equipment Cart</h3>
+              <span class="cart-drawer-subtitle"><span id="cart-drawer-count">0</span> items selected</span>
+            </div>
+          </div>
+          <button type="button" class="cart-drawer-close" aria-label="Close Cart">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-drawer-body"></div>
+
+        <div class="cart-drawer-footer" id="cart-drawer-footer">
+          <div class="cart-subtotal-row">
+            <span class="cart-subtotal-label">Estimated Subtotal:</span>
+            <span class="cart-subtotal-value" id="cart-subtotal-value">$0.00</span>
+          </div>
+          <div class="cart-tax-notice">
+            <i class="fa-solid fa-circle-info"></i> Commercial freight & turnkey farm setup quoted on checkout.
+          </div>
+          <div class="cart-action-buttons">
+            <button type="button" class="btn btn-primary btn-block cart-quote-btn" id="cart-quote-btn">
+              <i class="fa-solid fa-file-invoice-dollar"></i> Request Order Quotation
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-sm btn-block cart-clear-btn" id="cart-clear-btn">
+              <i class="fa-regular fa-trash-can"></i> Clear Cart
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.appendChild(drawer);
+
+      overlay.addEventListener('click', () => this.closeDrawer());
+      const closeBtn = drawer.querySelector('.cart-drawer-close');
+      if (closeBtn) closeBtn.addEventListener('click', () => this.closeDrawer());
+
+      const clearBtn = drawer.querySelector('#cart-clear-btn');
+      if (clearBtn) clearBtn.addEventListener('click', () => this.clearCart());
+
+      const quoteBtn = drawer.querySelector('#cart-quote-btn');
+      if (quoteBtn) {
+        quoteBtn.addEventListener('click', () => {
+          const items = this.getItems();
+          if (!items.length) {
+            showOrderToast('Your cart is empty');
+            return;
+          }
+          this.closeDrawer();
+          const itemsSummary = items.map(i => `${i.name} (x${i.qty})`).join(', ');
+          const subtotalStr = this.getSubtotal().toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          const quoteNote = `Equipment Order: ${itemsSummary} | Est. Subtotal: $${subtotalStr}`;
+          if (window.openQuoteModal) {
+            window.openQuoteModal(quoteNote, 'Equipment Order');
+          }
+        });
+      }
+    },
+
+    renderDrawer() {
+      const body = document.getElementById('cart-drawer-body');
+      const countEl = document.getElementById('cart-drawer-count');
+      const subtotalEl = document.getElementById('cart-subtotal-value');
+      const footer = document.getElementById('cart-drawer-footer');
+      if (!body) return;
+
+      const items = this.getItems();
+      const totalCount = this.getTotalCount();
+      const subtotal = this.getSubtotal();
+
+      if (countEl) countEl.textContent = totalCount;
+      if (subtotalEl) {
+        subtotalEl.textContent = `$${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+
+      if (!items.length) {
+        body.innerHTML = `
+          <div class="cart-empty-state">
+            <div class="cart-empty-icon">
+              <i class="fa-solid fa-cart-arrow-down"></i>
+            </div>
+            <h4>Your Cart is Empty</h4>
+            <p>You haven't added any poultry equipment or machinery to your order list yet.</p>
+            <a href="products.html" class="btn btn-primary btn-sm cart-empty-btn">
+              <i class="fa-solid fa-boxes-stacked"></i> Browse Equipment Catalog
+            </a>
+          </div>
+        `;
+        if (footer) {
+          footer.style.opacity = '0.5';
+          footer.style.pointerEvents = 'none';
+        }
+        return;
+      }
+
+      if (footer) {
+        footer.style.opacity = '1';
+        footer.style.pointerEvents = 'auto';
+      }
+
+      body.innerHTML = items.map(item => `
+        <div class="cart-item-card" data-product-id="${item.id}">
+          <div class="cart-item-thumb">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-cat">${item.categoryLabel}</div>
+            <h4 class="cart-item-name">
+              <a href="product-details.html?id=${item.id}">${item.name}</a>
+            </h4>
+            <div class="cart-item-price-unit">$${Number(item.price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} each</div>
+            <div class="cart-item-bottom-row">
+              <div class="cart-qty-ctrl">
+                <button type="button" class="cart-qty-btn cart-qty-minus" data-id="${item.id}" aria-label="Decrease quantity">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span class="cart-qty-val">${item.qty}</span>
+                <button type="button" class="cart-qty-btn cart-qty-plus" data-id="${item.id}" aria-label="Increase quantity">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+              <div class="cart-item-total">$${(item.price * item.qty).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+            </div>
+          </div>
+          <button type="button" class="cart-item-remove-btn" data-id="${item.id}" aria-label="Remove ${item.name}">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      `).join('');
+
+      // Wire qty minus
+      body.querySelectorAll('.cart-qty-minus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          this.updateQty(id, -1);
+        });
+      });
+
+      // Wire qty plus
+      body.querySelectorAll('.cart-qty-plus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          this.updateQty(id, 1);
+        });
+      });
+
+      // Wire remove
+      body.querySelectorAll('.cart-item-remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          this.removeItem(id);
+        });
+      });
+    },
+
+    openDrawer() {
+      this.ensureDrawerDOM();
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      if (drawer && overlay) {
+        this.renderDrawer();
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.classList.add('drawer-open');
+      }
+    },
+
+    closeDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      if (drawer && overlay) {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('drawer-open');
+      }
+    },
+
+    init() {
+      this.ensureDrawerDOM();
+      this.updateBadges();
+
+      // Bind navbar cart buttons
+      document.querySelectorAll('.header-cart-btn, .mobile-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.openDrawer();
+        });
+      });
+
+      // Listen for cross-tab storage changes
+      window.addEventListener('storage', (e) => {
+        if (e.key === this.STORAGE_KEY) {
+          this.updateBadges();
+          this.renderDrawer();
+        }
+      });
+    }
+  };
+
   function bindAddButtons() {
     document.querySelectorAll('.bovi-add-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         const id = btn.getAttribute('data-product-id');
-        const prod = PRODUCTS_DATA.find(p => p.id === id);
-        const name = prod ? prod.name : 'Product';
+        
+        // Add to Cart System and Open Drawer
+        Cart.addItem(id, 1);
 
         const origHtml = btn.innerHTML;
         btn.innerHTML = `<i class="fa-solid fa-check"></i> Added`;
@@ -416,8 +743,6 @@
           btn.style.backgroundColor = '';
           btn.style.transform = '';
         }, 1400);
-
-        showOrderToast(`Added <strong>${name}</strong> to equipment list`);
       });
     });
   }
@@ -718,6 +1043,22 @@
       `).join('');
     }
 
+    // Hook Add to Cart button on detail page
+    const detailAddCartBtn = document.getElementById('p-detail-add-cart-btn');
+    if (detailAddCartBtn) {
+      detailAddCartBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        Cart.addItem(product.id, 1);
+        const origHtml = detailAddCartBtn.innerHTML;
+        detailAddCartBtn.innerHTML = `<i class="fa-solid fa-check"></i> Added to Cart`;
+        detailAddCartBtn.style.backgroundColor = '#16A34A';
+        setTimeout(() => {
+          detailAddCartBtn.innerHTML = origHtml;
+          detailAddCartBtn.style.backgroundColor = '';
+        }, 1400);
+      });
+    }
+
     // Hook Request Quote button on detail page
     const detailQuoteBtn = document.getElementById('p-detail-quote-btn');
     if (detailQuoteBtn) {
@@ -739,8 +1080,10 @@
   // Export to window for global access
   window.PRODUCTS_DATA = PRODUCTS_DATA;
   window.openQuickView = openQuickView;
+  window.Cart = Cart;
 
   document.addEventListener('DOMContentLoaded', () => {
+    Cart.init();
     initCatalog();
     initHomepageFeatured();
     initProductDetailsPage();
