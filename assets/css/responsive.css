@@ -1,14 +1,72 @@
 /* ==========================================================================
-   AVITECH POULTRY EQUIPMENT - RESPONSIVE STYLESHEET
-   Mobile-First and Responsive Breakpoint Overrides
+   AVITECH POULTRY SYSTEMS - COMPREHENSIVE RESPONSIVE STYLESHEET
+   Flawless Mobile Alignment, Zero Horizontal Overflow, & Silky Animations
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. UNIVERSAL MOBILE BOUNDARIES & OVERFLOW PROTECTION
+   -------------------------------------------------------------------------- */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* Prevent auto-zoom on iOS Safari when tapping form inputs */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important; /* iOS threshold to disable automatic zoom */
+  }
+}
+
+/* Table mobile wrapper */
+table {
+  max-width: 100%;
+}
+
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-md);
+}
 
 /* --------------------------------------------------------------------------
    1. LARGE DESKTOPS & SCREENS (<= 1400px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1400px) {
   .container {
-    max-width: 1180px;
+    max-width: 1200px;
   }
 }
 
@@ -17,20 +75,26 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 1200px) {
   .container {
-    max-width: 960px;
+    max-width: 980px;
+    padding-inline: 1.5rem;
   }
 
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
 
   .hero-slide-content {
     max-width: 580px;
+  }
+
+  .bovi-products-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -38,65 +102,76 @@
    3. TABLETS & SMALL LAPTOPS (<= 992px)
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
+  .container {
+    max-width: 100%;
+    padding-inline: 1.5rem;
+  }
+
   .topbar {
-    display: none; /* Hide topbar on tablet/mobile to preserve screen real estate */
+    display: none !important; /* Preserve vertical screen height */
+  }
+
+  .site-header {
+    padding-block: 0.75rem;
   }
 
   .nav-menu {
-    display: none; /* Desktop menu hidden, mobile drawer used */
+    display: none !important; /* Desktop links hidden, mobile drawer active */
   }
 
   .hamburger-btn {
-    display: flex; /* Show mobile hamburger button */
+    display: flex !important;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
   }
 
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .split-layout {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-
-  .floating-experience-badge {
-    bottom: -1rem;
-    right: 1rem;
-  }
-
-  [dir="rtl"] .floating-experience-badge {
-    right: auto;
-    left: 1rem;
+    gap: 1.5rem;
   }
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .hero-slider-section,
   .page-hero-cinema {
-    height: 520px;
-  }
-
-  .page-hero-cinema.page-hero-home2 {
     height: auto;
-    min-height: 560px;
+    min-height: 520px;
     padding-block: 5rem 4rem;
   }
 
-  .catalog-toolbar {
-    flex-direction: column;
-    align-items: stretch;
+  .hero-slide-content {
+    max-width: 100%;
   }
 
-  .catalog-search-sort {
+  .floating-experience-badge {
+    position: static;
+    margin-top: 1.25rem;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .search-input-wrap {
-    flex-grow: 1;
+  /* Catalog Page Layout */
+  .bovi-catalog-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .bovi-sidebar-card {
+    position: static !important;
+    top: unset;
+    width: 100%;
+  }
+
+  /* Contact Page info cards */
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
   }
 }
 
@@ -105,86 +180,366 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .container {
-    padding-inline: 1.25rem;
+    padding-inline: 1.15rem;
   }
 
   .section {
-    padding-block: 3.5rem;
+    padding-block: 3.25rem;
   }
 
+  /* Header & Navigation Bar Alignment */
+  .site-header {
+    padding-block: 0.65rem;
+  }
+
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .site-logo {
+    font-size: 1.22rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .logo-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  /* Hide long "Request Quote" button from top bar on mobile; accessible in drawer */
+  .header-actions > [data-open-quote],
+  .header-actions .btn {
+    display: none !important;
+  }
+
+  .control-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .hamburger-btn {
+    width: 38px;
+    height: 38px;
+    padding: 7px;
+    flex-shrink: 0;
+  }
+
+  /* Grids */
   .grid-2,
   .grid-3,
   .grid-4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
   }
 
+  /* Hero Section Typography & Buttons */
   .hero-slider-section,
   .page-hero-cinema {
-    height: 480px;
+    height: auto !important;
+    min-height: 480px !important;
+    padding-block: 4.5rem 3.5rem !important;
+    display: flex;
+    align-items: center;
   }
 
   .hero-title,
   .page-hero-cinema .hero-title {
-    font-size: 2.2rem;
+    font-size: clamp(1.85rem, 6.5vw, 2.35rem) !important;
+    line-height: 1.24 !important;
+    word-break: break-word;
   }
 
   .hero-description,
   .page-hero-cinema .hero-description {
-    font-size: 0.98rem;
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.5rem !important;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-  }
-
-  .split-content .checklist {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .footer-bottom-links {
-    justify-content: center;
-  }
-
-  .cta-banner {
-    flex-direction: column;
-    text-align: center;
+  .hero-badges-row,
+  .hero-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     align-items: center;
   }
 
-  .cta-buttons {
+  .hero-buttons {
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+  }
+
+  .hero-buttons .btn {
+    width: 100% !important;
+    justify-content: center;
+    min-height: 48px;
+    font-size: 0.96rem;
+  }
+
+  .hero-controls {
+    bottom: 1rem;
+  }
+
+  .slider-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+
+  /* Store Locator Card & Google Maps Embed */
+  .store-locator-card {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .store-tabs-bar {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .store-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .store-tab-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 10px;
+    gap: 0.45rem;
+  }
+
+  .store-map-container-rel {
+    position: relative !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #E5E7EB;
+  }
+
+  #google-maps-iframe {
+    width: 100% !important;
+    height: 330px !important;
+    min-height: 330px !important;
+    display: block;
+    border: none;
+  }
+
+  .map-view-switcher {
+    top: 12px !important;
+    right: 12px !important;
+    padding: 3px !important;
+    gap: 3px !important;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .map-view-btn {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .store-floating-card {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-top: 1px solid var(--border-light) !important;
+    padding: 1.35rem 1.15rem !important;
+    margin: 0 !important;
+  }
+
+  .store-card-toggle-btn {
+    display: none !important; /* Always open below map on mobile */
+  }
+
+  .store-card-body-collapsible {
+    display: block !important;
+  }
+
+  .store-actions-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  /* Catalog / Products Layout */
+  .bovi-sidebar-card {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+
+  .bovi-category-list {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .bovi-category-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bovi-cat-item {
+    flex-shrink: 0;
+    white-space: nowrap;
+    border-radius: 50px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.84rem;
+    border: 1px solid var(--border-medium);
+  }
+
+  .bovi-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+  }
+
+  .bovi-sort-wrap {
     width: 100%;
+    justify-content: space-between;
+  }
+
+  .bovi-sort-select {
+    flex-grow: 1;
+  }
+
+  .bovi-products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+
+  .bovi-product-card {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 18px;
+  }
+
+  /* Footer Alignment */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+  }
+
+  .footer-bottom-links {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+  }
+
+  .newsletter-input {
+    width: 100% !important;
+    min-height: 46px;
+  }
+
+  .newsletter-btn {
+    width: 100% !important;
+    min-height: 46px;
     justify-content: center;
   }
 
-  .modal-content {
-    padding: 1.75rem 1.25rem;
+  /* CTA Banner */
+  .cta-banner {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+    padding: 2.25rem 1.25rem !important;
   }
 
+  .cta-buttons {
+    width: 100% !important;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cta-buttons .btn {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  /* Cart Drawer on Mobile */
+  .cart-drawer {
+    width: 100% !important;
+    max-width: 100vw !important;
+    border-radius: 0;
+  }
+
+  .cart-drawer-header {
+    padding: 1.15rem 1.25rem;
+  }
+
+  .cart-drawer-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .cart-drawer-footer {
+    padding: 1.15rem 1.25rem;
+  }
+
+  /* Toast notification */
   .toast-container {
     right: 1rem;
     left: 1rem;
     bottom: 1rem;
+    max-width: calc(100% - 2rem);
   }
 
   .toast {
-    min-width: unset;
     width: 100%;
+  }
+
+  /* Soften Scroll Reveal on Mobile to prevent horizontal overflow */
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(22px) translateZ(0) !important;
+  }
+
+  .reveal-left.active,
+  .reveal-right.active {
+    transform: translateY(0) translateZ(0) !important;
   }
 }
 
@@ -192,69 +547,303 @@
    5. MOBILE PORTRAIT & SMALL SCREENS (<= 576px)
    -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
+  .container {
+    padding-inline: 1rem;
+  }
+
+  .section {
+    padding-block: 2.75rem;
+  }
+
+  /* Top Bar Actions on Small Phones */
+  .rtl-toggle-btn {
+    display: none !important; /* Hide RTL from top bar on small screens; available in drawer */
+  }
+
   .site-logo {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .logo-badge {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
   }
 
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+  .control-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.85rem;
   }
 
+  /* Hero Section */
   .hero-slider-section,
   .page-hero-cinema {
-    height: 450px;
+    min-height: 420px !important;
+    padding-block: 4rem 2.75rem !important;
   }
 
-  .page-hero-cinema.page-hero-home2 {
-    height: auto;
-    min-height: 480px;
-    padding-block: 4rem 3rem;
-  }
-
+  .hero-title,
   .page-hero-cinema .hero-title {
-    font-size: 1.85rem;
+    font-size: clamp(1.65rem, 6.2vw, 2.1rem) !important;
   }
 
-  .page-hero-cinema .hero-meta-row {
-    gap: 0.75rem;
+  .page-hero-cinema .hero-tag {
+    font-size: 0.76rem;
+    padding: 0.3rem 0.75rem;
   }
 
-  .hero-controls {
-    bottom: 1.5rem;
+  .page-hero-cinema .breadcrumbs {
+    font-size: 0.78rem;
   }
 
-  .floating-experience-badge {
-    position: static;
-    margin-top: 1rem;
+  /* Contact Info Cards (Single Column) */
+  .contact-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .contact-info-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .stat-card {
+    padding: 1.25rem 0.85rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.85rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.78rem !important;
+  }
+
+  /* Estimation / Contact Form */
+  #contact-page-form > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .form-group {
+    margin-bottom: 0.85rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .form-control {
+    height: 46px;
+    border-radius: 10px;
+    padding: 0.65rem 0.95rem;
+  }
+
+  textarea.form-control {
+    height: auto;
+    min-height: 100px;
+  }
+
+  /* Timeline Pills */
+  .timeline-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .timeline-pill {
+    flex: 1 1 calc(50% - 0.45rem);
+    text-align: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.4rem;
+  }
+
+  /* Store locator action buttons */
+  .store-actions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem;
+  }
+
+  .store-actions-grid .btn {
     width: 100%;
     justify-content: center;
   }
 
-  .filter-pills {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
+  /* Modals as Modern Bottom Sheets on Small Phones */
+  .modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
   }
 
-  .filter-pill {
-    white-space: nowrap;
+  .modal-content,
+  #quote-request-modal .modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 88vh !important;
+    border-radius: 22px 22px 0 0 !important;
+    margin: 0 !important;
+    padding: 1.5rem 1.25rem !important;
+    animation: mobileModalSheetUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .tech-spec-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  .modal-header h2 {
+    font-size: 1.35rem;
   }
 
+  /* Mobile Drawer Menu */
+  .mobile-drawer {
+    width: 290px;
+    max-width: 82vw;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.05rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  /* Checklists & Features */
+  .checklist {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Spec tables & process cards */
+  .tech-spec-grid,
   .case-study-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 0.75rem;
   }
+
+  /* Floating back to top button */
+  #back-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.05rem;
+  }
+
+  [dir="rtl"] #back-to-top {
+    right: auto;
+    left: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. EXTRA SMALL PHONES & COMPACT VIEWPORTS (<= 380px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .container {
+    padding-inline: 0.75rem;
+  }
+
+  .site-logo {
+    font-size: 1.05rem;
+  }
+
+  .logo-text span {
+    font-size: 1.05rem;
+  }
+
+  .header-actions {
+    gap: 0.3rem;
+  }
+
+  .control-btn {
+    width: 33px;
+    height: 33px;
+    font-size: 0.8rem;
+  }
+
+  .hamburger-btn {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-title,
+  .page-hero-cinema .hero-title {
+    font-size: 1.55rem !important;
+  }
+
+  .store-features-row {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .store-feature-chip {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. MOBILE-SPECIFIC MOTION & TOUCH ANIMATIONS
+   -------------------------------------------------------------------------- */
+/* Touch tap active feedback for buttons, cards & pills */
+button:active,
+.btn:active,
+.control-btn:active,
+.store-tab-pill:active,
+.bovi-cat-item:active,
+.timeline-pill:active,
+.mobile-nav-link:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s ease !important;
+}
+
+/* Smooth modal bottom sheet entrance on mobile */
+@keyframes mobileModalSheetUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Cascading stagger entrance for mobile drawer nav items */
+@keyframes mobileItemEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-drawer.active .mobile-nav-link:nth-child(1) { animation: mobileItemEntrance 0.3s 0.04s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(2) { animation: mobileItemEntrance 0.3s 0.08s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(3) { animation: mobileItemEntrance 0.3s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(4) { animation: mobileItemEntrance 0.3s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(5) { animation: mobileItemEntrance 0.3s 0.20s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(6) { animation: mobileItemEntrance 0.3s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.mobile-drawer.active .mobile-nav-link:nth-child(7) { animation: mobileItemEntrance 0.3s 0.28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Subtle pulse for floating elements */
+@keyframes mobilePulseLight {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.store-status-badge {
+  animation: mobilePulseLight 3s infinite ease-in-out;
 }

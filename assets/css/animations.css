@@ -283,6 +283,18 @@ body.page-loaded {
   transform: translateX(0) translateZ(0);
 }
 
+/* Mobile-adapted scroll reveal: softens horizontal shifts into vertical rises to prevent mobile overflow */
+@media (max-width: 768px) {
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(22px) translateZ(0);
+  }
+  .reveal-left.active,
+  .reveal-right.active {
+    transform: translateY(0) translateZ(0);
+  }
+}
+
 .reveal-zoom {
   opacity: 0;
   transform: scale(0.93) translateZ(0);
