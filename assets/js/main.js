@@ -1279,6 +1279,36 @@
         });
       }
 
+      // Real-time clearance of is-invalid as user types valid info
+      const formFields = contactForm.querySelectorAll('.form-control, select.form-control');
+      formFields.forEach(field => {
+        const clearErrorIfValid = () => {
+          if (!field.classList.contains('is-invalid')) return;
+          const val = field.value.trim();
+          if (field.type === 'email') {
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+              field.classList.remove('is-invalid');
+            }
+          } else if (field.type === 'tel' || field.name === 'phone') {
+            const digits = val.replace(/\D/g, '');
+            if (digits.length >= 7 && digits.length <= 15) {
+              field.classList.remove('is-invalid');
+            }
+          } else if (val.length > 0) {
+            field.classList.remove('is-invalid');
+          }
+        };
+
+        field.addEventListener('input', clearErrorIfValid);
+        field.addEventListener('change', clearErrorIfValid);
+      });
+
+      // Ensure phone restriction is bound to contact-phone
+      const contactPhoneInput = document.getElementById('contact-phone');
+      if (contactPhoneInput && window.setupPhoneInput) {
+        window.setupPhoneInput(contactPhoneInput);
+      }
+
       // Form submit handler
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -1286,12 +1316,21 @@
 
         const requiredFields = contactForm.querySelectorAll('[required]');
         requiredFields.forEach(field => {
-          if (!field.value.trim()) {
+          const val = field.value.trim();
+          if (!val) {
             field.classList.add('is-invalid');
             isValid = false;
-          } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+          } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
             field.classList.add('is-invalid');
             isValid = false;
+          } else if (field.type === 'tel' || field.name === 'phone') {
+            const digits = val.replace(/\D/g, '');
+            if (digits.length < 7 || digits.length > 15) {
+              field.classList.add('is-invalid');
+              isValid = false;
+            } else {
+              field.classList.remove('is-invalid');
+            }
           } else {
             field.classList.remove('is-invalid');
           }
@@ -1370,5 +1409,8 @@
     initServiceDetailsPage();
     initBlogPage();
     initContactPageFeatures();
+    if (window.initGlobalPhoneRestrictions) {
+      window.initGlobalPhoneRestrictions();
+    }
   });
 })();

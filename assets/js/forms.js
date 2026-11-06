@@ -87,8 +87,8 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
             <div class="form-group">
               <label class="form-label" for="quote-phone">Phone / WhatsApp <span class="required">*</span></label>
-              <input type="tel" id="quote-phone" name="phone" class="form-control" placeholder="+1 (555) 019-2834" required>
-              <span class="form-error">Please enter a valid phone number.</span>
+              <input type="tel" id="quote-phone" name="phone" class="form-control" placeholder="+1 (555) 019-2834" inputmode="tel" autocomplete="tel" required>
+              <span class="form-error">Please enter a valid phone number (numbers only, 7–15 digits).</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="quote-farm">Farm or Company Name <span class="required">*</span></label>
@@ -155,6 +155,28 @@
     const form = modal.querySelector('#global-quote-form');
     form.addEventListener('submit', handleQuoteFormSubmit);
 
+    // Real-time clearance of is-invalid for modal inputs
+    form.querySelectorAll('.form-control').forEach(input => {
+      const clearError = () => {
+        if (!input.classList.contains('is-invalid')) return;
+        if (input.type === 'email') {
+          if (validateEmail(input.value.trim())) input.classList.remove('is-invalid');
+        } else if (input.type === 'tel' || input.name === 'phone') {
+          if (validatePhone(input.value.trim())) input.classList.remove('is-invalid');
+        } else if (input.value.trim().length > 0) {
+          input.classList.remove('is-invalid');
+        }
+      };
+      input.addEventListener('input', clearError);
+      input.addEventListener('change', clearError);
+    });
+
+    // Attach phone restriction to quote phone input
+    const quotePhoneInput = form.querySelector('#quote-phone');
+    if (quotePhoneInput && window.setupPhoneInput) {
+      window.setupPhoneInput(quotePhoneInput);
+    }
+
     return modal;
   }
 
@@ -195,10 +217,14 @@
     // Validate inputs
     const requiredInputs = form.querySelectorAll('[required]');
     requiredInputs.forEach(input => {
-      if (!input.value.trim()) {
+      const val = input.value.trim();
+      if (!val) {
         input.classList.add('is-invalid');
         isValid = false;
-      } else if (input.type === 'email' && !validateEmail(input.value)) {
+      } else if (input.type === 'email' && !validateEmail(val)) {
+        input.classList.add('is-invalid');
+        isValid = false;
+      } else if ((input.type === 'tel' || input.name === 'phone') && !validatePhone(val)) {
         input.classList.add('is-invalid');
         isValid = false;
       } else {
@@ -220,12 +246,28 @@
   }
 
   /* --------------------------------------------------------------------------
-     3. CONTACT PAGE FORM VALIDATION
+     3. CONTACT PAGE FORM VALIDATION (FOR INNER PAGES / INDEX-2 RAPID ENQUIRY)
      -------------------------------------------------------------------------- */
   function initContactPageForm() {
     const contactForm = document.getElementById('contact-page-form');
     if (!contactForm) return;
     if (document.getElementById('contact-success-state')) return; // Handled by enhanced contact handler in main.js
+
+    // Real-time clearance of is-invalid on typing
+    contactForm.querySelectorAll('.form-control').forEach(field => {
+      const clearError = () => {
+        if (!field.classList.contains('is-invalid')) return;
+        if (field.type === 'email') {
+          if (validateEmail(field.value.trim())) field.classList.remove('is-invalid');
+        } else if (field.type === 'tel' || field.name === 'phone') {
+          if (validatePhone(field.value.trim())) field.classList.remove('is-invalid');
+        } else if (field.value.trim().length > 0) {
+          field.classList.remove('is-invalid');
+        }
+      };
+      field.addEventListener('input', clearError);
+      field.addEventListener('change', clearError);
+    });
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -233,10 +275,14 @@
 
       const requiredFields = contactForm.querySelectorAll('[required]');
       requiredFields.forEach(field => {
-        if (!field.value.trim()) {
+        const val = field.value.trim();
+        if (!val) {
           field.classList.add('is-invalid');
           isValid = false;
-        } else if (field.type === 'email' && !validateEmail(field.value)) {
+        } else if (field.type === 'email' && !validateEmail(val)) {
+          field.classList.add('is-invalid');
+          isValid = false;
+        } else if ((field.type === 'tel' || field.name === 'phone') && !validatePhone(val)) {
           field.classList.add('is-invalid');
           isValid = false;
         } else {
@@ -282,15 +328,141 @@
     });
   }
 
-  function validateEmail(email) {
+  /* --------------------------------------------------------------------------
+     5. GLOBAL VALIDATION HELPERS & PHONE INPUT RESTRICTION SYSTEM
+     -------------------------------------------------------------------------- */
+  window.validateEmail = function (email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
-  }
+  };
+  const validateEmail = window.validateEmail;
+
+  window.validatePhone = function (phone) {
+    if (!phone) return false;
+    const digits = String(phone).replace(/\D/g, '');
+    return digits.length >= 7 && digits.length <= 15;
+  };
+  const validatePhone = window.validatePhone;
+
+  /**
+   * Restricts any phone input to STRICT NUMBERS ONLY across the whole website.
+   * Blocks alphabets (a-z, A-Z) and unallowed symbols on keydown, paste, and input.
+   */
+  window.setupPhoneInput = function (input) {
+    if (!input || input.dataset.phoneRestricted === 'true') return;
+    input.dataset.phoneRestricted = 'true';
+    input.setAttribute('inputmode', 'tel');
+    input.setAttribute('autocomplete', 'tel');
+
+    // 1. Block alphabets and illegal characters on keydown
+    input.addEventListener('keydown', (e) => {
+      // Allow navigation and edit controls
+      const controlKeys = [
+        'Backspace', 'Delete', 'Tab', 'Escape', 'Enter',
+        'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+        'Home', 'End'
+      ];
+      if (controlKeys.includes(e.key)) return;
+
+      // Allow standard Ctrl/Cmd shortcuts (Copy, Cut, Paste, Select All, Undo)
+      if (e.ctrlKey || e.metaKey) return;
+
+      // Allow digits 0-9
+      if (/^[0-9]$/.test(e.key)) return;
+
+      // Allow '+' ONLY as the very first character (position 0 and no '+' yet)
+      if (e.key === '+') {
+        const hasPlus = input.value.includes('+');
+        const isAtStart = (input.selectionStart === 0);
+        if (!hasPlus && isAtStart) return;
+      }
+
+      // Allow space, hyphen, parentheses
+      if ([' ', '-', '(', ')'].includes(e.key)) return;
+
+      // STRICTLY BLOCK ALL ALPHABETS (a-z, A-Z) AND ANY OTHER SYMBOLS
+      e.preventDefault();
+    });
+
+    // 2. Real-time sanitize on input event (handles drag-and-drop, autofill, voice typing)
+    input.addEventListener('input', () => {
+      let val = input.value;
+      // Strip any letters / alphabets immediately
+      val = val.replace(/[a-zA-Z]/g, '');
+      // Strip any illegal characters
+      val = val.replace(/[^0-9+\s\-()]/g, '');
+
+      // Ensure '+' only appears at index 0
+      if (val.indexOf('+') > 0) {
+        val = (val.charAt(0) === '+' ? '+' : '') + val.replace(/\+/g, '');
+      }
+
+      if (input.value !== val) {
+        input.value = val;
+      }
+
+      // Real-time clearance of error when valid phone number is typed
+      if (input.classList.contains('is-invalid') && validatePhone(val)) {
+        input.classList.remove('is-invalid');
+      }
+    });
+
+    // 3. Paste event sanitization
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData).getData('text');
+      if (!pasted) return;
+      const cleanPasted = pasted.replace(/[a-zA-Z]/g, '').replace(/[^0-9+\s\-()]/g, '');
+      const start = input.selectionStart || 0;
+      const end = input.selectionEnd || 0;
+      const cur = input.value;
+      input.value = cur.slice(0, start) + cleanPasted + cur.slice(end);
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+
+    // 4. Blur validation
+    input.addEventListener('blur', () => {
+      const val = input.value.trim();
+      if (input.required || val.length > 0) {
+        if (!validatePhone(val)) {
+          input.classList.add('is-invalid');
+        } else {
+          input.classList.remove('is-invalid');
+        }
+      }
+    });
+  };
+
+  window.initGlobalPhoneRestrictions = function () {
+    const selector = 'input[type="tel"], input[name="phone"], input[name="tel"], input[id*="phone"], input[id*="tel"]';
+    document.querySelectorAll(selector).forEach(window.setupPhoneInput);
+
+    // MutationObserver to auto-protect dynamically inserted phone fields
+    if (window.MutationObserver && !window._phoneMutationObserved) {
+      window._phoneMutationObserved = true;
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              if (node.matches && node.matches(selector)) {
+                window.setupPhoneInput(node);
+              }
+              if (node.querySelectorAll) {
+                node.querySelectorAll(selector).forEach(window.setupPhoneInput);
+              }
+            }
+          });
+        });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  };
 
   document.addEventListener('DOMContentLoaded', () => {
     ensureQuoteModalExists();
     initContactPageForm();
     initNewsletterForms();
+    window.initGlobalPhoneRestrictions();
 
     // Hook buttons with data-open-quote
     document.querySelectorAll('[data-open-quote]').forEach(btn => {
