@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
@@ -227,20 +226,29 @@
 
         <!-- Relative Map Box with Floating Info Card -->
         <div class="store-map-container-rel">
-          <!-- Leaflet Interactive Map -->
-          <div id="store-locator-map"></div>
+          <!-- Real Google Maps Live Embed Frame -->
+          <iframe id="google-maps-iframe"
+            src="https://maps.google.com/maps?q=742+Agritech+Blvd,+Atlanta,+GA+30318&t=m&z=14&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; width: 100%; height: 100%; min-height: 520px; display: block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Maps Location">
+          </iframe>
 
           <!-- Floating Map Mode Controls -->
-          <div class="map-view-switcher" role="group" aria-label="Map style selector">
-            <button type="button" class="map-view-btn active" data-map-layer="streets" title="Standard Street Map View">
-              <i class="fa-solid fa-map"></i> <span>Streets</span>
+          <div class="map-view-switcher" role="group" aria-label="Google Maps style selector">
+            <button type="button" class="map-view-btn active" data-map-layer="streets" title="Google Map Street View">
+              <i class="fa-solid fa-map"></i> <span>Google Map</span>
             </button>
-            <button type="button" class="map-view-btn" data-map-layer="satellite" title="Satellite Aerial Imagery">
+            <button type="button" class="map-view-btn" data-map-layer="satellite" title="Google Satellite Imagery">
               <i class="fa-solid fa-satellite"></i> <span>Satellite</span>
             </button>
-            <button type="button" class="map-view-btn" data-map-layer="topo" title="Topographic Elevation Map">
-              <i class="fa-solid fa-mountain"></i> <span>Topography</span>
-            </button>
+            <a id="open-gmaps-direct" href="https://www.google.com/maps/search/?api=1&query=Atlanta+GA+30318" target="_blank" rel="noopener noreferrer" class="map-view-btn" title="Open full Google Maps in new tab" style="text-decoration: none;">
+              <i class="fa-brands fa-google" style="color: #4285F4;"></i> <span>Open App</span> <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+            </a>
           </div>
 
           <!-- Floating Info Card -->
@@ -560,7 +568,6 @@
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/slider.js"></script>
   <script src="assets/js/animations.js"></script>

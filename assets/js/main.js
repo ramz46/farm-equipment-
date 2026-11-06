@@ -1050,20 +1050,21 @@
       });
     });
 
-    // 2. Interactive Store Locator Map
-    const mapContainer = document.getElementById('store-locator-map');
-    if (mapContainer) {
+    // 2. Interactive Store Locator Map (Authentic Google Maps Live Embed)
+    const googleMapsIframe = document.getElementById('google-maps-iframe');
+    if (googleMapsIframe) {
       const locations = {
         atlanta: {
           name: "AviTech Global Headquarters & Campus",
           state: "Georgia, United States",
           address: "742 Agritech Boulevard, Industrial Ag Zone, Atlanta, GA 30318, USA",
+          query: "742+Agritech+Blvd,+Atlanta,+GA+30318",
           phone: "+1 (800) 459-2848 / +1 (404) 555-0198",
           hours: "Mon–Sat: 07:00 AM – 06:00 PM EST",
           status: "Open Now · Visiting Welcome",
-          coords: [33.7850, -84.4100],
           zoom: 14,
-          directions: "https://www.google.com/maps/dir/?api=1&destination=Atlanta+GA+30318",
+          directions: "https://www.google.com/maps/dir/?api=1&destination=742+Agritech+Blvd,+Atlanta,+GA+30318",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=742+Agritech+Blvd,+Atlanta,+GA+30318",
           features: [
             '<i class="fa-solid fa-microchip"></i> Live Testing Shed',
             '<i class="fa-solid fa-boxes-stacked"></i> Spare Parts Depot',
@@ -1074,12 +1075,13 @@
           name: "Midwest Poultry Equipment Hub & Silo Depot",
           state: "Iowa, United States",
           address: "1250 Agribank Way, Des Moines, IA 50309, USA",
+          query: "1250+Agribank+Way,+Des+Moines,+IA+50309",
           phone: "+1 (515) 555-0142",
           hours: "Mon–Fri: 07:00 AM – 05:30 PM CST",
           status: "Open Now · Commercial Depot",
-          coords: [41.5868, -93.6250],
           zoom: 14,
-          directions: "https://www.google.com/maps/dir/?api=1&destination=Des+Moines+IA+50309",
+          directions: "https://www.google.com/maps/dir/?api=1&destination=1250+Agribank+Way,+Des+Moines,+IA+50309",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=1250+Agribank+Way,+Des+Moines,+IA+50309",
           features: [
             '<i class="fa-solid fa-warehouse"></i> Silo Buffer Yard',
             '<i class="fa-solid fa-rotate"></i> Bulk Auger Stock',
@@ -1090,12 +1092,13 @@
           name: "Delmarva Broiler Integration Support Hub",
           state: "Maryland, United States",
           address: "400 Delmarva Logistics Pkwy, Salisbury, MD 21804, USA",
+          query: "400+Delmarva+Logistics+Pkwy,+Salisbury,+MD+21804",
           phone: "+1 (410) 555-0187",
           hours: "Mon–Fri: 07:00 AM – 05:00 PM EST",
           status: "Open Now · Technical Station",
-          coords: [38.3607, -75.5994],
           zoom: 14,
-          directions: "https://www.google.com/maps/dir/?api=1&destination=Salisbury+MD+21804",
+          directions: "https://www.google.com/maps/dir/?api=1&destination=400+Delmarva+Logistics+Pkwy,+Salisbury,+MD+21804",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=400+Delmarva+Logistics+Pkwy,+Salisbury,+MD+21804",
           features: [
             '<i class="fa-solid fa-fan"></i> Ventilation Testing Lab',
             '<i class="fa-solid fa-faucet-drip"></i> Nipple Line Spares',
@@ -1106,12 +1109,13 @@
           name: "EMEA Maritime Ocean Export Terminal",
           state: "Rotterdam, Netherlands",
           address: "Havenhaven 88, Port Industrial Complex, 3011 Rotterdam, Netherlands",
+          query: "Port+of+Rotterdam,+Netherlands",
           phone: "+31 10 555 0122",
           hours: "Mon–Fri: 08:00 AM – 06:00 PM CET",
           status: "Open Now · International Logistics",
-          coords: [51.9244, 4.4777],
           zoom: 13,
           directions: "https://www.google.com/maps/dir/?api=1&destination=Port+of+Rotterdam+Netherlands",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Port+of+Rotterdam+Netherlands",
           features: [
             '<i class="fa-solid fa-ship"></i> Ocean Freight Staging',
             '<i class="fa-solid fa-certificate"></i> CE Certification Lab',
@@ -1121,6 +1125,20 @@
       };
 
       let activeLocationKey = 'atlanta';
+      let currentMapMode = 'm'; // 'm' for standard Google roadmap, 'k' for satellite
+
+      function renderGoogleMapsFrame(key, mode) {
+        const loc = locations[key];
+        if (!loc) return;
+        const newSrc = `https://maps.google.com/maps?q=${loc.query}&t=${mode}&z=${loc.zoom}&ie=UTF8&iwloc=&output=embed`;
+        if (googleMapsIframe.src !== newSrc) {
+          googleMapsIframe.src = newSrc;
+        }
+        const openDirectLink = document.getElementById('open-gmaps-direct');
+        if (openDirectLink) {
+          openDirectLink.href = loc.googleMapsUrl;
+        }
+      }
 
       function updateCardDetails(key) {
         const data = locations[key];
@@ -1163,113 +1181,18 @@
             setTimeout(() => {
               copyAddrBtn.innerHTML = original;
             }, 2000);
+          }).catch(() => {
+            const temp = document.createElement('textarea');
+            temp.value = data.address;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            if (window.showToast) {
+              window.showToast('Address Copied', data.address, 'check');
+            }
           });
         });
-      }
-
-      // Initialize Leaflet Map if available
-      let map = null;
-      let markers = {};
-      let currentTileLayer = null;
-
-      if (window.L) {
-        try {
-          // Authentic Tile Providers (Zero API Key, Real Maps)
-          const tileProviders = {
-            streets: {
-              url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              options: {
-                maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              }
-            },
-            satellite: {
-              url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-              options: {
-                maxZoom: 19,
-                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-              }
-            },
-            topo: {
-              url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-              options: {
-                maxZoom: 19,
-                subdomains: ['a', 'b', 'c'],
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/">HOT</a>'
-              }
-            }
-          };
-
-          map = L.map('store-locator-map', {
-            zoomControl: false,
-            scrollWheelZoom: false
-          }).setView(locations.atlanta.coords, locations.atlanta.zoom);
-
-          L.control.zoom({ position: 'bottomright' }).addTo(map);
-          L.control.scale({ imperial: true, metric: true, position: 'bottomleft' }).addTo(map);
-
-          // Default Streets Layer (Full Color Real Street Map)
-          currentTileLayer = L.tileLayer(tileProviders.streets.url, tileProviders.streets.options).addTo(map);
-
-          // Add markers with popups for all stores
-          Object.keys(locations).forEach(key => {
-            const loc = locations[key];
-            const markerIcon = L.divIcon({
-              className: 'avitech-marker-wrapper',
-              html: `
-                <div class="avitech-map-marker ${key === 'atlanta' ? 'active' : ''}" data-marker-key="${key}" title="${loc.name}">
-                  <i class="fa-solid fa-industry"></i>
-                </div>
-              `,
-              iconSize: [40, 40],
-              iconAnchor: [20, 40],
-              popupAnchor: [0, -38]
-            });
-
-            const marker = L.marker(loc.coords, { icon: markerIcon }).addTo(map);
-
-            const popupHtml = `
-              <div class="map-popup-inner">
-                <div class="map-popup-tag">${loc.state}</div>
-                <div class="map-popup-title">${loc.name}</div>
-                <div class="map-popup-address">${loc.address}</div>
-                <a href="${loc.directions}" target="_blank" rel="noopener noreferrer" class="map-popup-link">
-                  Get Driving Directions <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-              </div>
-            `;
-            marker.bindPopup(popupHtml, { maxWidth: 280 });
-
-            marker.on('click', () => {
-              switchStore(key);
-            });
-            markers[key] = marker;
-          });
-
-          // Open default popup for Atlanta
-          if (markers.atlanta) {
-            markers.atlanta.openPopup();
-          }
-
-          // Map View Layer Switcher (Streets / Satellite / Topo)
-          document.querySelectorAll('.map-view-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const layerKey = btn.getAttribute('data-map-layer');
-              if (!tileProviders[layerKey]) return;
-
-              document.querySelectorAll('.map-view-btn').forEach(b => b.classList.remove('active'));
-              btn.classList.add('active');
-
-              if (currentTileLayer) {
-                map.removeLayer(currentTileLayer);
-              }
-              currentTileLayer = L.tileLayer(tileProviders[layerKey].url, tileProviders[layerKey].options).addTo(map);
-            });
-          });
-
-        } catch (err) {
-          console.warn('Leaflet map initialization fallback:', err);
-        }
       }
 
       // Card Collapse / Expand Toggle
@@ -1280,6 +1203,22 @@
           storeCard.classList.toggle('collapsed');
         });
       }
+
+      // Google Map View Switcher (Standard Map 'm' vs Satellite 'k')
+      document.querySelectorAll('.map-view-btn[data-map-layer]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const layerKey = btn.getAttribute('data-map-layer');
+          document.querySelectorAll('.map-view-btn[data-map-layer]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          if (layerKey === 'satellite') {
+            currentMapMode = 'k';
+          } else {
+            currentMapMode = 'm';
+          }
+          renderGoogleMapsFrame(activeLocationKey, currentMapMode);
+        });
+      });
 
       function switchStore(key) {
         if (!locations[key]) return;
@@ -1293,18 +1232,8 @@
         // Update card info
         updateCardDetails(key);
 
-        // Update map view & marker highlight & popup
-        if (map && locations[key]) {
-          map.flyTo(locations[key].coords, locations[key].zoom, { duration: 1.2 });
-          document.querySelectorAll('.avitech-map-marker').forEach(m => {
-            m.classList.toggle('active', m.getAttribute('data-marker-key') === key);
-          });
-          if (markers[key]) {
-            setTimeout(() => {
-              markers[key].openPopup();
-            }, 600);
-          }
-        }
+        // Update Google Maps iframe
+        renderGoogleMapsFrame(key, currentMapMode);
       }
 
       // Hook tab pills
