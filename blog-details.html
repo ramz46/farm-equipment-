@@ -157,16 +157,17 @@
   <!-- ==================== ARTICLE BODY & SIDEBAR ==================== -->
   <section class="section">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 2.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start;">
+      <!-- Main Article Layout: Article + Sidebar -->
+      <div class="blog-layout-grid blog-details-layout">
         <!-- Left: Article Content -->
-        <article class="reveal-up" style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main);">
+        <article class="reveal-up article-main-content">
           <!-- Article Cover Image -->
-          <div style="border-radius: var(--radius-xl); overflow: hidden; height: 420px; margin-bottom: 2.5rem; box-shadow: var(--shadow-md);">
-            <img src="assets/images/blog/blog-1.jpg" alt="Commercial Poultry Exhaust Cone Fans" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="article-cover-wrap">
+            <img src="assets/images/blog/blog-1.jpg" alt="Commercial Poultry Exhaust Cone Fans">
           </div>
 
           <!-- Table of Contents -->
-          <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 2.5rem;">
+          <div class="article-toc">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-list" style="color: var(--c-sage-green);"></i> Table of Contents</h4>
             <ul style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
               <li><a href="#section-intro" style="color: var(--c-slate-blue); font-weight: 600;">1. The Physics of Negative Pressure Ventilation</a></li>
@@ -234,9 +235,9 @@
         </article>
 
         <!-- Right: Blog Sidebar -->
-        <aside style="display: flex; flex-direction: column; gap: 2rem;">
+        <aside class="blog-sidebar">
           <!-- Author Bio -->
-          <div style="background: var(--bg-surface); padding: 1.75rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); text-align: center; box-shadow: var(--shadow-xs);">
+          <div class="blog-widget" style="text-align: center;">
             <img src="assets/images/team/team-1.jpg" alt="Dr. Marcus Vance" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem;">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Dr. Marcus Vance</h4>
             <span style="font-size: 0.85rem; color: var(--c-slate-blue); font-weight: 600; display: block; margin-bottom: 0.75rem;">Chief Agricultural Engineer</span>
