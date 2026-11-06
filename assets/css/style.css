@@ -4722,3 +4722,106 @@ body.products-page .back-to-top {
   border-color: #1B4332;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
+
+/* --------------------------------------------------------------------------
+   24. BLOG PAGINATION & INTERACTIVE CONTROLS
+   -------------------------------------------------------------------------- */
+.blog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3.5rem;
+}
+
+.blog-page-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1px solid #E5E7EB;
+  background: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  user-select: none;
+}
+
+.blog-page-btn:hover:not(:disabled):not(.active) {
+  background: #F3F4F6;
+  color: #111827;
+  border-color: #D1D5DB;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.blog-page-btn.active {
+  background: #1B4332 !important;
+  color: #ffffff !important;
+  border-color: #1B4332 !important;
+  box-shadow: 0 4px 14px rgba(27, 67, 50, 0.3);
+  cursor: default;
+}
+
+.blog-page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #F9FAFB;
+  border-color: #E5E7EB;
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .blog-page-btn {
+  background: var(--bg-surface);
+  border-color: var(--border-medium);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .blog-page-btn:hover:not(:disabled):not(.active) {
+  background: var(--bg-surface-secondary);
+  border-color: var(--border-light);
+}
+
+[data-theme="dark"] .blog-page-btn.active {
+  background: var(--c-warm-sand) !important;
+  color: var(--c-deep-navy) !important;
+  border-color: var(--c-warm-sand) !important;
+  box-shadow: 0 4px 14px rgba(235, 179, 56, 0.25);
+}
+
+[data-theme="dark"] .blog-page-btn:disabled {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.blog-cat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.blog-cat-item:hover,
+.blog-cat-item.active {
+  background: #F3F4F6;
+  color: #1B4332;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .blog-cat-item:hover,
+[data-theme="dark"] .blog-cat-item.active {
+  background: var(--bg-surface-secondary);
+  color: var(--c-warm-sand);
+}

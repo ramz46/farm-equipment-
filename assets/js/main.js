@@ -656,6 +656,366 @@
     }
   }
 
+  /* --------------------------------------------------------------------------
+     12. BLOG PAGINATION, FILTERING & SEARCH CONTROLS
+     -------------------------------------------------------------------------- */
+  function initBlogPage() {
+    const gridEl = document.getElementById('blog-articles-grid');
+    const paginationEl = document.getElementById('blog-pagination');
+    if (!gridEl || !paginationEl) return;
+
+    const blogPosts = [
+      {
+        id: 1,
+        title: "Reducing Feed Wastage: Pan Feeder Height Calibration from Day 1 to 42",
+        category: "feeding",
+        categoryName: "Feeding Systems",
+        date: "Oct 28, 2026",
+        readTime: "5 min read",
+        image: "assets/images/blog/blog-2.jpg",
+        imageAlt: "Optimizing FCR with Pan Feeders",
+        snippet: "A step-by-step checklist on winching pan feeder lines so pans rest at bird back height, preventing spillage into bedding.",
+        link: "blog-details.html"
+      },
+      {
+        id: 2,
+        title: "Multi-Stage Incubation: Critical PID Humidity Settings for High Hatchability",
+        category: "hatchery",
+        categoryName: "Hatchery",
+        date: "Oct 20, 2026",
+        readTime: "7 min read",
+        image: "assets/images/blog/blog-3.jpg",
+        imageAlt: "Hatchery Incubation Best Practices",
+        snippet: "How ultrasonic cool moisture systems prevent egg dehydration while protecting embryonic gas exchange in multi-stage setters.",
+        link: "blog-details.html"
+      },
+      {
+        id: 3,
+        title: "Condensation Control in Galvanized Steel Silos: Preventing Mold & Clumping",
+        category: "storage",
+        categoryName: "Bulk Storage",
+        date: "Oct 15, 2026",
+        readTime: "6 min read",
+        image: "assets/images/blog/blog-4.jpg",
+        imageAlt: "Bulk Feed Silo Management",
+        snippet: "Best engineering practices for pneumatic silo filling, boot inspection, and thermal condensation barriers in humid climates.",
+        link: "blog-details.html"
+      },
+      {
+        id: 4,
+        title: "Automated Polypropylene Manure Belts: Reducing Ammonia Below 10 PPM",
+        category: "biosecurity",
+        categoryName: "Biosecurity",
+        date: "Oct 09, 2026",
+        readTime: "4 min read",
+        image: "assets/images/blog/blog-5.jpg",
+        imageAlt: "Automated Manure Handling",
+        snippet: "Why daily manure belt clearing extends the lifespan of cage steel and drastically lowers respiratory disease in high-density layers.",
+        link: "blog-details.html"
+      },
+      {
+        id: 5,
+        title: "Static Pressure Control in Tunnel Ventilated Broiler Houses",
+        category: "ventilation",
+        categoryName: "Ventilation",
+        date: "Oct 03, 2026",
+        readTime: "6 min read",
+        image: "assets/images/products/ventilation-fan.jpg",
+        imageAlt: "Tunnel Ventilation Exhaust Cone Fans",
+        snippet: "Maintaining between 0.08 and 0.12 inches of water column (20–30 Pa) static pressure to ensure high-velocity air reaches the shed ceiling before dropping.",
+        link: "blog-details.html"
+      },
+      {
+        id: 6,
+        title: "Automated Nipple Drinking Line Flushing: Biofilm Prevention & Flow Rates",
+        category: "biosecurity",
+        categoryName: "Drinking Systems",
+        date: "Sep 28, 2026",
+        readTime: "5 min read",
+        image: "assets/images/products/nipple-drinker.jpg",
+        imageAlt: "Automated Stainless Nipple Drinking Line",
+        snippet: "High-pressure automatic line flushing protocols that dissolve mineral deposits and maintain 90ml/min nipple discharge for peak flock hydration.",
+        link: "blog-details.html"
+      },
+      {
+        id: 7,
+        title: "Chick Brooding Thermal Curves & Infrared Radiant Heating Protocols",
+        category: "feeding",
+        categoryName: "Brooding",
+        date: "Sep 22, 2026",
+        readTime: "8 min read",
+        image: "assets/images/blog/blog-6.jpg",
+        imageAlt: "Chick Brooding Radiant Gas Brooder",
+        snippet: "Managing radiant floor temperatures from 34°C down to 24°C over 21 days with zone-controlled gas brooders and canopy sensors.",
+        link: "blog-details.html"
+      },
+      {
+        id: 8,
+        title: "A-Frame vs H-Frame Layer Cages: Structural Longevity & Bird Density",
+        category: "cages",
+        categoryName: "Layer Cages",
+        date: "Sep 16, 2026",
+        readTime: "7 min read",
+        image: "assets/images/products/battery-cages.jpg",
+        imageAlt: "Commercial Hot-Dip Galvanized Layer Battery Cages",
+        snippet: "Engineering comparison of vertical footprint, manure removal clearance, and egg roll-out conveyor angles for multi-tier layer complexes.",
+        link: "blog-details.html"
+      },
+      {
+        id: 9,
+        title: "IoT Microclimate Controllers: Modbus Sensor Calibration & Cloud Alerts",
+        category: "automation",
+        categoryName: "Automation",
+        date: "Sep 10, 2026",
+        readTime: "6 min read",
+        image: "assets/images/products/climate-controller.jpg",
+        imageAlt: "AviSmart IoT Climate Controller",
+        snippet: "Integrating PT100 temperature probes, relative humidity sensors, and backup high/low thermostat interlocks into cloud telemetry dashboards.",
+        link: "blog-details.html"
+      },
+      {
+        id: 10,
+        title: "Evaporative Cellulose Cooling Pad Descaling and Algae Prevention",
+        category: "ventilation",
+        categoryName: "Cooling Pads",
+        date: "Sep 04, 2026",
+        readTime: "5 min read",
+        image: "assets/images/products/cooling-pad.jpg",
+        imageAlt: "Evaporative Cellulose Cooling Pad Wall",
+        snippet: "Water treatment regimes, blowdown bleed-off rates, and seasonal drying cycles to extend 150mm cellulose pad life beyond 5 years.",
+        link: "blog-details.html"
+      },
+      {
+        id: 11,
+        title: "Centralized Egg Collection Conveyor Speed Synchronization",
+        category: "cages",
+        categoryName: "Egg Handling",
+        date: "Aug 28, 2026",
+        readTime: "4 min read",
+        image: "assets/images/products/egg-collector.jpg",
+        imageAlt: "Automated Centralized Egg Collection Conveyor",
+        snippet: "Balancing variable-frequency motor drives across multi-tier conveyor cross-transfers to eliminate hairline eggshell micro-cracks.",
+        link: "blog-details.html"
+      },
+      {
+        id: 12,
+        title: "Day-Old Chick Dual Subcutaneous Vaccination: Speed & Precision",
+        category: "hatchery",
+        categoryName: "Hatchery",
+        date: "Aug 21, 2026",
+        readTime: "5 min read",
+        image: "assets/images/products/chick-vaccinator.jpg",
+        imageAlt: "Pneumatic Day-Old Chick Dual Vaccinator",
+        snippet: "Pneumatic dual-syringe calibration standards for administering Mareks and ND/IB vaccines to 3,000+ chicks per hour with zero stress.",
+        link: "blog-details.html"
+      }
+    ];
+
+    let currentPage = 1;
+    const postsPerPage = 4;
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function getFilteredPosts() {
+      return blogPosts.filter(post => {
+        const matchesCategory = currentCategory === 'all' || post.category === currentCategory;
+        const matchesSearch = !searchQuery ||
+          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.snippet.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+    }
+
+    function renderArticles(scrollUp = false) {
+      const filtered = getFilteredPosts();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / postsPerPage));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const startIndex = (currentPage - 1) * postsPerPage;
+      const currentPosts = filtered.slice(startIndex, startIndex + postsPerPage);
+
+      if (currentPosts.length === 0) {
+        gridEl.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+            <div style="font-size: 2.5rem; color: var(--text-muted); margin-bottom: 0.75rem;"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3 style="margin-bottom: 0.5rem;">No matching articles found</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">Try adjusting your keyword or clearing the filter.</p>
+            <button type="button" id="blog-clear-search-btn" class="btn btn-sm btn-primary">Clear Search & Filters</button>
+          </div>
+        `;
+        const clearBtn = document.getElementById('blog-clear-search-btn');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            currentCategory = 'all';
+            searchQuery = '';
+            currentPage = 1;
+            const searchInput = document.getElementById('blog-search-input');
+            if (searchInput) searchInput.value = '';
+            document.querySelectorAll('.blog-cat-item').forEach(item => {
+              item.classList.toggle('active', item.getAttribute('data-cat') === 'all');
+            });
+            renderArticles(true);
+          });
+        }
+        paginationEl.innerHTML = '';
+        return;
+      }
+
+      gridEl.innerHTML = currentPosts.map(post => `
+        <article class="blog-card hover-float" style="animation: fadeIn 0.3s ease;">
+          <div class="blog-img-box">
+            <img src="${post.image}" alt="${post.imageAlt}" class="blog-img" loading="lazy">
+            <span class="blog-tag">${post.categoryName}</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span><i class="fa-regular fa-calendar"></i> ${post.date}</span>
+              <span><i class="fa-regular fa-clock"></i> ${post.readTime}</span>
+            </div>
+            <h3 class="blog-title">
+              <a href="${post.link}">${post.title}</a>
+            </h3>
+            <p class="blog-snippet">
+              ${post.snippet}
+            </p>
+            <a href="${post.link}" class="btn-text">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      `).join('');
+
+      renderPagination(totalPages);
+
+      if (scrollUp) {
+        const headerOffset = document.querySelector('.site-header')?.offsetHeight || 80;
+        const rect = gridEl.getBoundingClientRect();
+        const offsetPosition = rect.top + window.pageYOffset - (headerOffset + 20);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function renderPagination(totalPages) {
+      if (totalPages <= 1) {
+        paginationEl.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+
+      // Prev button
+      html += `
+        <button type="button" class="blog-page-btn blog-prev-btn" aria-label="Previous Page" ${currentPage === 1 ? 'disabled' : ''}>
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      `;
+
+      // Page numbers
+      for (let p = 1; p <= totalPages; p++) {
+        html += `
+          <button type="button" class="blog-page-btn blog-num-btn ${p === currentPage ? 'active' : ''}" data-page="${p}" aria-label="Page ${p}">
+            ${p}
+          </button>
+        `;
+      }
+
+      // Next button
+      html += `
+        <button type="button" class="blog-page-btn blog-next-btn" aria-label="Next Page" ${currentPage === totalPages ? 'disabled' : ''}>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      `;
+
+      paginationEl.innerHTML = html;
+
+      // Event listeners for pagination buttons
+      const prevBtn = paginationEl.querySelector('.blog-prev-btn');
+      if (prevBtn && currentPage > 1) {
+        prevBtn.addEventListener('click', () => {
+          currentPage--;
+          renderArticles(true);
+        });
+      }
+
+      const nextBtn = paginationEl.querySelector('.blog-next-btn');
+      if (nextBtn && currentPage < totalPages) {
+        nextBtn.addEventListener('click', () => {
+          currentPage++;
+          renderArticles(true);
+        });
+      }
+
+      paginationEl.querySelectorAll('.blog-num-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const pageNum = parseInt(btn.getAttribute('data-page'), 10);
+          if (pageNum && pageNum !== currentPage) {
+            currentPage = pageNum;
+            renderArticles(true);
+          }
+        });
+      });
+    }
+
+    // Category click listeners
+    const categoryLinks = document.querySelectorAll('.blog-cat-item');
+    const resetFilterBtn = document.getElementById('blog-reset-filter');
+
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        categoryLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        currentCategory = link.getAttribute('data-cat') || 'all';
+        currentPage = 1;
+
+        if (resetFilterBtn) {
+          resetFilterBtn.style.display = currentCategory === 'all' && !searchQuery ? 'none' : 'inline-block';
+        }
+
+        renderArticles(true);
+      });
+    });
+
+    if (resetFilterBtn) {
+      resetFilterBtn.addEventListener('click', () => {
+        currentCategory = 'all';
+        searchQuery = '';
+        currentPage = 1;
+        const searchInput = document.getElementById('blog-search-input');
+        if (searchInput) searchInput.value = '';
+        categoryLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('data-cat') === 'all');
+        });
+        resetFilterBtn.style.display = 'none';
+        renderArticles(true);
+      });
+    }
+
+    // Search input listener
+    const searchInput = document.getElementById('blog-search-input');
+    if (searchInput) {
+      let debounceTimer = null;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          searchQuery = e.target.value.trim();
+          currentPage = 1;
+          if (resetFilterBtn) {
+            resetFilterBtn.style.display = currentCategory === 'all' && !searchQuery ? 'none' : 'inline-block';
+          }
+          renderArticles(false);
+        }, 200);
+      });
+    }
+
+    // Initial render
+    renderArticles(false);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     initMobileDrawer();
@@ -668,5 +1028,6 @@
     initSmoothAnchorScroll();
     initSpecializedServicesSection();
     initServiceDetailsPage();
+    initBlogPage();
   });
 })();
