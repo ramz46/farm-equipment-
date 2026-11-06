@@ -120,18 +120,33 @@
     const rtlButtons = document.querySelectorAll('.rtl-toggle-btn');
     rtlButtons.forEach(btn => btn.classList.add('btn-spin'));
 
-    document.documentElement.setAttribute('dir', nextDir);
-    try {
-      localStorage.setItem(DIR_STORAGE_KEY, nextDir);
-    } catch (e) {}
-    updateRtlButtonText(nextDir);
+    // 1. Temporarily freeze all transitions to prevent jarring horizontal visual jumps / flickering
+    document.documentElement.classList.add('is-switching-dir');
 
-    window.dispatchEvent(new CustomEvent('directionchange', { detail: { dir: nextDir } }));
+    // 2. Close mobile drawer or cart drawer gracefully if open to prevent lateral teleportation
+    const openDrawers = document.querySelectorAll('.mobile-drawer.active, .mobile-nav-drawer.active, .cart-drawer.active');
+    openDrawers.forEach(drawer => drawer.classList.remove('active'));
+    document.body.classList.remove('drawer-open');
+    const openOverlays = document.querySelectorAll('.drawer-overlay.active, .cart-overlay.active');
+    openOverlays.forEach(overlay => overlay.classList.remove('active'));
 
-    setTimeout(() => {
-      rtlButtons.forEach(btn => btn.classList.remove('btn-spin'));
-      isSwitchingDir = false;
-    }, 400);
+    // 3. Set the new direction attribute in the next frame
+    requestAnimationFrame(() => {
+      document.documentElement.setAttribute('dir', nextDir);
+      try {
+        localStorage.setItem(DIR_STORAGE_KEY, nextDir);
+      } catch (e) {}
+      updateRtlButtonText(nextDir);
+
+      window.dispatchEvent(new CustomEvent('directionchange', { detail: { dir: nextDir } }));
+
+      // 4. Cleanly unfreeze transitions after layout has settled
+      setTimeout(() => {
+        document.documentElement.classList.remove('is-switching-dir');
+        rtlButtons.forEach(btn => btn.classList.remove('btn-spin'));
+        isSwitchingDir = false;
+      }, 90);
+    });
 
     if (window.showToast) {
       window.showToast(
