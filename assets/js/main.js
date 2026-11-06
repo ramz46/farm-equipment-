@@ -29,10 +29,10 @@
      2. MOBILE NAVIGATION DRAWER
      -------------------------------------------------------------------------- */
   function initMobileDrawer() {
-    const hamburgerBtn = document.querySelector('.hamburger-btn');
-    const drawer = document.querySelector('.mobile-drawer');
+    const hamburgerBtn = document.querySelector('.hamburger-btn, #hamburgerBtn');
+    const drawer = document.querySelector('.mobile-drawer, .mobile-nav-drawer');
     const overlay = document.querySelector('.drawer-overlay');
-    const closeBtn = document.querySelector('.drawer-close-btn');
+    const closeBtn = document.querySelector('.drawer-close-btn, #closeMobileDrawer');
 
     if (!hamburgerBtn || !drawer) return;
 
