@@ -161,7 +161,9 @@
   .header-actions .d-lg-inline-flex,
   .nav-actions .btn,
   .header-actions .btn,
-  .header-actions [data-open-quote] {
+  .header-actions [data-open-quote],
+  .header-actions .rtl-toggle-btn,
+  .nav-actions .rtl-toggle-btn {
     display: none !important;
   }
 
@@ -194,7 +196,9 @@
   .header-actions .d-lg-inline-flex,
   .nav-actions .btn,
   .header-actions .btn,
-  .header-actions [data-open-quote] {
+  .header-actions [data-open-quote],
+  .header-actions .rtl-toggle-btn,
+  .nav-actions .rtl-toggle-btn {
     display: none !important;
   }
   
@@ -242,6 +246,13 @@
 @media (max-width: 767px) {
   :root {
     --header-height: 64px;
+  }
+
+  /* Inspect Mode / Mobile Navigation Bar: Hide RTL/LTR button from top bar */
+  .header-actions .rtl-toggle-btn,
+  .nav-actions .rtl-toggle-btn,
+  .control-btn.rtl-toggle-btn {
+    display: none !important;
   }
 
   html,
