@@ -2449,6 +2449,10 @@ textarea.form-control {
   border-block-end: 3px solid var(--c-warm-sand);
 }
 
+.page-hero-cinema.page-hero-home2 {
+  height: clamp(560px, 72vh, 720px);
+}
+
 .page-hero-cinema .hero-slide-bg {
   position: absolute;
   top: 0;
@@ -2553,6 +2557,17 @@ textarea.form-control {
   animation: fadeUp 0.8s var(--ease-out-expo) 0.42s backwards;
 }
 
+.page-hero-cinema .hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-block-end: 1.75rem;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeUp 0.8s var(--ease-out-expo) 0.50s backwards;
+}
+
 .page-hero-cinema .hero-meta-row {
   display: flex;
   align-items: center;
@@ -2560,7 +2575,7 @@ textarea.form-control {
   gap: 1.25rem;
   opacity: 1;
   transform: translateY(0);
-  animation: fadeUp 0.8s var(--ease-out-expo) 0.55s backwards;
+  animation: fadeUp 0.8s var(--ease-out-expo) 0.58s backwards;
 }
 
 .page-hero-cinema .breadcrumbs {

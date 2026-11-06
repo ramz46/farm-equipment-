@@ -79,6 +79,12 @@
     height: 520px;
   }
 
+  .page-hero-cinema.page-hero-home2 {
+    height: auto;
+    min-height: 560px;
+    padding-block: 5rem 4rem;
+  }
+
   .catalog-toolbar {
     flex-direction: column;
     align-items: stretch;
@@ -204,6 +210,12 @@
   .hero-slider-section,
   .page-hero-cinema {
     height: 450px;
+  }
+
+  .page-hero-cinema.page-hero-home2 {
+    height: auto;
+    min-height: 480px;
+    padding-block: 4rem 3rem;
   }
 
   .page-hero-cinema .hero-title {
