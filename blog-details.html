@@ -64,7 +64,11 @@
           <a href="farming-tips.html" class="nav-link">Farming Tips</a>
         </div>
         <div class="nav-item">
-          <a href="blog.html" class="nav-link active">Blog</a>
+          <a href="blog.html" class="nav-link active">Blog <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="blog.html" class="dropdown-link"><i class="fa-solid fa-newspaper"></i> Articles & Guides</a>
+            <a href="blog-details.html?article=tunnel-ventilation" class="dropdown-link"><i class="fa-solid fa-book-open"></i> Featured Article</a>
+          </div>
         </div>
         <div class="nav-item">
           <a href="contact.html" class="nav-link">Contact</a>
@@ -129,25 +133,25 @@
 
   <!-- ==================== PAGE HERO ==================== -->
   <section class="page-hero-cinema" aria-label="Article Details Hero">
-    <img src="assets/images/hero/hero-blog-details.jpg" alt="Optimizing Negative Pressure & Air Speed in Modern Broiler Houses" class="hero-slide-bg">
+    <img id="bd-hero-bg" src="assets/images/hero/hero-blog-details.jpg" alt="Optimizing Negative Pressure & Air Speed in Modern Broiler Houses" class="hero-slide-bg">
     <div class="hero-slide-overlay"></div>
     <div class="container hero-slide-container">
       <div class="hero-slide-content" style="max-width: 860px;">
-        <span class="hero-tag"><i class="fa-solid fa-fan"></i> Ventilation Engineering</span>
-        <h1 class="hero-title">Optimizing Negative Pressure & <br><span class="text-gradient">Air Speed in Broiler Houses</span></h1>
-        <p class="hero-description">A deep technical analysis of static pressure differential, tunnel fan CFM staging, and inlet velocity curves required to eliminate bird heat stress.</p>
+        <span class="hero-tag" id="bd-hero-tag"><i class="fa-solid fa-fan"></i> Ventilation Engineering</span>
+        <h1 class="hero-title" id="bd-hero-title">Optimizing Negative Pressure & <br><span class="text-gradient">Air Speed in Broiler Houses</span></h1>
+        <p class="hero-description" id="bd-hero-desc">A deep technical analysis of static pressure differential, tunnel fan CFM staging, and inlet velocity curves required to eliminate bird heat stress.</p>
         <div class="hero-meta-row">
           <div style="display: inline-flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; font-size: 0.92rem; color: rgba(244, 241, 222, 0.9);">
-            <span><i class="fa-solid fa-user-pen" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> Dr. Marcus Vance</span>
-            <span><i class="fa-regular fa-calendar" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> Nov 02, 2026</span>
-            <span><i class="fa-regular fa-clock" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> 8 min read</span>
+            <span><i class="fa-solid fa-user-pen" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> <span id="bd-author-name">Dr. Marcus Vance</span></span>
+            <span><i class="fa-regular fa-calendar" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> <span id="bd-article-date">Nov 02, 2026</span></span>
+            <span><i class="fa-regular fa-clock" style="color: var(--c-warm-sand); margin-right: 0.4rem;"></i> <span id="bd-read-time">8 min read</span></span>
           </div>
           <nav class="breadcrumbs" aria-label="Breadcrumb">
             <a href="index.html">Home</a>
             <i class="fa-solid fa-chevron-right"></i>
             <a href="blog.html">Blog</a>
             <i class="fa-solid fa-chevron-right"></i>
-            <span>Ventilation Engineering</span>
+            <span id="bd-breadcrumb-title">Ventilation Engineering</span>
           </nav>
         </div>
       </div>
@@ -163,13 +167,13 @@
         <article class="reveal-up article-main-content">
           <!-- Article Cover Image -->
           <div class="article-cover-wrap">
-            <img src="assets/images/blog/blog-1.jpg" alt="Commercial Poultry Exhaust Cone Fans">
+            <img id="bd-cover-img" src="assets/images/blog/blog-1.jpg" alt="Commercial Poultry Exhaust Cone Fans">
           </div>
 
           <!-- Table of Contents -->
-          <div class="article-toc">
+          <div class="article-toc" id="bd-toc-card">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-list" style="color: var(--c-sage-green);"></i> Table of Contents</h4>
-            <ul style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
+            <ul id="bd-toc-list" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
               <li><a href="#section-intro" style="color: var(--c-slate-blue); font-weight: 600;">1. The Physics of Negative Pressure Ventilation</a></li>
               <li><a href="#section-speed" style="color: var(--c-slate-blue); font-weight: 600;">2. Calculating Target Air Speed & Wind Chill Effect</a></li>
               <li><a href="#section-static" style="color: var(--c-slate-blue); font-weight: 600;">3. Static Pressure Settings Across House Widths</a></li>
@@ -178,47 +182,50 @@
             </ul>
           </div>
 
-          <h2 id="section-intro" style="font-size: 1.75rem; margin-block: 2rem 1rem;">1. The Physics of Negative Pressure Ventilation</h2>
-          <p>
-            In a modern enclosed poultry house, fans do not blow air onto the birds; instead, high-capacity exhaust cone fans extract air from one end of the building, creating a slight vacuum (negative static pressure). Atmospheric pressure outside the shed then forces fresh air to surge through carefully calibrated inlet louvers or evaporative cooling pad tunnels.
-          </p>
-          <p>
-            When static pressure is maintained precisely (typically between 20 and 28 Pascals, depending on shed width), the incoming air enters with sufficient momentum to hug the ceiling apex. Here, it mixes with the warm air generated by heaters and bird body heat before gently descending into the bird breathing zone without chilling the litter.
-          </p>
+          <!-- Dynamic Article Body -->
+          <div id="bd-article-body">
+            <h2 id="section-intro" style="font-size: 1.75rem; margin-block: 2rem 1rem;">1. The Physics of Negative Pressure Ventilation</h2>
+            <p>
+              In a modern enclosed poultry house, fans do not blow air onto the birds; instead, high-capacity exhaust cone fans extract air from one end of the building, creating a slight vacuum (negative static pressure). Atmospheric pressure outside the shed then forces fresh air to surge through carefully calibrated inlet louvers or evaporative cooling pad tunnels.
+            </p>
+            <p>
+              When static pressure is maintained precisely (typically between 20 and 28 Pascals, depending on shed width), the incoming air enters with sufficient momentum to hug the ceiling apex. Here, it mixes with the warm air generated by heaters and bird body heat before gently descending into the bird breathing zone without chilling the litter.
+            </p>
 
-          <!-- Engineering Callout Box -->
-          <div style="background: var(--color-accent-soft); border-inline-start: 4px solid var(--color-accent); border-radius: var(--radius-md); padding: 1.5rem; margin-block: 2rem;">
-            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--color-primary-dark);"><i class="fa-solid fa-calculator"></i> The Rule of Thumb CFM Calculation:</h4>
-            <p style="margin: 0; font-size: 0.95rem; color: var(--text-main);">
-              <strong>Total Air Volume (CFM)</strong> = Bird Count &times; Max Bird Weight (lbs) &times; 1.8 CFM/lb. For a 40,000-bird flock at 6.0 lbs, total peak CFM needed = 40,000 &times; 6.0 &times; 1.8 = <strong>432,000 CFM</strong>. Dividing by 44,000 CFM per 50" fan results in <strong>10 exhaust cone fans</strong>.
+            <!-- Engineering Callout Box -->
+            <div style="background: var(--color-accent-soft); border-inline-start: 4px solid var(--color-accent); border-radius: var(--radius-md); padding: 1.5rem; margin-block: 2rem;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--color-primary-dark);"><i class="fa-solid fa-calculator"></i> The Rule of Thumb CFM Calculation:</h4>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--text-main);">
+                <strong>Total Air Volume (CFM)</strong> = Bird Count &times; Max Bird Weight (lbs) &times; 1.8 CFM/lb. For a 40,000-bird flock at 6.0 lbs, total peak CFM needed = 40,000 &times; 6.0 &times; 1.8 = <strong>432,000 CFM</strong>. Dividing by 44,000 CFM per 50" fan results in <strong>10 exhaust cone fans</strong>.
+              </p>
+            </div>
+
+            <h2 id="section-speed" style="font-size: 1.75rem; margin-block: 2rem 1rem;">2. Calculating Target Air Speed & Wind Chill Effect</h2>
+            <p>
+              During extreme summer heat (&gt;35°C), high air velocity across bird feathers produces a cooling effect equivalent to a 5°C to 8°C temperature drop. However, this wind chill requires a minimum air velocity of 2.5 meters per second (500 feet per minute) uniformly distributed across the house cross-section.
+            </p>
+            <p>
+              If dead air pockets or low-velocity zones occur along the sidewalls, heavy birds in those areas will suffer severe heat prostration and respiratory alkalosis. AviTech's 50-inch butterfly shutter cone fans utilize precision aerodynamic fiberglass diffusers to maintain laminar flow with zero back-draft turbulence.
+            </p>
+
+            <h2 id="section-static" style="font-size: 1.75rem; margin-block: 2rem 1rem;">3. Static Pressure Settings Across House Widths</h2>
+            <p>
+              Shed width dictates the required static pressure. The wider the building, the higher the pressure required to project air to the center:
+            </p>
+            <ul style="margin-left: 1.5rem; margin-block: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li><strong>12-meter shed width:</strong> 18 – 22 Pa static pressure</li>
+              <li><strong>15-meter shed width:</strong> 22 – 26 Pa static pressure</li>
+              <li><strong>18-meter shed width:</strong> 28 – 35 Pa static pressure</li>
+            </ul>
+
+            <h2 id="section-cooling" style="font-size: 1.75rem; margin-block: 2rem 1rem;">4. Evaporative Cooling Pad Operational Timing</h2>
+            <p>
+              A common mistake made by farm operators is activating evaporative cellulose cooling pads too early in the morning when ambient relative humidity is still above 75%. Adding moisture to already saturated air creates a humid sauna that stifles the birds' panting mechanism.
+            </p>
+            <p>
+              Always ensure that cooling pumps only engage when ambient temperatures exceed 28°C AND shed relative humidity is below 70%. In our automated climate controllers, this interlock is programmed by default to safeguard bird health.
             </p>
           </div>
-
-          <h2 id="section-speed" style="font-size: 1.75rem; margin-block: 2rem 1rem;">2. Calculating Target Air Speed & Wind Chill Effect</h2>
-          <p>
-            During extreme summer heat (&gt;35°C), high air velocity across bird feathers produces a cooling effect equivalent to a 5°C to 8°C temperature drop. However, this wind chill requires a minimum air velocity of 2.5 meters per second (500 feet per minute) uniformly distributed across the house cross-section.
-          </p>
-          <p>
-            If dead air pockets or low-velocity zones occur along the sidewalls, heavy birds in those areas will suffer severe heat prostration and respiratory alkalosis. AviTech's 50-inch butterfly shutter cone fans utilize precision aerodynamic fiberglass diffusers to maintain laminar flow with zero back-draft turbulence.
-          </p>
-
-          <h2 id="section-static" style="font-size: 1.75rem; margin-block: 2rem 1rem;">3. Static Pressure Settings Across House Widths</h2>
-          <p>
-            Shed width dictates the required static pressure. The wider the building, the higher the pressure required to project air to the center:
-          </p>
-          <ul style="margin-left: 1.5rem; margin-block: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <li><strong>12-meter shed width:</strong> 18 – 22 Pa static pressure</li>
-            <li><strong>15-meter shed width:</strong> 22 – 26 Pa static pressure</li>
-            <li><strong>18-meter shed width:</strong> 28 – 35 Pa static pressure</li>
-          </ul>
-
-          <h2 id="section-cooling" style="font-size: 1.75rem; margin-block: 2rem 1rem;">4. Evaporative Cooling Pad Operational Timing</h2>
-          <p>
-            A common mistake made by farm operators is activating evaporative cellulose cooling pads too early in the morning when ambient relative humidity is still above 75%. Adding moisture to already saturated air creates a humid sauna that stifles the birds' panting mechanism.
-          </p>
-          <p>
-            Always ensure that cooling pumps only engage when ambient temperatures exceed 28°C AND shed relative humidity is below 70%. In our automated climate controllers, this interlock is programmed by default to safeguard bird health.
-          </p>
 
           <!-- Social Share & Author Card -->
           <div style="border-top: 1px solid var(--border-medium); border-bottom: 1px solid var(--border-medium); padding-block: 1.5rem; margin-block: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
@@ -229,7 +236,7 @@
               <a href="#" class="topbar-social-link" style="background: var(--bg-surface-secondary); color: var(--text-main);" aria-label="Share via Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
             <div>
-              <span class="product-badge" style="position: static;">Agronomy Field Certified</span>
+              <span id="bd-article-badge" class="product-badge" style="position: static;">Agronomy Field Certified</span>
             </div>
           </div>
         </article>
@@ -238,18 +245,24 @@
         <aside class="blog-sidebar">
           <!-- Author Bio -->
           <div class="blog-widget" style="text-align: center;">
-            <img src="assets/images/team/team-1.jpg" alt="Dr. Marcus Vance" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem;">
-            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Dr. Marcus Vance</h4>
-            <span style="font-size: 0.85rem; color: var(--c-slate-blue); font-weight: 600; display: block; margin-bottom: 0.75rem;">Chief Agricultural Engineer</span>
-            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Specializes in negative-pressure tunnel ventilation design, psychrometric airflow, and IoT climate automation.</p>
+            <img id="bd-sidebar-author-avatar" src="assets/images/team/team-1.jpg" alt="Dr. Marcus Vance" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem;">
+            <h4 id="bd-sidebar-author-name" style="font-size: 1.1rem; margin-bottom: 0.25rem;">Dr. Marcus Vance</h4>
+            <span id="bd-sidebar-author-role" style="font-size: 0.85rem; color: var(--c-slate-blue); font-weight: 600; display: block; margin-bottom: 0.75rem;">Chief Agricultural Engineer</span>
+            <p id="bd-sidebar-author-bio" style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Specializes in negative-pressure tunnel ventilation design, psychrometric airflow, and IoT climate automation.</p>
           </div>
 
           <!-- Quick Quote Box -->
           <div style="background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 60%, #415A77 100%); border: 2px solid var(--c-warm-sand); color: #ffffff; padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-            <div style="font-size: 2.2rem; color: var(--c-sage-green); margin-bottom: 0.5rem;"><i class="fa-solid fa-fan"></i></div>
-            <h4 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.5rem;">Need a Ventilation Calculation?</h4>
-            <p style="font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem;">Send us your poultry house dimensions and bird target weight for an engineered CFM analysis.</p>
-            <button type="button" class="btn btn-secondary btn-sm w-100" data-open-quote data-product-name="Tunnel Ventilation Sizing" data-category="Ventilation Systems">Get Ventilation Quote</button>
+            <div id="bd-sidebar-cta-icon" style="font-size: 2.2rem; color: var(--c-sage-green); margin-bottom: 0.5rem;"><i class="fa-solid fa-fan"></i></div>
+            <h4 id="bd-sidebar-cta-title" style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.5rem;">Need a Ventilation Calculation?</h4>
+            <p id="bd-sidebar-cta-desc" style="font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem;">Send us your poultry house dimensions and bird target weight for an engineered CFM analysis.</p>
+            <button id="bd-sidebar-cta-btn" type="button" class="btn btn-secondary btn-sm w-100" data-open-quote data-product-name="Tunnel Ventilation Sizing" data-category="Ventilation Systems">Get Ventilation Quote</button>
+          </div>
+
+          <!-- Related Field Guides Widget -->
+          <div class="blog-widget" id="bd-related-widget" style="margin-top: 1.5rem;">
+            <h4 style="font-size: 1.15rem; margin-bottom: 1.25rem;"><i class="fa-solid fa-book-bookmark" style="color: var(--c-sage-green);"></i> Related Field Guides</h4>
+            <div id="bd-related-list" style="display: flex; flex-direction: column; gap: 1.25rem;"></div>
           </div>
         </aside>
       </div>
