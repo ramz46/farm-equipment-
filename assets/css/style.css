@@ -886,6 +886,96 @@ p {
   color: var(--c-soft-ivory);
 }
 
+/* --------------------------------------------------------------------------
+   THEME TOGGLE BUTTON & LOGO DARK/LIGHT ENHANCEMENTS
+   -------------------------------------------------------------------------- */
+.theme-toggle-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle-btn i {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, filter 0.3s ease;
+  display: inline-block;
+}
+
+.theme-toggle-btn.btn-spin i,
+.rtl-toggle-btn.btn-spin i {
+  transform: rotate(360deg) scale(1.18);
+}
+
+/* Light Mode: Warm Golden Sun ☀️ */
+[data-theme="light"] .theme-toggle-btn i.fa-sun,
+html:not([data-theme="dark"]) .theme-toggle-btn i.fa-sun {
+  color: #D97706;
+}
+
+[data-theme="light"] .theme-toggle-btn:hover,
+html:not([data-theme="dark"]) .theme-toggle-btn:hover {
+  background-color: #FEF3C7;
+  border-color: #F59E0B;
+}
+
+[data-theme="light"] .theme-toggle-btn:hover i.fa-sun,
+html:not([data-theme="dark"]) .theme-toggle-btn:hover i.fa-sun {
+  color: #B45309;
+  filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.5));
+}
+
+/* Dark Mode: Luminous Glowing Moon 🌙 */
+[data-theme="dark"] .theme-toggle-btn i.fa-moon {
+  color: #FACC15;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background-color: rgba(250, 204, 21, 0.15);
+  border-color: #FACC15;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover i.fa-moon {
+  color: #FEF08A;
+  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.65));
+}
+
+/* Mobile Drawer Theme Button */
+.btn-text.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: color var(--transition-fast);
+}
+
+[data-theme="light"] .btn-text.theme-toggle-btn i.fa-sun {
+  color: #D97706;
+}
+
+[data-theme="dark"] .btn-text.theme-toggle-btn i.fa-moon {
+  color: #FACC15;
+}
+
+/* Site Logo Dark/Light Mode Refinement */
+.site-logo {
+  transition: opacity 0.25s ease;
+}
+
+.site-logo:hover {
+  opacity: 0.95;
+}
+
+[data-theme="dark"] .logo-badge {
+  background: linear-gradient(135deg, #1E293B 0%, #334155 50%, #475569 100%);
+  border: 1px solid rgba(212, 196, 168, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  color: var(--c-warm-sand);
+}
+
+[data-theme="dark"] .logo-subtitle {
+  color: var(--c-warm-sand);
+}
+
 /* Hamburger Button */
 .hamburger-btn {
   display: none;
