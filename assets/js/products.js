@@ -13,11 +13,14 @@
       name: 'Automated Broiler Pan Feeder System',
       category: 'feeders',
       categoryLabel: 'Poultry Feeders',
-      badge: 'Bestseller',
+      badge: 'BESTSELLER',
+      badgeClass: 'badge-dark-green',
       image: 'assets/images/products/pan-feeder.jpg',
       rating: 5.0,
       reviewsCount: 38,
-      priceLabel: 'Quote on Spec',
+      price: 380.00,
+      origPrice: 420.00,
+      priceLabel: '$380.00',
       shortDesc: 'Continuous anti-waste feeding pan lines with sensor cut-off and 360-degree feed flooding for high broiler uniformity.',
       fullDesc: 'Designed for high-density broiler grow-out houses, our automated pan feeder features a high-grade copolymer plastic pan with 14 feeding grills, precision feed drop adjustment, and a galvanized drive line. Eliminates feed wastage and optimizes Feed Conversion Ratio (FCR) from day-old chick to harvest.',
       specs: {
@@ -33,11 +36,14 @@
       name: 'Precision Nipple Drinking Line System',
       category: 'drinking',
       categoryLabel: 'Drinking Systems',
-      badge: 'High Uniformity',
+      badge: 'HIGH UNIFORMITY',
+      badgeClass: 'badge-emerald',
       image: 'assets/images/products/nipple-drinker.jpg',
       rating: 4.9,
       reviewsCount: 42,
-      priceLabel: 'Quote on Spec',
+      price: 195.00,
+      origPrice: 230.00,
+      priceLabel: '$195.00',
       shortDesc: 'Double-sealed stainless steel nipple valves with drip cups, water medicator unit, and auto-flush pressure regulators.',
       fullDesc: 'Ensures hygienic, fresh water delivery to every bird without leaks or wet litter. Manufactured with medical-grade 304 stainless steel pins and triggers, providing 360-degree sensitivity for chicks and high-volume flow for adult layers and broilers.',
       specs: {
@@ -53,11 +59,14 @@
       name: 'A-Type Commercial Layer Battery Cages',
       category: 'cages',
       categoryLabel: 'Poultry Cages',
-      badge: 'Top Efficiency',
+      badge: 'TOP EFFICIENCY',
+      badgeClass: 'badge-amber',
       image: 'assets/images/products/battery-cages.jpg',
       rating: 4.8,
       reviewsCount: 29,
-      priceLabel: 'From $14.50 / bird',
+      price: 850.00,
+      origPrice: 940.00,
+      priceLabel: '$850.00',
       shortDesc: 'Hot-dip galvanized tier cage structure with automated manure scrapers, egg roll-out ramps, and feed troughs.',
       fullDesc: 'Engineered for commercial layer farms seeking maximum stocking density with superior bird health. Electrostatic zinc-aluminum coating guarantees 20+ years of rust protection. Features egg roll-out slope with cushioning wire to minimize breakage below 0.3%.',
       specs: {
@@ -73,11 +82,14 @@
       name: 'Multi-Stage Commercial Egg Incubator 10K',
       category: 'incubators',
       categoryLabel: 'Egg Incubators',
-      badge: 'Microclimate AI',
+      badge: 'MICROCLIMATE AI',
+      badgeClass: 'badge-dark-green',
       image: 'assets/images/products/egg-incubator.jpg',
       rating: 5.0,
       reviewsCount: 19,
-      priceLabel: 'Request Custom Quote',
+      price: 1850.00,
+      origPrice: 2100.00,
+      priceLabel: '$1,850.00',
       shortDesc: 'Microprocessor PID-controlled setter and hatcher with dual heating elements, ultrasonic humidity, and automatic egg turning.',
       fullDesc: 'Delivers commercial hatchery success with >92% hatchability rates for chicken, duck, and turkey eggs. Features computerized PID climate regulation, dual-circulation laminar airflow, automatic 90-degree egg turning racks, and independent emergency backup heating.',
       specs: {
@@ -93,11 +105,14 @@
       name: '50-Inch Heavy Duty Tunnel Exhaust Cone Fan',
       category: 'ventilation',
       categoryLabel: 'Ventilation Systems',
-      badge: 'High CFM',
+      badge: 'HIGH CFM',
+      badgeClass: 'badge-emerald',
       image: 'assets/images/products/ventilation-fan.jpg',
       rating: 4.9,
       reviewsCount: 34,
-      priceLabel: 'From $420 / unit',
+      price: 420.00,
+      origPrice: 475.00,
+      priceLabel: '$420.00',
       shortDesc: 'High-volume butterfly shutter cone exhaust fan delivering 44,000 CFM with premium Siemens motor and Krupp stainless blades.',
       fullDesc: 'Crucial for modern negative-pressure tunnel ventilation in hot climates. Aerodynamic fiberglass cone combined with 430 stainless steel punch-pressed blades maximizes air velocity across poultry shed length while minimizing kilowatt electricity draw.',
       specs: {
@@ -113,11 +128,14 @@
       name: 'Evaporative Cellulose Cooling Pad System',
       category: 'ventilation',
       categoryLabel: 'Ventilation Systems',
-      badge: 'Temperature Drop 8°C',
+      badge: 'COOLING 8°C',
+      badgeClass: 'badge-amber',
       image: 'assets/images/products/cooling-pad.jpg',
       rating: 4.7,
       reviewsCount: 22,
-      priceLabel: '$38 / sq. meter',
+      price: 145.00,
+      origPrice: 170.00,
+      priceLabel: '$145.00',
       shortDesc: 'Virgin Scandinavian kraft paper evaporative wet wall pads with aluminum alloy water distribution gutters.',
       fullDesc: 'Reduces poultry house internal temperatures by 6°C to 10°C during peak summer heat. Corrugated cellulose paper engineered with anti-fungal impregnation prevents algae buildup and resists degradation from chemical disinfection.',
       specs: {
@@ -133,11 +151,14 @@
       name: 'Infrared Radiant Gas Brooder 5000',
       category: 'brooding',
       categoryLabel: 'Brooding Equipment',
-      badge: 'Chick Warmth',
+      badge: 'CHICK WARMTH',
+      badgeClass: 'badge-orange',
       image: 'assets/images/products/gas-brooder.jpg',
       rating: 4.8,
       reviewsCount: 27,
-      priceLabel: '$165 / unit',
+      price: 165.00,
+      origPrice: 195.00,
+      priceLabel: '$165.00',
       shortDesc: 'Directional infrared canopy radiant gas brooder with automatic piezo ignition, flame-out safety, and thermostat control.',
       fullDesc: 'Emulates natural mother hen radiant heat directly to chick floor level without wasting energy heating ceiling air. Promotes rapid feathering, gut development, and lowers chick mortality below 0.8% during crucial 1–14 day brooding phases.',
       specs: {
@@ -152,12 +173,15 @@
       id: 'central-egg-collector',
       name: 'Automated Centralized Egg Collection Conveyor',
       category: 'automation',
-      categoryLabel: 'Farm Automation Equipment',
-      badge: 'Zero Cracked Eggs',
+      categoryLabel: 'Farm Automation',
+      badge: 'ZERO DAMAGE',
+      badgeClass: 'badge-dark-green',
       image: 'assets/images/products/egg-collector.jpg',
       rating: 4.9,
       reviewsCount: 16,
-      priceLabel: 'Custom Project Quote',
+      price: 1250.00,
+      origPrice: 1400.00,
+      priceLabel: '$1,250.00',
       shortDesc: 'Cross-conveyor table and rod belt system that delivers freshly laid eggs directly into hatchery sorting trays.',
       fullDesc: 'Eliminates 90% of manual egg gathering labor. Features food-grade perforated collection belts, smooth frequency-inverter drives, and soft-rubber transfer fingers that gently lift eggs onto the sorting table without shell hairline fractures.',
       specs: {
@@ -173,11 +197,14 @@
       name: 'Heavy-Duty Galvanized Bulk Feed Storage Silo',
       category: 'feeders',
       categoryLabel: 'Poultry Feeders',
-      badge: '10–30 Ton',
+      badge: '10–30 TON',
+      badgeClass: 'badge-amber',
       image: 'assets/images/products/feed-silo.jpg',
       rating: 4.9,
       reviewsCount: 31,
-      priceLabel: 'From $2,800',
+      price: 2800.00,
+      origPrice: 3150.00,
+      priceLabel: '$2,800.00',
       shortDesc: 'Corrugated galvanized steel storage bin with pneumatic fill pipes, inspection ladder, and direct flex-auger feed boots.',
       fullDesc: 'Protects valuable poultry feed from vermin, moisture, and hot ambient heat. Manufactured with high-strength structural steel sheets galvanized to 350 g/m² standard. Transparent hopper cone allows fast visual monitoring of feed levels.',
       specs: {
@@ -192,12 +219,15 @@
       id: 'manure-removal-system',
       name: 'Automated PP Manure Belt Removal System',
       category: 'automation',
-      categoryLabel: 'Farm Automation Equipment',
-      badge: 'Biosecurity First',
+      categoryLabel: 'Farm Automation',
+      badge: 'BIOSECURITY',
+      badgeClass: 'badge-emerald',
       image: 'assets/images/products/manure-belt.jpg',
       rating: 4.8,
       reviewsCount: 18,
-      priceLabel: 'Quote on Length',
+      price: 920.00,
+      origPrice: 1050.00,
+      priceLabel: '$920.00',
       shortDesc: 'Continuous polypropylene drop-belt scraper with drive roller motor to keep poultry cages 100% ammonia free.',
       fullDesc: 'Significantly improves biosecurity and air quality inside cage sheds by clearing droppings daily. Heavy 1.2 mm virgin PP belt runs beneath each cage tier directly into outdoor manure elevators or collection wagons.',
       specs: {
@@ -212,12 +242,15 @@
       id: 'microclimate-controller',
       name: 'AviSmart IoT Environmental Climate Controller',
       category: 'automation',
-      categoryLabel: 'Farm Automation Equipment',
-      badge: 'IoT Cloud Connected',
+      categoryLabel: 'Farm Automation',
+      badge: 'IOT CLOUD',
+      badgeClass: 'badge-dark-green',
       image: 'assets/images/products/climate-controller.jpg',
       rating: 5.0,
       reviewsCount: 25,
-      priceLabel: '$1,450 / unit',
+      price: 1450.00,
+      origPrice: 1600.00,
+      priceLabel: '$1,450.00',
       shortDesc: 'Multi-stage climate computer with 10-inch color touchscreen, remote smartphone monitoring, and NH3/CO2 sensor integration.',
       fullDesc: 'The central intelligence brain of your modern poultry house. Automatically coordinates fans, inlet baffles, cooling pads, brooders, and lighting curves according to chick age. Sends instant push alerts for power outages, water pressure dips, or temperature anomalies.',
       specs: {
@@ -233,11 +266,14 @@
       name: 'Pneumatic Day-Old Chick Dual Vaccinator',
       category: 'brooding',
       categoryLabel: 'Brooding Equipment',
-      badge: 'Precision Vet',
+      badge: 'PRECISION VET',
+      badgeClass: 'badge-orange',
       image: 'assets/images/products/chick-vaccinator.jpg',
       rating: 4.7,
       reviewsCount: 14,
-      priceLabel: '$2,100 / unit',
+      price: 2100.00,
+      origPrice: 2350.00,
+      priceLabel: '$2,100.00',
       shortDesc: 'High-speed automated subcutaneous chick injector for Marek and Newcastle vaccines with optical sensor activation.',
       fullDesc: 'Ensures exact 0.1 ml vaccine dosages into the neck of day-old chicks at speeds up to 3,000 birds per hour. Built-in electronic chick counter and gentle positioning plate prevent injury while ensuring complete herd immunity.',
       specs: {
@@ -251,7 +287,7 @@
   ];
 
   /* --------------------------------------------------------------------------
-     1. CREATE PRODUCT HTML CARD
+     1. CREATE PRODUCT HTML CARD (BOVI STYLE EXACT SCREENSHOT MATCH)
      -------------------------------------------------------------------------- */
   function createProductCardMarkup(item) {
     const starIcons = Array.from({ length: 5 }, (_, i) => {
@@ -260,43 +296,34 @@
       return '<i class="fa-regular fa-star"></i>';
     }).join('');
 
-    // Extract first 2 specs for card summary
-    const specKeys = Object.keys(item.specs).slice(0, 2);
-    const specsHtml = specKeys.map(k => `
-      <div class="product-spec-item">
-        <span class="product-spec-label">${k}:</span>
-        <span class="product-spec-val">${item.specs[k]}</span>
-      </div>
-    `).join('');
+    const formattedPrice = item.price ? `$${Number(item.price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : item.priceLabel;
+    const formattedOrigPrice = item.origPrice ? `$${Number(item.origPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '';
 
     return `
-      <article class="product-card hover-float" data-category="${item.category}" data-id="${item.id}">
-        <div class="product-img-box">
-          <img src="${item.image}" alt="${item.name}" class="product-img" loading="lazy">
-          ${item.badge ? `<span class="product-badge">${item.badge}</span>` : ''}
-          <button type="button" class="product-quick-view-btn" data-product-id="${item.id}" aria-label="Quick View ${item.name}">
-            <i class="fa-solid fa-eye"></i> Quick View
-          </button>
+      <article class="bovi-product-card" data-category="${item.category}" data-id="${item.id}">
+        <div class="bovi-card-media">
+          <a href="product-details.html?id=${item.id}" class="bovi-media-link" aria-label="${item.name}">
+            <img src="${item.image}" alt="${item.name}" loading="lazy" class="bovi-card-img">
+          </a>
+          ${item.badge ? `<span class="bovi-card-badge ${item.badgeClass || 'badge-dark-green'}">${item.badge}</span>` : ''}
         </div>
-        <div class="product-card-body">
-          <div class="product-meta">
-            <span class="product-category">${item.categoryLabel}</span>
-            <div class="product-rating" title="${item.rating} out of 5 stars">
-              ${starIcons}
-              <span style="font-size: 0.8rem; color: var(--text-muted); margin-inline-start: 4px;">(${item.reviewsCount})</span>
-            </div>
-          </div>
-          <h3 class="product-title">
+        <div class="bovi-card-body">
+          <div class="bovi-card-category">${item.categoryLabel}</div>
+          <h3 class="bovi-card-title">
             <a href="product-details.html?id=${item.id}">${item.name}</a>
           </h3>
-          <p class="product-desc">${item.shortDesc}</p>
-          <div class="product-specs-list">
-            ${specsHtml}
+          <div class="bovi-card-rating" title="${item.rating} out of 5 stars">
+            <div class="bovi-stars">${starIcons}</div>
+            <span class="bovi-reviews-count">(${item.reviewsCount})</span>
           </div>
-          <div class="product-card-footer">
-            <div class="product-quote-badge">${item.priceLabel}</div>
-            <button type="button" class="btn btn-sm btn-primary open-quote-modal-btn" data-product-name="${item.name}" data-category="${item.categoryLabel}">
-              Quote <i class="fa-solid fa-arrow-right"></i>
+          <p class="bovi-card-desc">${item.shortDesc}</p>
+          <div class="bovi-card-footer">
+            <div class="bovi-price-box">
+              <span class="bovi-current-price">${formattedPrice}</span>
+              ${formattedOrigPrice ? `<span class="bovi-orig-price">${formattedOrigPrice}</span>` : ''}
+            </div>
+            <button type="button" class="bovi-add-btn" data-product-id="${item.id}" data-product-name="${item.name}" aria-label="Add ${item.name} to equipment order">
+              <i class="fa-solid fa-cart-shopping"></i> Add
             </button>
           </div>
         </div>
@@ -313,22 +340,24 @@
 
     if (!items.length) {
       container.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
-          <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
-            <i class="fa-solid fa-tractor"></i>
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1.5rem; background: #ffffff; border-radius: 18px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+          <div style="font-size: 2.8rem; color: #1B4332; margin-bottom: 1rem;">
+            <i class="fa-solid fa-boxes-stacked"></i>
           </div>
-          <h3>No Equipment Found</h3>
-          <p>Try clearing your search query or selecting a different equipment category.</p>
-          <button type="button" class="btn btn-primary btn-sm reset-filter-btn" style="margin-top: 1rem;">Show All Equipment</button>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem;">No Matching Equipment Found</h3>
+          <p style="color: #6B7280; font-size: 0.95rem; margin-bottom: 1.5rem;">Try adjusting your search keyword or increasing the maximum price filter.</p>
+          <button type="button" class="btn btn-primary btn-sm reset-filter-btn" style="background: #1B4332; border-color: #1B4332; border-radius: 9999px; padding: 0.55rem 1.4rem;">Reset All Filters</button>
         </div>
       `;
       const resetBtn = container.querySelector('.reset-filter-btn');
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          const allPill = document.querySelector('.filter-pill[data-filter="all"]');
-          if (allPill) allPill.click();
-          const searchInput = document.querySelector('.search-input');
+          const allCat = document.querySelector('.bovi-cat-item[data-category="all"]') || document.querySelector('.filter-pill[data-filter="all"]');
+          if (allCat) allCat.click();
+          const searchInput = document.getElementById('bovi-catalog-search') || document.querySelector('.search-input');
           if (searchInput) { searchInput.value = ''; searchInput.dispatchEvent(new Event('input')); }
+          const slider = document.getElementById('bovi-price-slider');
+          if (slider) { slider.value = '3000'; slider.dispatchEvent(new Event('input')); }
         });
       }
       return;
@@ -337,17 +366,59 @@
     container.innerHTML = items.map(createProductCardMarkup).join('');
     bindQuickViewButtons();
     bindQuoteModalButtons();
+    bindAddButtons();
 
     // Trigger smooth staggered entrance for newly rendered cards
-    const cards = container.querySelectorAll('.product-card');
+    const cards = container.querySelectorAll('.bovi-product-card, .product-card');
     cards.forEach((card, idx) => {
       card.style.opacity = '0';
-      card.style.transform = 'translateY(24px)';
-      card.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transform = 'translateY(16px)';
+      card.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       setTimeout(() => {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
-      }, idx * 60 + 40);
+      }, idx * 40 + 20);
+    });
+  }
+
+  function showOrderToast(message) {
+    let toast = document.getElementById('bovi-order-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'bovi-order-toast';
+      toast.className = 'bovi-order-toast';
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${message}</span>`;
+    toast.classList.add('show');
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3200);
+  }
+
+  function bindAddButtons() {
+    document.querySelectorAll('.bovi-add-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = btn.getAttribute('data-product-id');
+        const prod = PRODUCTS_DATA.find(p => p.id === id);
+        const name = prod ? prod.name : 'Product';
+
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> Added`;
+        btn.style.backgroundColor = '#16A34A';
+        btn.style.transform = 'scale(0.96)';
+
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.style.backgroundColor = '';
+          btn.style.transform = '';
+        }, 1400);
+
+        showOrderToast(`Added <strong>${name}</strong> to equipment list`);
+      });
     });
   }
 
@@ -483,11 +554,26 @@
 
     let activeCategory = 'all';
     let searchQuery = '';
-    let sortMode = 'default';
+    let maxPrice = 3000;
+    let sortMode = 'featured';
 
-    const filterPills = document.querySelectorAll('.filter-pill');
-    const searchInput = document.querySelector('.search-input');
-    const sortSelect = document.querySelector('.sort-select');
+    const catItems = document.querySelectorAll('.bovi-cat-item, .filter-pill');
+    const searchInput = document.getElementById('bovi-catalog-search') || document.querySelector('.search-input');
+    const priceSlider = document.getElementById('bovi-price-slider');
+    const priceValEl = document.getElementById('bovi-price-val');
+    const sortSelect = document.getElementById('bovi-sort-select') || document.querySelector('.sort-select');
+    const countDisplay = document.getElementById('bovi-products-count') || document.getElementById('catalog-count-display');
+
+    // Dynamically calculate and set category count badges
+    document.querySelectorAll('[data-cat-count]').forEach(badge => {
+      const cat = badge.getAttribute('data-cat-count');
+      if (cat === 'all') {
+        badge.textContent = PRODUCTS_DATA.length;
+      } else {
+        const count = PRODUCTS_DATA.filter(p => p.category === cat).length;
+        badge.textContent = count;
+      }
+    });
 
     function applyFilterAndSort() {
       let filtered = PRODUCTS_DATA.filter(p => {
@@ -496,30 +582,50 @@
           p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.categoryLabel.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
+        const matchesPrice = !p.price || p.price <= maxPrice;
+        return matchesCategory && matchesSearch && matchesPrice;
       });
 
       // Sorting
-      if (sortMode === 'name-asc') {
+      if (sortMode === 'price-low') {
+        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+      } else if (sortMode === 'price-high') {
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      } else if (sortMode === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else if (sortMode === 'name-asc') {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
       } else if (sortMode === 'name-desc') {
         filtered.sort((a, b) => b.name.localeCompare(a.name));
-      } else if (sortMode === 'rating') {
-        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      if (countDisplay) {
+        countDisplay.textContent = filtered.length;
       }
 
       renderProducts('products-grid', filtered);
     }
 
-    // Filter pills click
-    filterPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        activeCategory = pill.getAttribute('data-filter') || 'all';
+    // Category click
+    catItems.forEach(item => {
+      item.addEventListener('click', () => {
+        catItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        activeCategory = item.getAttribute('data-category') || item.getAttribute('data-filter') || 'all';
         applyFilterAndSort();
       });
     });
+
+    // Price slider
+    if (priceSlider) {
+      priceSlider.addEventListener('input', (e) => {
+        maxPrice = Number(e.target.value);
+        if (priceValEl) {
+          priceValEl.textContent = `$${maxPrice.toLocaleString()}`;
+        }
+        applyFilterAndSort();
+      });
+    }
 
     // Search input with debounce
     if (searchInput) {
@@ -529,7 +635,7 @@
         debounceTimer = setTimeout(() => {
           searchQuery = e.target.value.trim();
           applyFilterAndSort();
-        }, 250);
+        }, 200);
       });
     }
 

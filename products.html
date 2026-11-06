@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-<body>
+<body class="products-page">
 
   <!-- ==================== MAIN HEADER / NAVBAR ==================== -->
   <header class="site-header">
@@ -161,39 +161,108 @@
   </section>
 
   <!-- ==================== CATALOG & FILTERING SECTION ==================== -->
-  <section class="section">
+  <section class="section catalog-page-section">
     <div class="container">
-      <!-- Catalog Filter Toolbar -->
-      <div class="catalog-toolbar reveal-up">
-        <!-- Category Filter Pills -->
-        <div class="filter-pills" role="tablist">
-          <button type="button" class="filter-pill active" data-filter="all">All Equipment</button>
-          <button type="button" class="filter-pill" data-filter="feeders">Poultry Feeders</button>
-          <button type="button" class="filter-pill" data-filter="cages">Poultry Cages</button>
-          <button type="button" class="filter-pill" data-filter="incubators">Egg Incubators</button>
-          <button type="button" class="filter-pill" data-filter="drinking">Drinking Systems</button>
-          <button type="button" class="filter-pill" data-filter="brooding">Brooding Equipment</button>
-          <button type="button" class="filter-pill" data-filter="ventilation">Ventilation Systems</button>
-          <button type="button" class="filter-pill" data-filter="automation">Farm Automation</button>
-        </div>
-
-        <!-- Live Search & Sort Controls -->
-        <div class="catalog-search-sort">
-          <div class="search-input-wrap">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" class="search-input" placeholder="Search equipment by name or spec...">
+      <div class="bovi-catalog-layout">
+        <!-- Left Sidebar Filter Card -->
+        <aside class="bovi-sidebar-card">
+          <!-- Search Catalog -->
+          <div class="bovi-widget">
+            <div class="bovi-widget-header">
+              <span class="bovi-widget-title">Search Catalog</span>
+              <i class="fa-solid fa-magnifying-glass bovi-header-icon"></i>
+            </div>
+            <div class="bovi-search-wrap">
+              <i class="fa-solid fa-magnifying-glass bovi-search-icon"></i>
+              <input type="text" id="bovi-catalog-search" class="bovi-search-input" placeholder="Keyword, e.g. 'feeder'..." autocomplete="off">
+            </div>
           </div>
-          <select class="sort-select" aria-label="Sort Equipment">
-            <option value="default">Sort by: Featured</option>
-            <option value="name-asc">Name: A to Z</option>
-            <option value="name-desc">Name: Z to A</option>
-            <option value="rating">Highest Rated</option>
-          </select>
-        </div>
-      </div>
 
-      <!-- Main Products Grid (Injected and Filtered Dynamically by products.js) -->
-      <div id="products-grid" class="grid grid-3"></div>
+          <!-- Categories -->
+          <div class="bovi-widget">
+            <div class="bovi-widget-header">
+              <span class="bovi-widget-title">Categories</span>
+              <i class="fa-solid fa-layer-group bovi-header-icon"></i>
+            </div>
+            <ul class="bovi-category-list">
+              <li class="bovi-cat-item active" data-category="all">
+                <span class="bovi-cat-name">All Products</span>
+                <span class="bovi-cat-count" data-cat-count="all">12</span>
+              </li>
+              <li class="bovi-cat-item" data-category="feeders">
+                <span class="bovi-cat-name">Poultry Feeders</span>
+                <span class="bovi-cat-count" data-cat-count="feeders">2</span>
+              </li>
+              <li class="bovi-cat-item" data-category="cages">
+                <span class="bovi-cat-name">Poultry Cages</span>
+                <span class="bovi-cat-count" data-cat-count="cages">1</span>
+              </li>
+              <li class="bovi-cat-item" data-category="incubators">
+                <span class="bovi-cat-name">Egg Incubators</span>
+                <span class="bovi-cat-count" data-cat-count="incubators">1</span>
+              </li>
+              <li class="bovi-cat-item" data-category="drinking">
+                <span class="bovi-cat-name">Drinking Systems</span>
+                <span class="bovi-cat-count" data-cat-count="drinking">1</span>
+              </li>
+              <li class="bovi-cat-item" data-category="brooding">
+                <span class="bovi-cat-name">Brooding Equipment</span>
+                <span class="bovi-cat-count" data-cat-count="brooding">2</span>
+              </li>
+              <li class="bovi-cat-item" data-category="ventilation">
+                <span class="bovi-cat-name">Ventilation Systems</span>
+                <span class="bovi-cat-count" data-cat-count="ventilation">2</span>
+              </li>
+              <li class="bovi-cat-item" data-category="automation">
+                <span class="bovi-cat-name">Farm Automation</span>
+                <span class="bovi-cat-count" data-cat-count="automation">3</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Max Price Filter -->
+          <div class="bovi-widget" style="margin-bottom: 0;">
+            <div class="bovi-price-header">
+              <span class="bovi-widget-title">Max Price</span>
+              <span class="bovi-price-display" id="bovi-price-val">$3,000</span>
+            </div>
+            <div class="bovi-range-slider-wrap">
+              <input type="range" id="bovi-price-slider" class="bovi-range-slider" min="100" max="3000" step="50" value="3000">
+              <div class="bovi-range-labels">
+                <span>$100</span>
+                <span>$3,000</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Catalog Main Area -->
+        <main class="bovi-catalog-main">
+          <!-- Top Control Bar -->
+          <div class="bovi-top-bar">
+            <div class="bovi-results-count">
+              Showing <span id="bovi-products-count">12</span> products
+            </div>
+            <div class="bovi-sort-wrap">
+              <label for="bovi-sort-select" class="bovi-sort-label">Sort By:</label>
+              <div class="bovi-select-wrap">
+                <select id="bovi-sort-select" class="bovi-sort-select" aria-label="Sort Products">
+                  <option value="featured">Featured Equipment</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="name-asc">Name: A to Z</option>
+                  <option value="name-desc">Name: Z to A</option>
+                </select>
+                <i class="fa-solid fa-chevron-down bovi-select-chevron"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Cards Grid -->
+          <div id="products-grid" class="bovi-products-grid"></div>
+        </main>
+      </div>
 
       <!-- Turnkey House Banner -->
       <div class="reveal-up" style="margin-top: 4.5rem; background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 60%, #415A77 100%); border: 2px solid var(--c-warm-sand); border-radius: var(--radius-xl); padding: 3rem 2.5rem; color: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
