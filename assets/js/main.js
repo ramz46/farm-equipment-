@@ -416,8 +416,8 @@
         sectionTitle: 'Scientific Engineering Consultation for Modern Broiler & Layer Houses',
         desc1: 'A high-yielding commercial poultry operation starts long before equipment arrives on site. Shed orientation, prevailing wind angles, air velocity gradients, and biosecurity buffers directly determine bird FCR, mortality, and power bills.',
         desc2: 'Our senior poultry engineers evaluate your land topography, climate data, and utility availability to craft millimeter-accurate 2D/3D CAD layouts and Computational Fluid Dynamics (CFD) airflow models, ensuring zero dead zones and minimum heat stress.',
-        image: 'assets/images/poultry/farmer-consulting.jpg',
-        imageAlt: 'Poultry Farm Consultation and CAD Engineering Blueprints',
+        image: 'assets/images/poultry/poultry-farm-consultation-blueprints.jpg',
+        imageAlt: 'Poultry Farm Consultation, CAD Blueprints & Biosecurity Design',
         checklist: [
           'Site Topography Assessment & Prevailing Wind Analysis',
           'Computational Fluid Dynamics (CFD) Airflow Modeling',
