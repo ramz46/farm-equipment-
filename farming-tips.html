@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poultry Farming Tips & Equipment Management Guide | AviTech Systems</title>
+  <meta name="description" content="Commercial poultry farming management tips: broiler FCR optimization, layer cage lighting programs, chick brooding temperatures, and ventilation calculations.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Commercial Poultry Farming Tips & Technical Best Practices | AviTech">
+  <meta property="og:description" content="Comprehensive guides on temperature management, brooding, biosecurity, and equipment calibration.">
+  <meta property="og:type" content="article">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@300..800&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== MAIN HEADER / NAVBAR ==================== -->
+  <header class="site-header">
+    <div class="container navbar-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span>
+          <span class="logo-subtitle">Poultry Systems</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-link"><i class="fa-solid fa-house-chimney"></i> Modern Ag Landing</a>
+            <a href="index-2.html" class="dropdown-link"><i class="fa-solid fa-industry"></i> Equipment Specialized</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item">
+          <a href="products.html" class="nav-link">Products <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="products.html" class="dropdown-link"><i class="fa-solid fa-boxes-stacked"></i> All Equipment Catalog</a>
+            <a href="product-details.html?id=pan-feeder-pro" class="dropdown-link"><i class="fa-solid fa-wheat-awn"></i> Feeder Line System</a>
+            <a href="product-details.html?id=layer-battery-cage" class="dropdown-link"><i class="fa-solid fa-table-cells"></i> Layer Battery Cages</a>
+            <a href="product-details.html?id=industrial-egg-incubator" class="dropdown-link"><i class="fa-solid fa-egg"></i> Egg Incubators</a>
+            <a href="product-details.html?id=tunnel-ventilation-fan" class="dropdown-link"><i class="fa-solid fa-fan"></i> Ventilation Fans</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="services.html" class="nav-link">Services</a>
+        </div>
+        <div class="nav-item">
+          <a href="farming-tips.html" class="nav-link active">Farming Tips</a>
+        </div>
+        <div class="nav-item">
+          <a href="blog.html" class="nav-link">Blog</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="control-btn header-search-open-btn" aria-label="Search" title="Search Equipment">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button type="button" class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button type="button" class="control-btn rtl-toggle-btn" aria-label="Toggle RTL/LTR Direction" title="Toggle RTL/LTR Direction">
+          RTL
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" data-open-quote>
+          <span>Request Quote</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button type="button" class="hamburger-btn" aria-label="Toggle Drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE NAVIGATION DRAWER ==================== -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span></div>
+      </a>
+      <button type="button" class="control-btn drawer-close-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-nav-menu">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="products.html" class="mobile-nav-link">Products Catalog</a>
+      <a href="services.html" class="mobile-nav-link">Farm Services</a>
+      <a href="farming-tips.html" class="mobile-nav-link active">Farming Tips</a>
+      <a href="blog.html" class="mobile-nav-link">Blog & News</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+      <button type="button" class="btn btn-secondary w-100" data-open-quote>
+        <i class="fa-solid fa-calculator"></i> Request a Quote
+      </button>
+      <div style="display: flex; justify-content: space-around; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+        <button type="button" class="btn-text theme-toggle-btn"><i class="fa-solid fa-moon"></i> Theme</button>
+        <button type="button" class="btn-text rtl-toggle-btn"><i class="fa-solid fa-globe"></i> RTL</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <section class="page-hero page-hero-farming-tips">
+    <div class="container page-hero-content reveal-up">
+      <span class="section-tag" style="background: rgba(34, 197, 94, 0.2); color: var(--c-warm-sand); border: 1px solid rgba(74, 222, 128, 0.35);">
+        <i class="fa-solid fa-book-open"></i> Technical Agronomy Knowledge
+      </span>
+      <h1>Poultry Farming Management & Equipment Guides</h1>
+      <p>Expert recommendations on broiler nutrition, layer cage photoperiods, brooding temperature curves, and ventilation maintenance.</p>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Farming Tips</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== CORE MANAGEMENT GUIDES ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Production Modules</span>
+        <h2 class="section-title">Critical Management Protocols For Maximum Yield</h2>
+        <p class="section-desc">Practical, proven field procedures directly from our agricultural engineers to help you maintain low mortality and optimal flock feed efficiency.</p>
+      </div>
+
+      <div class="grid grid-3 reveal-stagger">
+        <!-- Tip 1: Broiler Tips -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/poultry/broiler-farm.jpg" alt="Commercial Broiler Farm Management" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Broiler Management</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+            <h3 class="category-title">Broiler FCR Optimization</h3>
+            <p class="category-desc">
+              Adjust pan feeding heights every 48 hours to match bird back heights. Ensure feed pans run empty for 30 minutes daily to stimulate uniform crop cleaning.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Day 1–7: Continuous light for chick feeding</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Day 8+: 4 hours darkness for bone density</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tip 2: Layer Tips -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/poultry/layer-farm.jpg" alt="Layer Battery Cage Management" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Layer Egg Production</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-egg"></i></div>
+            <h3 class="category-title">Layer Egg Shell Density</h3>
+            <p class="category-desc">
+              Schedule afternoon calcium top-dressing between 2:00 PM and 4:00 PM when eggshell calcification occurs inside the uterus, reducing cracked eggs below 0.3%.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Run manure belts daily to remove ammonia</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Calibrate egg conveyor speed to 18m/min</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tip 3: Chick Brooding -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/products/gas-brooder.jpg" alt="Commercial Poultry Radiant Gas Brooder Thermal Curves" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Chick Brooding (Days 1–14)</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+            <h3 class="category-title">Thermal Brooding Curves</h3>
+            <p class="category-desc">
+              Preheat shed concrete to 32°C 24 hours prior to chick placement. Cold litter causes chick gut shut down and uneven flock weights.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Target 60–70% relative humidity</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Check crop fill: 95% full by Hour 24</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tip 4: Water Sanitation -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/products/nipple-drinker.jpg" alt="Poultry Drinking Water System" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Water Quality</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+            <h3 class="category-title">Biofilm & Nipple Sanitization</h3>
+            <p class="category-desc">
+              Flush water lines weekly with hydrogen peroxide or chlorine dioxide at 2 bar pressure to dissolve slimy biofilm colonies that harbor E. coli.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Maintain water pH between 5.8 and 6.8</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Keep water temp below 22°C in summer</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tip 5: Ventilation Management -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/products/ventilation-fan.jpg" alt="Poultry Exhaust Cone Fan" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Ventilation Science</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-fan"></i></div>
+            <h3 class="category-title">Static Pressure Calibration</h3>
+            <p class="category-desc">
+              Calculate air inlet openings so air enters at 4.5–5.5 m/s velocity. In cold weather, this throws incoming air to the ridge apex before descending on birds.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Target 20–25 Pa static pressure differential</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Inspect belt tension on 50" fans monthly</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Tip 6: Biosecurity Protocols -->
+        <article class="category-card hover-float">
+          <div class="category-card-img-wrap">
+            <img src="assets/images/poultry/multi-million-bird-integrator.jpg" alt="Commercial Poultry Biosecurity 3-Zone Perimeter" class="category-card-img" loading="lazy">
+            <span class="category-card-badge">Biosecurity & Hygiene</span>
+          </div>
+          <div class="category-card-body">
+            <div class="category-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <h3 class="category-title">Strict 3-Zone Perimeter Rule</h3>
+            <p class="category-desc">
+              Enforce a "Danish Entry" anteroom with color-coded boots, dedicated overalls, and hand sanitizers at the doorway of every poultry house.
+            </p>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Maintain 14-day downtime between flocks</li>
+              <li><i class="fa-solid fa-angle-right" style="color: var(--c-sage-green);"></i> Thermal fog with glutaraldehyde sanitizers</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEMPERATURE & BROODING MATRIX ==================== -->
+  <section class="section section-bg-alt">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <span class="section-tag"><i class="fa-solid fa-temperature-half"></i> Temperature Reference Matrix</span>
+        <h2 class="section-title">Optimal Poultry Shed Temperature Curve by Age</h2>
+        <p class="section-desc">Recommended setpoints for commercial broilers from Day 1 to Day 42 at 60% relative humidity.</p>
+      </div>
+
+      <div class="reveal-up" style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); overflow-x: auto; box-shadow: var(--shadow-sm);">
+        <table style="width: 100%; border-collapse: collapse; min-width: 600px; font-size: 0.95rem;">
+          <thead>
+            <tr style="background: var(--bg-surface-secondary); border-bottom: 2px solid var(--border-medium);">
+              <th style="padding: 1rem 1.5rem; text-align: left; font-family: var(--font-heading);">Bird Age (Days)</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-family: var(--font-heading);">Under Brooder Temp</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-family: var(--font-heading);">Ambient Shed Temp</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-family: var(--font-heading);">Relative Humidity (RH)</th>
+              <th style="padding: 1rem 1.5rem; text-align: left; font-family: var(--font-heading);">Target Minimum Ventilation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 1 – 3</td>
+              <td style="padding: 0.85rem 1.5rem;">34.0°C – 35.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">31.0°C – 32.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">60% – 70%</td>
+              <td style="padding: 0.85rem 1.5rem;">0.10 m³/hr per chick</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 4 – 7</td>
+              <td style="padding: 0.85rem 1.5rem;">32.0°C – 33.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">29.0°C – 30.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">60% – 65%</td>
+              <td style="padding: 0.85rem 1.5rem;">0.20 m³/hr per chick</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 8 – 14</td>
+              <td style="padding: 0.85rem 1.5rem;">30.0°C – 31.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">27.0°C – 28.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">55% – 65%</td>
+              <td style="padding: 0.85rem 1.5rem;">0.45 m³/hr per chick</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 15 – 21</td>
+              <td style="padding: 0.85rem 1.5rem;">27.0°C – 28.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">24.0°C – 25.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">55% – 60%</td>
+              <td style="padding: 0.85rem 1.5rem;">0.90 m³/hr per chick</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 22 – 28</td>
+              <td style="padding: 0.85rem 1.5rem;">Brooders OFF</td>
+              <td style="padding: 0.85rem 1.5rem;">22.0°C – 23.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">50% – 60%</td>
+              <td style="padding: 0.85rem 1.5rem;">1.70 m³/hr per chick</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.85rem 1.5rem; font-weight: 700; color: var(--c-slate-blue);">Day 29 – 42+</td>
+              <td style="padding: 0.85rem 1.5rem;">Brooders OFF</td>
+              <td style="padding: 0.85rem 1.5rem;">19.0°C – 21.0°C</td>
+              <td style="padding: 0.85rem 1.5rem;">50% – 60%</td>
+              <td style="padding: 0.85rem 1.5rem;">3.20 – 4.50 m³/hr (Tunnel)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ACCORDION ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Frequent Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Technical inquiries regarding equipment selection, stocking density, and farm commissioning.</p>
+      </div>
+
+      <div style="max-width: 820px; margin-inline: auto;" class="reveal-up">
+        <div class="accordion">
+          <!-- Item 1 -->
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <span>How many birds can be served by one automated pan feeder?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Our 14-grill AviPan broiler feeder is calibrated to comfortably feed 50 to 65 heavy broilers (up to 2.8 kg harvest weight). For lighter birds or pullets, stocking density can be up to 70 birds per pan. We recommend spacing feeder pans at 0.75m to 1.0m intervals along the drive line.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>What is the optimal water pressure for poultry nipple lines?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Water pressure should be maintained low: between 10 cm and 15 cm water column for Day 1 chicks to ensure easy trigger activation without splashing. As birds mature, gradually raise pressure to 30 cm – 40 cm water column by Day 35 to provide high volume flow (80–120 ml/min) without leaking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>A-Type vs H-Type layer cages: What is the primary difference?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="accordion-body">
+              <p>
+                A-Type cages are arranged in a stepped ladder structure, allowing manure to drop between tiers directly onto a concrete pit floor or basic scraper. They are cost-effective for naturally ventilated or open-sided sheds. H-Type cages are vertically stacked in tiers with automated PP manure belts running directly under every single tier. H-Type allows much higher stocking density in fully enclosed, tunnel-ventilated houses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>How many 50-inch exhaust fans do I need for a 120m x 14m house?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="accordion-body">
+              <p>
+                A 120m x 14m x 3m shed contains approximately 5,040 m³ air volume. To achieve a summer air speed of 2.5 m/s across the 42 m² cross-section, you need approximately 105 m³/sec (equivalent to ~222,000 CFM). Since our 50-inch cone fans produce 44,000 CFM at operating static pressure, this house requires 6 tunnel fans for peak summer cooling plus 2 minimum-ventilation sidewall fans.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>Do you provide international installation technicians?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="accordion-body">
+              <p>
+                Yes. For turnkey projects, we deploy experienced AviTech installation supervisors to oversee civil anchoring, cage assembly, feeder alignment, electrical panel wiring, and test commissioning anywhere in the world. We also train your farm operators on maintenance routines.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXPERT CONSULTATION CTA ==================== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner reveal-up">
+        <div class="cta-text-wrap">
+          <span class="section-tag" style="background: rgba(255,255,255,0.15); color: var(--c-warm-sand); border: 1px solid rgba(255,255,255,0.25);">
+            <i class="fa-solid fa-user-doctor"></i> Dedicated Agronomist Support
+          </span>
+          <h2>Have Questions About Your Poultry House Design?</h2>
+          <p>Talk directly with our poultry engineers to calculate flock air turnover, feeder line counts, and automated watering layouts.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-secondary btn-lg">Request Consultation <i class="fa-solid fa-arrow-right"></i></a>
+          <button type="button" class="btn btn-outline-white btn-lg" data-open-quote>Request Equipment Quote <i class="fa-solid fa-calculator"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="site-logo" style="color: #ffffff;">
+            <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="logo-text">Avi<span>Tech</span>
+              <span class="logo-subtitle" style="color: var(--c-sage-green);">Poultry Systems</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Direct commercial manufacturer of automated poultry systems. Broiler feeding lines, layer battery cages, multi-stage setters, and ventilation fans.
+          </p>
+          <div class="topbar-socials" style="margin-top: 1rem;">
+            <a href="#" class="topbar-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Home Overview</a></li>
+            <li><a href="about.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> About AviTech</a></li>
+            <li><a href="products.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Products Catalog</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Farm Installation Services</a></li>
+            <li><a href="farming-tips.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Poultry Management Tips</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Categories</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?filter=feeders" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Automated Pan Feeders</a></li>
+            <li><a href="products.html?filter=cages" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Layer Battery Cages</a></li>
+            <li><a href="products.html?filter=incubators" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Commercial Egg Incubators</a></li>
+            <li><a href="products.html?filter=drinking" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Nipple Watering Lines</a></li>
+            <li><a href="products.html?filter=ventilation" class="footer-link"><i class="fa-solid fa-chevron-right"></i> 50" Exhaust Cone Fans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Agronomy Newsletter</h4>
+          <p class="footer-desc" style="margin-top: 0;">
+            Subscribe to receive technical poultry ventilation formulas and seasonal maintenance checklists.
+          </p>
+          <form class="newsletter-form" novalidate>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Your farm email..." required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AviTech Poultry Systems Inc. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Equipment Supply</a>
+          <a href="contact.html">Global Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

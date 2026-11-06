@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | AviTech Poultry Equipment Systems</title>
+  <meta name="description" content="Detailed engineering specifications, dimensions, power requirements, and farm installation guides for AviTech commercial poultry equipment.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Commercial Poultry Equipment Specifications | AviTech Systems">
+  <meta property="og:description" content="Examine complete technical specifications, capacity ratings, and quotation options.">
+  <meta property="og:type" content="product">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@300..800&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== MAIN HEADER / NAVBAR ==================== -->
+  <header class="site-header">
+    <div class="container navbar-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span>
+          <span class="logo-subtitle">Poultry Systems</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-link"><i class="fa-solid fa-house-chimney"></i> Modern Ag Landing</a>
+            <a href="index-2.html" class="dropdown-link"><i class="fa-solid fa-industry"></i> Equipment Specialized</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item">
+          <a href="products.html" class="nav-link active">Products <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="products.html" class="dropdown-link"><i class="fa-solid fa-boxes-stacked"></i> All Equipment Catalog</a>
+            <a href="product-details.html?id=pan-feeder-pro" class="dropdown-link"><i class="fa-solid fa-wheat-awn"></i> Feeder Line System</a>
+            <a href="product-details.html?id=layer-battery-cage" class="dropdown-link"><i class="fa-solid fa-table-cells"></i> Layer Battery Cages</a>
+            <a href="product-details.html?id=industrial-egg-incubator" class="dropdown-link"><i class="fa-solid fa-egg"></i> Egg Incubators</a>
+            <a href="product-details.html?id=tunnel-ventilation-fan" class="dropdown-link"><i class="fa-solid fa-fan"></i> Ventilation Fans</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="services.html" class="nav-link">Services</a>
+        </div>
+        <div class="nav-item">
+          <a href="farming-tips.html" class="nav-link">Farming Tips</a>
+        </div>
+        <div class="nav-item">
+          <a href="blog.html" class="nav-link">Blog</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="control-btn header-search-open-btn" aria-label="Search Catalog" title="Search Equipment">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button type="button" class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button type="button" class="control-btn rtl-toggle-btn" aria-label="Toggle RTL/LTR Direction" title="Toggle RTL/LTR Direction">
+          RTL
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" data-open-quote>
+          <span>Request Quote</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button type="button" class="hamburger-btn" aria-label="Toggle Navigation Drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE NAVIGATION DRAWER ==================== -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span></div>
+      </a>
+      <button type="button" class="control-btn drawer-close-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-nav-menu">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="products.html" class="mobile-nav-link active">Products Catalog</a>
+      <a href="services.html" class="mobile-nav-link">Farm Services</a>
+      <a href="farming-tips.html" class="mobile-nav-link">Farming Tips</a>
+      <a href="blog.html" class="mobile-nav-link">Blog & News</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+      <button type="button" class="btn btn-secondary w-100" data-open-quote>
+        <i class="fa-solid fa-calculator"></i> Request a Quote
+      </button>
+      <div style="display: flex; justify-content: space-around; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+        <button type="button" class="btn-text theme-toggle-btn"><i class="fa-solid fa-moon"></i> Theme</button>
+        <button type="button" class="btn-text rtl-toggle-btn"><i class="fa-solid fa-globe"></i> RTL</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <section class="page-hero page-hero-product-details">
+    <div class="container page-hero-content reveal-up">
+      <span class="section-tag" style="background: rgba(34, 197, 94, 0.2); color: var(--c-warm-sand); border: 1px solid rgba(74, 222, 128, 0.35);">
+        <i class="fa-solid fa-gears"></i> Equipment Detail
+      </span>
+      <h1 id="p-detail-title">Automated Broiler Pan Feeder System</h1>
+      <p id="p-detail-desc">Continuous anti-waste feeding pan lines with sensor cut-off and 360-degree feed flooding for high broiler flock uniformity.</p>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="products.html">Products</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span id="p-detail-breadcrumb">Broiler Pan Feeder System</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== PRODUCT DETAILS CONTENT ==================== -->
+  <section class="section" id="product-details-content">
+    <div class="container">
+      <div class="split-layout" style="align-items: start;">
+        <!-- Left: Image Gallery -->
+        <div class="reveal-left">
+          <div style="border-radius: var(--radius-xl); overflow: hidden; height: 440px; background-color: var(--bg-surface-secondary); margin-bottom: 1rem; box-shadow: var(--shadow-md); border: 1px solid var(--border-medium);">
+            <img id="p-detail-main-img" src="assets/images/products/pan-feeder.jpg" alt="Poultry Equipment Main View" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s ease;">
+          </div>
+          <!-- Gallery Thumbnails -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+            <div class="gallery-thumb active" style="height: 90px; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; border: 2px solid var(--color-accent);" data-full-img="assets/images/products/pan-feeder.jpg">
+              <img src="assets/images/products/pan-feeder.jpg" alt="Thumb 1" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="gallery-thumb" style="height: 90px; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; border: 2px solid var(--border-light);" data-full-img="assets/images/products/nipple-drinker.jpg">
+              <img src="assets/images/products/nipple-drinker.jpg" alt="Thumb 2" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="gallery-thumb" style="height: 90px; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; border: 2px solid var(--border-light);" data-full-img="assets/images/poultry/turnkey-poultry-project.jpg">
+              <img src="assets/images/poultry/turnkey-poultry-project.jpg" alt="Thumb 3" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="gallery-thumb" style="height: 90px; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; border: 2px solid var(--border-light);" data-full-img="assets/images/poultry/broiler-farm.jpg">
+              <img src="assets/images/poultry/broiler-farm.jpg" alt="Thumb 4" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Primary Info & Quick Specs -->
+        <div class="reveal-right">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <span id="p-detail-category" class="section-tag" style="margin-bottom: 0;">Poultry Feeders</span>
+            <div style="color: var(--color-warm-gold); font-size: 0.95rem;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span style="color: var(--text-muted); font-size: 0.85rem; margin-inline-start: 6px;">(38 verified farms)</span>
+            </div>
+          </div>
+
+          <div style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 800; color: var(--c-slate-blue); margin-bottom: 1.25rem;" id="p-detail-price">
+            Quote on Spec
+          </div>
+
+          <div style="background: var(--bg-surface-secondary); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border-inline-start: 4px solid var(--color-accent); margin-bottom: 1.5rem;">
+            <div style="font-weight: 700; margin-bottom: 0.25rem;"><i class="fa-solid fa-shield-check" style="color: var(--c-sage-green);"></i> Guaranteed Factory Performance</div>
+            <p style="font-size: 0.9rem; margin: 0; color: var(--text-secondary);">
+              Manufactured under strict ISO 9001 guidelines with 20-year anti-corrosion hot-dip galvanization and virgin food-grade polymer contact surfaces.
+            </p>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <button type="button" id="p-detail-quote-btn" class="btn btn-primary btn-lg">
+              Request Sized Quotation <i class="fa-solid fa-file-invoice"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-lg" onclick="window.showToast('Spec Sheet Downloaded', 'Technical CAD specifications & installation manual downloaded.', 'check')">
+              <i class="fa-solid fa-file-pdf"></i> Download PDF Specs
+            </button>
+          </div>
+
+          <!-- Quick Highlights -->
+          <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem;">Quick Equipment Highlights:</h4>
+          <ul style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.92rem; color: var(--text-secondary);">
+            <li style="display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--c-sage-green);"></i> Modular length scalable from 30m to 150m sheds</li>
+            <li style="display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--c-sage-green);"></i> Compatible with all commercial auger silo boot interfaces</li>
+            <li style="display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--c-sage-green);"></i> CE Certified Drive Motors with IP55 dust and washdown sealing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tabbed Specifications, Features, Installation & Reviews -->
+      <div data-tabs-group style="margin-top: 4.5rem;" class="reveal-up">
+        <!-- Tab Navigation Buttons -->
+        <div style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border-medium); overflow-x: auto; margin-bottom: 2rem;">
+          <button type="button" class="tab-btn active" data-tab-target="tab-specs" style="padding: 0.85rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-bottom: 3px solid transparent; cursor: pointer; color: var(--text-main);">
+            <i class="fa-solid fa-list-check"></i> Technical Specifications
+          </button>
+          <button type="button" class="tab-btn" data-tab-target="tab-features" style="padding: 0.85rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-bottom: 3px solid transparent; cursor: pointer; color: var(--text-muted);">
+            <i class="fa-solid fa-star"></i> Engineering Features
+          </button>
+          <button type="button" class="tab-btn" data-tab-target="tab-installation" style="padding: 0.85rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-bottom: 3px solid transparent; cursor: pointer; color: var(--text-muted);">
+            <i class="fa-solid fa-wrench"></i> Installation & Civil Specs
+          </button>
+          <button type="button" class="tab-btn" data-tab-target="tab-reviews" style="padding: 0.85rem 1.5rem; font-family: var(--font-heading); font-weight: 700; border-bottom: 3px solid transparent; cursor: pointer; color: var(--text-muted);">
+            <i class="fa-solid fa-comment-dots"></i> Farmer Reviews (38)
+          </button>
+        </div>
+
+        <style>
+          .tab-btn.active {
+            color: var(--color-primary-light) !important;
+            border-bottom-color: var(--color-accent) !important;
+          }
+          .tab-pane { display: none; }
+          .tab-pane.active { display: block; }
+        </style>
+
+        <!-- Pane 1: Technical Specs -->
+        <div id="tab-specs" class="tab-pane active">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm);">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+              <tbody id="p-detail-specs-table">
+                <!-- Injected dynamically by products.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pane 2: Features -->
+        <div id="tab-features" class="tab-pane">
+          <div class="grid grid-3">
+            <div class="feature-card">
+              <div class="feature-icon-box"><i class="fa-solid fa-leaf"></i></div>
+              <h3>Anti-Waste Feeder Lip</h3>
+              <p>Special curved inner rim prevents birds from flicking feed out into litter, preserving up to 28 kg of feed per flock cycle.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon-box"><i class="fa-solid fa-arrows-up-down"></i></div>
+              <h3>Central Winching</h3>
+              <p>Heavy galvanized cable winch system raises entire lines to the roof in under 2 minutes for tractor litter cleanout.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon-box"><i class="fa-solid fa-plug"></i></div>
+              <h3>Overload Protection</h3>
+              <p>Thermal cut-off sensors automatically protect the reduction gear motor in the event of foreign debris or obstruction.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 3: Installation Specs -->
+        <div id="tab-installation" class="tab-pane">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+            <h3 style="margin-bottom: 1rem;">Site Preparation & Civil Requirements</h3>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+              Our engineering team assists with full CAD drawings to ensure smooth installation. Below are the basic utility requirements:
+            </p>
+            <div class="grid grid-2" style="gap: 1.5rem;">
+              <div>
+                <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-bolt" style="color: var(--c-sage-green);"></i> Electrical Requirements</h4>
+                <p style="font-size: 0.92rem; color: var(--text-secondary);">
+                  Standard 380V / 3-Phase / 50-60 Hz (220V Single-Phase optional for small sheds). Includes motor thermal protection circuit breaker.
+                </p>
+              </div>
+              <div>
+                <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-building" style="color: var(--c-sage-green);"></i> Ceiling Truss Load Capacity</h4>
+                <p style="font-size: 0.92rem; color: var(--text-secondary);">
+                  Trusses must support 45 kg per linear meter suspension point. Suspension pulleys spaced every 3 meters along the house length.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 4: Reviews -->
+        <div id="tab-reviews" class="tab-pane">
+          <div class="grid grid-2" style="gap: 1.5rem;">
+            <div class="testimonial-card">
+              <div style="color: var(--color-warm-gold); margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <h4 style="margin-bottom: 0.5rem;">Exceptional flock uniformity and feed savings</h4>
+              <p class="testimonial-text">"Installed 6 lines in our new 45,000 broiler house. Feed distribution is even from the hopper to the end pan. Day 35 uniformity is 89%."</p>
+              <div class="testimonial-author">
+                <img src="assets/images/team/farmer-1.jpg" alt="Thomas Becker" class="author-avatar" loading="lazy">
+                <div class="author-info">
+                  <h4>Thomas Becker</h4>
+                  <div class="author-farm">Becker Poultry Farms, Ohio (120k birds)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div style="color: var(--color-warm-gold); margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <h4 style="margin-bottom: 0.5rem;">Durable plastic that withstands high-pressure washing</h4>
+              <p class="testimonial-text">"We clean with 150 bar hot water pressure washers between batches. The plastic pans do not crack or become brittle like cheaper imports."</p>
+              <div class="testimonial-author">
+                <img src="assets/images/team/farmer-2.jpg" alt="Sarah O'Connor" class="author-avatar" loading="lazy">
+                <div class="author-info">
+                  <h4>Sarah O'Connor</h4>
+                  <div class="author-farm">Greenfield Broilers, Ireland</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Equipment Section -->
+      <div style="margin-top: 5rem;">
+        <div class="flex-between flex-wrap gap-2" style="margin-bottom: 2rem;">
+          <div>
+            <span class="section-tag"><i class="fa-solid fa-link"></i> Synchronized Hardware</span>
+            <h2 class="section-title">Related Equipment for This System</h2>
+          </div>
+          <div>
+            <a href="products.html" class="btn btn-outline">Explore All Equipment <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div id="related-products-grid" class="grid grid-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="site-logo" style="color: #ffffff;">
+            <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="logo-text">Avi<span>Tech</span>
+              <span class="logo-subtitle" style="color: var(--c-sage-green);">Poultry Systems</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Direct commercial manufacturer of automated poultry systems. Broiler feeding lines, layer battery cages, multi-stage setters, and ventilation fans.
+          </p>
+          <div class="topbar-socials" style="margin-top: 1rem;">
+            <a href="#" class="topbar-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Home Overview</a></li>
+            <li><a href="about.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> About AviTech</a></li>
+            <li><a href="products.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Full Products Catalog</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Farm Installation Services</a></li>
+            <li><a href="farming-tips.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Poultry Management Tips</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Categories</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?filter=feeders" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Automated Pan Feeders</a></li>
+            <li><a href="products.html?filter=cages" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Layer Battery Cages</a></li>
+            <li><a href="products.html?filter=incubators" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Commercial Egg Incubators</a></li>
+            <li><a href="products.html?filter=drinking" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Nipple Watering Lines</a></li>
+            <li><a href="products.html?filter=ventilation" class="footer-link"><i class="fa-solid fa-chevron-right"></i> 50" Exhaust Cone Fans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering Newsletter</h4>
+          <p class="footer-desc" style="margin-top: 0;">
+            Subscribe to receive new equipment specifications, CAD drawings, and factory direct seasonal pricing.
+          </p>
+          <form class="newsletter-form" novalidate>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Your farm email..." required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AviTech Poultry Systems Inc. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Equipment Supply</a>
+          <a href="contact.html">Global Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

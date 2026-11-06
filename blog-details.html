@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizing Tunnel Ventilation & Static Pressure in Modern Broiler Houses | AviTech</title>
+  <meta name="description" content="Technical engineering breakdown on calculating poultry shed CFM requirements, transitional ventilation static pressure, and evaporative cooling pad wet walls.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tunnel Ventilation & Wind Chill Dynamics in Modern Broiler Houses | AviTech">
+  <meta property="og:description" content="Engineering guidelines on air speed, static pressure, and evaporative cooling pads.">
+  <meta property="og:type" content="article">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@300..800&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== MAIN HEADER / NAVBAR ==================== -->
+  <header class="site-header">
+    <div class="container navbar-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span>
+          <span class="logo-subtitle">Poultry Systems</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">Home <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-link"><i class="fa-solid fa-house-chimney"></i> Modern Ag Landing</a>
+            <a href="index-2.html" class="dropdown-link"><i class="fa-solid fa-industry"></i> Equipment Specialized</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </div>
+        <div class="nav-item">
+          <a href="products.html" class="nav-link">Products <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="products.html" class="dropdown-link"><i class="fa-solid fa-boxes-stacked"></i> All Equipment Catalog</a>
+            <a href="product-details.html?id=pan-feeder-pro" class="dropdown-link"><i class="fa-solid fa-wheat-awn"></i> Feeder Line System</a>
+            <a href="product-details.html?id=layer-battery-cage" class="dropdown-link"><i class="fa-solid fa-table-cells"></i> Layer Battery Cages</a>
+            <a href="product-details.html?id=industrial-egg-incubator" class="dropdown-link"><i class="fa-solid fa-egg"></i> Egg Incubators</a>
+            <a href="product-details.html?id=tunnel-ventilation-fan" class="dropdown-link"><i class="fa-solid fa-fan"></i> Ventilation Fans</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="services.html" class="nav-link">Services</a>
+        </div>
+        <div class="nav-item">
+          <a href="farming-tips.html" class="nav-link">Farming Tips</a>
+        </div>
+        <div class="nav-item">
+          <a href="blog.html" class="nav-link active">Blog</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="control-btn header-search-open-btn" aria-label="Search" title="Search Equipment">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button type="button" class="control-btn theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button type="button" class="control-btn rtl-toggle-btn" aria-label="Toggle RTL/LTR Direction" title="Toggle RTL/LTR Direction">
+          RTL
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" data-open-quote>
+          <span>Request Quote</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button type="button" class="hamburger-btn" aria-label="Toggle Drawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE NAVIGATION DRAWER ==================== -->
+  <div class="drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="site-logo">
+        <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+        <div class="logo-text">Avi<span>Tech</span></div>
+      </a>
+      <button type="button" class="control-btn drawer-close-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-nav-menu">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About Us</a>
+      <a href="products.html" class="mobile-nav-link">Products Catalog</a>
+      <a href="services.html" class="mobile-nav-link">Farm Services</a>
+      <a href="farming-tips.html" class="mobile-nav-link">Farming Tips</a>
+      <a href="blog.html" class="mobile-nav-link active">Blog & News</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+      <button type="button" class="btn btn-secondary w-100" data-open-quote>
+        <i class="fa-solid fa-calculator"></i> Request a Quote
+      </button>
+      <div style="display: flex; justify-content: space-around; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+        <button type="button" class="btn-text theme-toggle-btn"><i class="fa-solid fa-moon"></i> Theme</button>
+        <button type="button" class="btn-text rtl-toggle-btn"><i class="fa-solid fa-globe"></i> RTL</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <section class="page-hero page-hero-blog-details">
+    <div class="container page-hero-content reveal-up" style="max-width: 860px;">
+      <span class="section-tag" style="background: rgba(34, 197, 94, 0.2); color: var(--c-warm-sand); border: 1px solid rgba(74, 222, 128, 0.35);">
+        <i class="fa-solid fa-fan"></i> Ventilation Engineering
+      </span>
+      <h1 style="font-size: clamp(2rem, 4vw, 3.2rem);">Optimizing Negative Pressure & Air Speed in Modern Broiler Houses</h1>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+        <span><i class="fa-solid fa-user-pen" style="color: var(--c-sage-green);"></i> Dr. Marcus Vance</span>
+        <span><i class="fa-regular fa-calendar" style="color: var(--c-sage-green);"></i> Nov 02, 2026</span>
+        <span><i class="fa-regular fa-clock" style="color: var(--c-sage-green);"></i> 8 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ARTICLE BODY & SIDEBAR ==================== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start;">
+        <!-- Left: Article Content -->
+        <article class="reveal-up" style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main);">
+          <!-- Article Cover Image -->
+          <div style="border-radius: var(--radius-xl); overflow: hidden; height: 420px; margin-bottom: 2.5rem; box-shadow: var(--shadow-md);">
+            <img src="assets/images/blog/blog-1.jpg" alt="Commercial Poultry Exhaust Cone Fans" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+
+          <!-- Table of Contents -->
+          <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 2.5rem;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-list" style="color: var(--c-sage-green);"></i> Table of Contents</h4>
+            <ul style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem;">
+              <li><a href="#section-intro" style="color: var(--c-slate-blue); font-weight: 600;">1. The Physics of Negative Pressure Ventilation</a></li>
+              <li><a href="#section-speed" style="color: var(--c-slate-blue); font-weight: 600;">2. Calculating Target Air Speed & Wind Chill Effect</a></li>
+              <li><a href="#section-static" style="color: var(--c-slate-blue); font-weight: 600;">3. Static Pressure Settings Across House Widths</a></li>
+              <li><a href="#section-cooling" style="color: var(--c-slate-blue); font-weight: 600;">4. Evaporative Cooling Pad Operational Timing</a></li>
+              <li><a href="#section-conclusion" style="color: var(--c-slate-blue); font-weight: 600;">5. Maintenance Checkpoints for 50-Inch Cone Fans</a></li>
+            </ul>
+          </div>
+
+          <h2 id="section-intro" style="font-size: 1.75rem; margin-block: 2rem 1rem;">1. The Physics of Negative Pressure Ventilation</h2>
+          <p>
+            In a modern enclosed poultry house, fans do not blow air onto the birds; instead, high-capacity exhaust cone fans extract air from one end of the building, creating a slight vacuum (negative static pressure). Atmospheric pressure outside the shed then forces fresh air to surge through carefully calibrated inlet louvers or evaporative cooling pad tunnels.
+          </p>
+          <p>
+            When static pressure is maintained precisely (typically between 20 and 28 Pascals, depending on shed width), the incoming air enters with sufficient momentum to hug the ceiling apex. Here, it mixes with the warm air generated by heaters and bird body heat before gently descending into the bird breathing zone without chilling the litter.
+          </p>
+
+          <!-- Engineering Callout Box -->
+          <div style="background: var(--color-accent-soft); border-inline-start: 4px solid var(--color-accent); border-radius: var(--radius-md); padding: 1.5rem; margin-block: 2rem;">
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--color-primary-dark);"><i class="fa-solid fa-calculator"></i> The Rule of Thumb CFM Calculation:</h4>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--text-main);">
+              <strong>Total Air Volume (CFM)</strong> = Bird Count &times; Max Bird Weight (lbs) &times; 1.8 CFM/lb. For a 40,000-bird flock at 6.0 lbs, total peak CFM needed = 40,000 &times; 6.0 &times; 1.8 = <strong>432,000 CFM</strong>. Dividing by 44,000 CFM per 50" fan results in <strong>10 exhaust cone fans</strong>.
+            </p>
+          </div>
+
+          <h2 id="section-speed" style="font-size: 1.75rem; margin-block: 2rem 1rem;">2. Calculating Target Air Speed & Wind Chill Effect</h2>
+          <p>
+            During extreme summer heat (&gt;35°C), high air velocity across bird feathers produces a cooling effect equivalent to a 5°C to 8°C temperature drop. However, this wind chill requires a minimum air velocity of 2.5 meters per second (500 feet per minute) uniformly distributed across the house cross-section.
+          </p>
+          <p>
+            If dead air pockets or low-velocity zones occur along the sidewalls, heavy birds in those areas will suffer severe heat prostration and respiratory alkalosis. AviTech's 50-inch butterfly shutter cone fans utilize precision aerodynamic fiberglass diffusers to maintain laminar flow with zero back-draft turbulence.
+          </p>
+
+          <h2 id="section-static" style="font-size: 1.75rem; margin-block: 2rem 1rem;">3. Static Pressure Settings Across House Widths</h2>
+          <p>
+            Shed width dictates the required static pressure. The wider the building, the higher the pressure required to project air to the center:
+          </p>
+          <ul style="margin-left: 1.5rem; margin-block: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><strong>12-meter shed width:</strong> 18 – 22 Pa static pressure</li>
+            <li><strong>15-meter shed width:</strong> 22 – 26 Pa static pressure</li>
+            <li><strong>18-meter shed width:</strong> 28 – 35 Pa static pressure</li>
+          </ul>
+
+          <h2 id="section-cooling" style="font-size: 1.75rem; margin-block: 2rem 1rem;">4. Evaporative Cooling Pad Operational Timing</h2>
+          <p>
+            A common mistake made by farm operators is activating evaporative cellulose cooling pads too early in the morning when ambient relative humidity is still above 75%. Adding moisture to already saturated air creates a humid sauna that stifles the birds' panting mechanism.
+          </p>
+          <p>
+            Always ensure that cooling pumps only engage when ambient temperatures exceed 28°C AND shed relative humidity is below 70%. In our automated climate controllers, this interlock is programmed by default to safeguard bird health.
+          </p>
+
+          <!-- Social Share & Author Card -->
+          <div style="border-top: 1px solid var(--border-medium); border-bottom: 1px solid var(--border-medium); padding-block: 1.5rem; margin-block: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-weight: 700;">Share this guide:</span>
+              <a href="#" class="topbar-social-link" style="background: var(--bg-surface-secondary); color: var(--text-main);" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" class="topbar-social-link" style="background: var(--bg-surface-secondary); color: var(--text-main);" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="topbar-social-link" style="background: var(--bg-surface-secondary); color: var(--text-main);" aria-label="Share via Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div>
+              <span class="product-badge" style="position: static;">Agronomy Field Certified</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right: Blog Sidebar -->
+        <aside style="display: flex; flex-direction: column; gap: 2rem;">
+          <!-- Author Bio -->
+          <div style="background: var(--bg-surface); padding: 1.75rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); text-align: center; box-shadow: var(--shadow-xs);">
+            <img src="assets/images/team/team-1.jpg" alt="Dr. Marcus Vance" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Dr. Marcus Vance</h4>
+            <span style="font-size: 0.85rem; color: var(--c-slate-blue); font-weight: 600; display: block; margin-bottom: 0.75rem;">Chief Agricultural Engineer</span>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Specializes in negative-pressure tunnel ventilation design, psychrometric airflow, and IoT climate automation.</p>
+          </div>
+
+          <!-- Quick Quote Box -->
+          <div style="background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 60%, #415A77 100%); border: 2px solid var(--c-warm-sand); color: #ffffff; padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
+            <div style="font-size: 2.2rem; color: var(--c-sage-green); margin-bottom: 0.5rem;"><i class="fa-solid fa-fan"></i></div>
+            <h4 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.5rem;">Need a Ventilation Calculation?</h4>
+            <p style="font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem;">Send us your poultry house dimensions and bird target weight for an engineered CFM analysis.</p>
+            <button type="button" class="btn btn-secondary btn-sm w-100" data-open-quote data-product-name="Tunnel Ventilation Sizing" data-category="Ventilation Systems">Get Ventilation Quote</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="site-logo" style="color: #ffffff;">
+            <div class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="logo-text">Avi<span>Tech</span>
+              <span class="logo-subtitle" style="color: var(--c-sage-green);">Poultry Systems</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Direct commercial manufacturer of automated poultry systems. Broiler feeding lines, layer battery cages, multi-stage setters, and ventilation fans.
+          </p>
+          <div class="topbar-socials" style="margin-top: 1rem;">
+            <a href="#" class="topbar-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="topbar-social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Home Overview</a></li>
+            <li><a href="about.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> About AviTech</a></li>
+            <li><a href="products.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Full Products Catalog</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Farm Installation Services</a></li>
+            <li><a href="farming-tips.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Poultry Management Tips</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Categories</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?filter=feeders" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Automated Pan Feeders</a></li>
+            <li><a href="products.html?filter=cages" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Layer Battery Cages</a></li>
+            <li><a href="products.html?filter=incubators" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Commercial Egg Incubators</a></li>
+            <li><a href="products.html?filter=drinking" class="footer-link"><i class="fa-solid fa-chevron-right"></i> Nipple Watering Lines</a></li>
+            <li><a href="products.html?filter=ventilation" class="footer-link"><i class="fa-solid fa-chevron-right"></i> 50" Exhaust Cone Fans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Agronomy Newsletter</h4>
+          <p class="footer-desc" style="margin-top: 0;">
+            Subscribe to receive technical poultry ventilation formulas and seasonal maintenance checklists.
+          </p>
+          <form class="newsletter-form" novalidate>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Your farm email..." required>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AviTech Poultry Systems Inc. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Equipment Supply</a>
+          <a href="contact.html">Global Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
