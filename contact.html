@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
@@ -148,66 +149,141 @@
   </section>
 
   <!-- ==================== CONTACT INFO CARDS ==================== -->
-  <section class="section">
+  <section class="section" style="padding-bottom: 2rem;">
     <div class="container">
       <div class="grid grid-4 reveal-stagger">
         <!-- Phone -->
-        <div class="feature-card hover-float">
-          <div class="feature-icon-box"><i class="fa-solid fa-phone"></i></div>
-          <h3>Call Directly</h3>
-          <p style="margin-bottom: 0.5rem; font-weight: 700; color: var(--c-slate-blue);">+1 (800) 459-2848</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Toll-free 24/7 technical hotline</p>
+        <div class="contact-info-card-interactive">
+          <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+          <h3 class="contact-card-title">Call Directly</h3>
+          <a href="tel:+18004592848" class="contact-card-val">+1 (800) 459-2848</a>
+          <p class="contact-card-sub">Toll-free 24/7 technical hotline</p>
+          <button type="button" class="contact-card-action copy-text-btn" data-copy="+1 (800) 459-2848">
+            <i class="fa-regular fa-copy"></i> Copy phone number
+          </button>
         </div>
 
         <!-- Email -->
-        <div class="feature-card hover-float">
-          <div class="feature-icon-box"><i class="fa-solid fa-envelope"></i></div>
-          <h3>Email Us</h3>
-          <p style="margin-bottom: 0.5rem; font-weight: 700; color: var(--c-slate-blue);">sales@avitechpoultry.com</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Rapid response within 4 hours</p>
+        <div class="contact-info-card-interactive">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <h3 class="contact-card-title">Email Us</h3>
+          <a href="mailto:sales@avitechpoultry.com" class="contact-card-val">sales@avitechpoultry.com</a>
+          <p class="contact-card-sub">Rapid response within 4 hours</p>
+          <button type="button" class="contact-card-action copy-text-btn" data-copy="sales@avitechpoultry.com">
+            <i class="fa-regular fa-copy"></i> Copy email address
+          </button>
         </div>
 
         <!-- Office -->
-        <div class="feature-card hover-float">
-          <div class="feature-icon-box"><i class="fa-solid fa-location-dot"></i></div>
-          <h3>Headquarters</h3>
-          <p style="margin-bottom: 0.5rem; font-weight: 600;">742 Agritech Boulevard</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Industrial Ag Zone, GA 30318, USA</p>
+        <div class="contact-info-card-interactive">
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <h3 class="contact-card-title">Headquarters</h3>
+          <span class="contact-card-val" style="color: var(--text-main);">742 Agritech Boulevard</span>
+          <p class="contact-card-sub">Atlanta, Georgia 30318, USA</p>
+          <a href="#store-locator-section" class="contact-card-action">
+            <i class="fa-solid fa-map-pin"></i> View on Interactive Map
+          </a>
         </div>
 
         <!-- Hours -->
-        <div class="feature-card hover-float">
-          <div class="feature-icon-box"><i class="fa-solid fa-clock"></i></div>
-          <h3>Business Hours</h3>
-          <p style="margin-bottom: 0.5rem; font-weight: 600;">Mon – Sat: 07:00 AM – 06:00 PM</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Emergency breakdown on-call 24/7</p>
+        <div class="contact-info-card-interactive">
+          <div class="contact-card-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3 class="contact-card-title">Business Hours</h3>
+          <span class="contact-card-val" style="color: var(--text-main);">07:00 AM – 06:00 PM</span>
+          <p class="contact-card-sub">Mon – Sat (Emergency on-call 24/7)</p>
+          <span class="contact-card-action" style="cursor: default; color: #16A34A;">
+            <i class="fa-solid fa-circle-check"></i> Open Today for Visits
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INTERACTIVE STORE LOCATOR & MAP ==================== -->
+  <section id="store-locator-section" class="section section-bg-alt" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <span class="section-tag"><i class="fa-solid fa-map-location-dot"></i> Official Stores & Distribution Hubs</span>
+        <h2 class="section-title">Visit Our Manufacturing Campuses & Regional Stores</h2>
+        <p class="section-desc">Locate an AviTech facility in your region. Review live demonstration sheds, physical state locations, open hours, and request turnkey showroom appointments.</p>
+      </div>
+
+      <div class="store-locator-card reveal-up">
+        <!-- Store Navigation Tabs -->
+        <div class="store-tabs-bar" role="tablist">
+          <button type="button" class="store-tab-pill active" data-location="atlanta">
+            <i class="fa-solid fa-city"></i> Atlanta Central Store & HQ (Georgia, USA)
+          </button>
+          <button type="button" class="store-tab-pill" data-location="desmoines">
+            <i class="fa-solid fa-warehouse"></i> Midwest Equipment Hub (Iowa, USA)
+          </button>
+          <button type="button" class="store-tab-pill" data-location="salisbury">
+            <i class="fa-solid fa-shield-halved"></i> Delmarva Broiler Station (Maryland, USA)
+          </button>
+          <button type="button" class="store-tab-pill" data-location="rotterdam">
+            <i class="fa-solid fa-ship"></i> EMEA Maritime Terminal (Netherlands)
+          </button>
+        </div>
+
+        <!-- Relative Map Box with Floating Info Card -->
+        <div class="store-map-container-rel">
+          <!-- Leaflet Interactive Map -->
+          <div id="store-locator-map"></div>
+
+          <!-- Floating Info Card -->
+          <div class="store-floating-card">
+            <div class="store-status-badge" id="loc-status">Open Now · Visiting Welcome</div>
+            <div class="store-state-badge" id="loc-state">Georgia, United States</div>
+            <h3 class="store-name-title" id="loc-name">AviTech Global Headquarters & Campus</h3>
+            <p class="store-address-text" id="loc-address">742 Agritech Boulevard, Industrial Ag Zone, Atlanta, GA 30318, USA</p>
+
+            <div class="store-features-row" id="loc-features">
+              <span class="store-feature-chip"><i class="fa-solid fa-microchip"></i> Live Testing Shed</span>
+              <span class="store-feature-chip"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Depot</span>
+              <span class="store-feature-chip"><i class="fa-solid fa-truck"></i> Drive-In Loading Bay</span>
+            </div>
+
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              <div><strong>Direct Phone:</strong> <span id="loc-phone">+1 (800) 459-2848</span></div>
+              <div><strong>Visiting Hours:</strong> <span id="loc-hours">Mon–Sat: 07:00 AM – 06:00 PM EST</span></div>
+            </div>
+
+            <div class="store-actions-grid">
+              <a id="loc-directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Atlanta+GA+30318" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                Get Directions <i class="fa-solid fa-diamond-turn-right"></i>
+              </a>
+              <button type="button" id="loc-copy-addr-btn" class="btn btn-outline btn-sm">
+                Copy Address <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==================== EQUIPMENT ENQUIRY & CONTACT FORM ==================== -->
-  <section class="section section-bg-alt">
+  <section class="section">
     <div class="container">
-      <div class="split-layout" style="align-items: start;">
+      <div class="split-layout" style="align-items: start; gap: 3.5rem;">
         <!-- Left: Form -->
         <div class="reveal-left" style="background: var(--bg-surface); padding: clamp(2rem, 4vw, 3rem); border-radius: var(--radius-xl); border: 1px solid var(--border-medium); box-shadow: var(--shadow-xl);">
           <span class="section-tag"><i class="fa-solid fa-calculator"></i> Project Estimation Form</span>
-          <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-block: 0.5rem 1rem;">Commercial Equipment Quotation Enquiry</h2>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem;">
-            Please provide your farm capacity and poultry housing details so our engineering department can produce an accurate bill of materials.
+          <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-block: 0.5rem 0.75rem;">Commercial Equipment Quotation Enquiry</h2>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.75rem;">
+            Please provide your farm capacity and shed specifications. Our agricultural engineering department will formulate a comprehensive bill of materials and CAD layout.
           </p>
 
           <form id="contact-page-form" novalidate>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
               <div class="form-group">
-                <label class="form-label" for="contact-name">Customer Name <span class="required">*</span></label>
-                <input type="text" id="contact-name" name="name" class="form-control" placeholder="Marcus Vance" required>
+                <label class="form-label" for="contact-name">Customer / Contact Name <span class="required">*</span></label>
+                <input type="text" id="contact-name" name="name" class="form-control" placeholder="e.g. Marcus Vance" required>
                 <span class="form-error">Please enter your name.</span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="contact-email">Email Address <span class="required">*</span></label>
-                <input type="email" id="contact-email" name="email" class="form-control" placeholder="marcus@farm.com" required>
+                <input type="email" id="contact-email" name="email" class="form-control" placeholder="e.g. marcus@farm.com" required>
                 <span class="form-error">Please enter a valid email address.</span>
               </div>
             </div>
@@ -215,12 +291,12 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
               <div class="form-group">
                 <label class="form-label" for="contact-phone">Phone / WhatsApp Number <span class="required">*</span></label>
-                <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="+1 (555) 492-1082" required>
+                <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="e.g. +1 (555) 492-1082" required>
                 <span class="form-error">Please provide a valid phone number.</span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="contact-company">Company or Farm Name <span class="required">*</span></label>
-                <input type="text" id="contact-company" name="farm_name" class="form-control" placeholder="Oakfield Broiler Ventures" required>
+                <input type="text" id="contact-company" name="farm_name" class="form-control" placeholder="e.g. Oakfield Broiler Ventures" required>
                 <span class="form-error">Please enter your company or farm name.</span>
               </div>
             </div>
@@ -229,84 +305,146 @@
               <div class="form-group">
                 <label class="form-label" for="contact-category">Product Category <span class="required">*</span></label>
                 <select id="contact-category" name="category" class="form-control" required>
-                  <option value="">Select Category...</option>
+                  <option value="">Select Equipment Category...</option>
                   <option value="Poultry Feeders">Poultry Feeders (Pan Lines / Augers)</option>
                   <option value="Poultry Cages">Poultry Cages (A-Type / H-Type)</option>
                   <option value="Egg Incubators">Egg Incubators & Setters</option>
                   <option value="Drinking Systems">Drinking Systems (Nipple Lines)</option>
                   <option value="Brooding Equipment">Brooding Equipment (Radiant Gas Heaters)</option>
-                  <option value="Ventilation Systems">Ventilation Systems (50" Fans / Wet Wall)</option>
+                  <option value="Ventilation Systems">Ventilation Systems (50" Cone Fans / Cooling Pads)</option>
                   <option value="Farm Automation">Farm Automation & IoT Computers</option>
-                  <option value="Turnkey Setup">Complete Turnkey Poultry House</option>
+                  <option value="Turnkey Setup">Complete Turnkey Commercial Poultry Shed</option>
                 </select>
                 <span class="form-error">Please choose an equipment category.</span>
               </div>
               <div class="form-group">
-                <label class="form-label" for="contact-product">Product Name / Model</label>
+                <label class="form-label" for="contact-product">Target Model / Equipment Sizing</label>
                 <input type="text" id="contact-product" name="product" class="form-control" placeholder="e.g. AviPan-Pro 360 Broiler Line">
               </div>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
               <div class="form-group">
-                <label class="form-label" for="contact-qty">Quantity or Flock Size</label>
-                <input type="text" id="contact-qty" name="quantity" class="form-control" placeholder="e.g. 50,000 Broilers or 6 Lines">
+                <label class="form-label" for="contact-qty">Capacity or Flock Size</label>
+                <input type="text" id="contact-qty" name="quantity" class="form-control" placeholder="e.g. 50,000 Broilers or 6 Sheds">
               </div>
               <div class="form-group">
-                <label class="form-label" for="contact-location">Farm Location / Country <span class="required">*</span></label>
-                <input type="text" id="contact-location" name="location" class="form-control" placeholder="City, State / Country" required>
-                <span class="form-error">Please provide the delivery location.</span>
+                <label class="form-label" for="contact-location">Farm Location (State / Country) <span class="required">*</span></label>
+                <input type="text" id="contact-location" name="location" class="form-control" placeholder="e.g. Georgia, USA or International" required>
+                <span class="form-error">Please provide your state or delivery location.</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="contact-msg">Additional Requirements / Notes</label>
-              <textarea id="contact-msg" name="message" class="form-control" rows="4" placeholder="Detail your shed length x width, electrical voltage, or target installation timeframe..."></textarea>
+              <label class="form-label">Project Execution Timeline</label>
+              <div class="timeline-pills-wrap">
+                <button type="button" class="timeline-pill active" data-timeline="Immediate (< 30 days)">Immediate (< 30 Days)</button>
+                <button type="button" class="timeline-pill" data-timeline="1–3 Months">1–3 Months</button>
+                <button type="button" class="timeline-pill" data-timeline="3–6 Months">3–6 Months</button>
+                <button type="button" class="timeline-pill" data-timeline="Planning / Feasibility">Planning / Feasibility Phase</button>
+              </div>
+              <input type="hidden" id="contact-timeline" name="timeline" value="Immediate (< 30 days)">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg w-100" style="margin-top: 1rem;">
-              Submit Official Quotation Request <i class="fa-solid fa-paper-plane"></i>
+            <div class="form-group">
+              <label class="form-label" for="contact-msg">Shed Dimensions & Special Technical Notes</label>
+              <textarea id="contact-msg" name="message" class="form-control" rows="3" placeholder="Specify shed length x width x eave height, electrical phase/voltage (e.g. 380V 3-Phase), or target delivery timeline..."></textarea>
+            </div>
+
+            <!-- Blueprint Upload Simulation -->
+            <div class="blueprint-drop-mock" id="blueprint-dropzone">
+              <i class="fa-solid fa-cloud-arrow-up" style="font-size: 1.5rem; color: #1B4332; margin-bottom: 0.35rem; display: block;"></i>
+              <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">Attach CAD Blueprint or Shed Sketch (Optional)</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="dropzone-text">Click to browse or drag & drop PDF, DWG, PNG up to 25MB</div>
+              <input type="file" id="blueprint-file-input" style="display: none;" accept=".pdf,.dwg,.dxf,.png,.jpg">
+            </div>
+
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-lg w-100">
+              <span>Submit Commercial Quotation Request</span> <i class="fa-solid fa-paper-plane"></i>
             </button>
           </form>
+
+          <!-- Form Success Card (Shown after submit) -->
+          <div id="contact-success-state" class="form-success-card" style="display: none;">
+            <div class="success-check-badge">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: #111827;">Quotation Request Received!</h3>
+            <p style="font-size: 1rem; color: #4B5563; max-width: 480px; margin-inline: auto; margin-bottom: 1.5rem;">
+              Thank you, <strong id="success-client-name">Customer</strong>. Reference Ticket <strong id="success-ticket-id" style="color: #1B4332;">#AVI-2026-9041</strong> has been assigned to our agricultural engineering division.
+            </p>
+
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 12px; padding: 1.25rem; max-width: 440px; margin: 0 auto 1.5rem; text-align: left; font-size: 0.9rem;">
+              <div style="margin-bottom: 0.4rem;"><strong>Assigned Engineer:</strong> Dr. Marcus Vance (Southeast Ag Region)</div>
+              <div style="margin-bottom: 0.4rem;"><strong>Estimated SLA:</strong> Blueprint & Bill of Materials within 4 business hours</div>
+              <div><strong>Delivery Target:</strong> <span id="success-delivery-loc">Georgia, USA</span></div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <a href="https://wa.me/18004592848" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="background: #25D366; border-color: #25D366; color: #fff;">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp Now
+              </a>
+              <button type="button" id="reset-contact-form-btn" class="btn btn-outline btn-sm">
+                Submit Another Enquiry
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Right: Map Placeholder & Factory Details -->
+        <!-- Right: Assurance & Instant Hotlines -->
         <div class="reveal-right">
-          <!-- Interactive Styled Agritech Map Placeholder -->
-          <div style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-            <div style="height: 300px; background: var(--c-deep-navy); border-bottom: 2px solid var(--c-warm-sand); position: relative; display: flex; align-items: center; justify-content: center; color: #ffffff; text-align: center; padding: 2rem;">
-              <img src="assets/images/poultry/poultry-manufacturing-plant.jpg" alt="AviTech Global Manufacturing Campus and Logistics Demonstration Center" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.38;" loading="lazy">
-              <div style="position: relative; z-index: 2;">
-                <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--c-sage-green); color: var(--c-deep-navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; box-shadow: 0 0 25px rgba(119, 141, 122, 0.6);" class="pulse-animation">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <h4 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.35rem;">AviTech Global Agritech Campus</h4>
-                <p style="color: rgba(255,255,255,0.8); font-size: 0.88rem; margin: 0;">742 Agritech Boulevard, Industrial Ag Zone, GA 30318</p>
-                <div style="margin-top: 1rem;">
-                  <span class="section-tag" style="background: rgba(255,255,255,0.15); color: var(--c-warm-sand); border: 1px solid rgba(255,255,255,0.25);">
-                    <i class="fa-solid fa-truck-fast"></i> Rail & Port Logistics Connected
-                  </span>
-                </div>
+          <!-- Rapid Response Assurance -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 2.25rem; box-shadow: var(--shadow-md); margin-bottom: 1.75rem;">
+            <span class="section-tag" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-clock-rotate-left"></i> Guaranteed Response Time</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem;">24-Hour Blueprint & Quotation SLA</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
+              Every equipment quotation is accompanied by customized 2D/3D CAD layout blueprints, CFD airflow calculations, electrical single-line diagrams, and transparent CIF / DDP ocean shipping quotes.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-circle-check" style="color: #16A34A; font-size: 1.1rem;"></i>
+                <span>Direct consultation with certified agricultural engineers</span>
               </div>
-            </div>
-            <div style="padding: 1.5rem;">
-              <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Factory Visiting & Demonstration Tours</h4>
-              <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
-                Prospective commercial clients are welcome to inspect our live testing sheds, where automated feeders and battery cage tiers can be seen in active operation.
-              </p>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-circle-check" style="color: #16A34A; font-size: 1.1rem;"></i>
+                <span>Complimentary static pressure CFM simulation</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-circle-check" style="color: #16A34A; font-size: 1.1rem;"></i>
+                <span>Zero-obligation factory-direct export pricing</span>
+              </div>
             </div>
           </div>
 
-          <!-- FAQ Quick Box -->
-          <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
-            <h4 style="font-size: 1.15rem; margin-bottom: 1rem;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--c-sage-green);"></i> Rapid Quote Turnaround</h4>
-            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
-              All commercial equipment quotations are calculated within 24 business hours, accompanied by detailed dimensional CAD blueprints and ocean freight shipping schedules.
-            </p>
-            <div style="display: flex; align-items: center; gap: 0.75rem; font-weight: 600; font-size: 0.9rem;">
-              <i class="fa-solid fa-phone" style="color: var(--c-slate-blue);"></i>
-              <span>Direct Hotline: +1 (800) 459-2848</span>
+          <!-- Instant WhatsApp Agricultural Desk -->
+          <div style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); color: #ffffff; border-radius: var(--radius-xl); padding: 2.25rem; box-shadow: var(--shadow-lg); margin-bottom: 1.75rem;">
+            <div style="font-size: 2.2rem; color: #4ade80; margin-bottom: 0.75rem;">
+              <i class="fa-brands fa-whatsapp"></i>
             </div>
+            <h3 style="color: #ffffff; font-size: 1.35rem; margin-bottom: 0.5rem;">Chat on WhatsApp Agricultural Desk</h3>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1.5rem;">
+              Need instant feedback on equipment compatibility or urgent spare parts dispatch? Message our senior engineers directly on WhatsApp.
+            </p>
+            <a href="https://wa.me/18004592848" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-100" style="background: #25D366; border-color: #25D366; color: #ffffff;">
+              Launch WhatsApp Chat <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <!-- Emergency Breakdown Hotline -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(220, 38, 38, 0.1); color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h4 style="font-size: 1.15rem; margin: 0;">24/7 Breakdown Emergency Dispatch</h4>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+              For live flock emergencies (climate controller failures, water line disruptions, or ventilation fan outages), call our emergency dispatch hotline immediately.
+            </p>
+            <a href="tel:+18004592848" class="btn btn-outline w-100" style="border-color: #DC2626; color: #DC2626;">
+              <i class="fa-solid fa-phone-volume"></i> Emergency Call: +1 (800) 459-2848
+            </a>
           </div>
         </div>
       </div>
@@ -403,6 +541,7 @@
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/slider.js"></script>
   <script src="assets/js/animations.js"></script>

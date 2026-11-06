@@ -1016,6 +1016,354 @@
     renderArticles(false);
   }
 
+  /* --------------------------------------------------------------------------
+     13. CONTACT PAGE INTERACTIVE STORE LOCATOR & ADVANCED FORM
+     -------------------------------------------------------------------------- */
+  function initContactPageFeatures() {
+    // 1. Copy Buttons
+    document.querySelectorAll('.copy-text-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const textToCopy = btn.getAttribute('data-copy');
+        if (!textToCopy) return;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalHtml = btn.innerHTML;
+          btn.innerHTML = '<i class="fa-solid fa-check" style="color: #16A34A;"></i> Copied!';
+          if (window.showToast) {
+            window.showToast('Copied to Clipboard', textToCopy, 'check');
+          }
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+          }, 2000);
+        }).catch(() => {
+          const temp = document.createElement('textarea');
+          temp.value = textToCopy;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+          if (window.showToast) {
+            window.showToast('Copied to Clipboard', textToCopy, 'check');
+          }
+        });
+      });
+    });
+
+    // 2. Interactive Store Locator Map
+    const mapContainer = document.getElementById('store-locator-map');
+    if (mapContainer) {
+      const locations = {
+        atlanta: {
+          name: "AviTech Global Headquarters & Campus",
+          state: "Georgia, United States",
+          address: "742 Agritech Boulevard, Industrial Ag Zone, Atlanta, GA 30318, USA",
+          phone: "+1 (800) 459-2848 / +1 (404) 555-0198",
+          hours: "Mon–Sat: 07:00 AM – 06:00 PM EST",
+          status: "Open Now · Visiting Welcome",
+          coords: [33.7850, -84.4100],
+          zoom: 14,
+          directions: "https://www.google.com/maps/dir/?api=1&destination=Atlanta+GA+30318",
+          features: [
+            '<i class="fa-solid fa-microchip"></i> Live Testing Shed',
+            '<i class="fa-solid fa-boxes-stacked"></i> Spare Parts Depot',
+            '<i class="fa-solid fa-truck"></i> Drive-In Loading Bay'
+          ]
+        },
+        desmoines: {
+          name: "Midwest Poultry Equipment Hub & Silo Depot",
+          state: "Iowa, United States",
+          address: "1250 Agribank Way, Des Moines, IA 50309, USA",
+          phone: "+1 (515) 555-0142",
+          hours: "Mon–Fri: 07:00 AM – 05:30 PM CST",
+          status: "Open Now · Commercial Depot",
+          coords: [41.5868, -93.6250],
+          zoom: 14,
+          directions: "https://www.google.com/maps/dir/?api=1&destination=Des+Moines+IA+50309",
+          features: [
+            '<i class="fa-solid fa-warehouse"></i> Silo Buffer Yard',
+            '<i class="fa-solid fa-rotate"></i> Bulk Auger Stock',
+            '<i class="fa-solid fa-van-shuttle"></i> Field Service Vans'
+          ]
+        },
+        salisbury: {
+          name: "Delmarva Broiler Integration Support Hub",
+          state: "Maryland, United States",
+          address: "400 Delmarva Logistics Pkwy, Salisbury, MD 21804, USA",
+          phone: "+1 (410) 555-0187",
+          hours: "Mon–Fri: 07:00 AM – 05:00 PM EST",
+          status: "Open Now · Technical Station",
+          coords: [38.3607, -75.5994],
+          zoom: 14,
+          directions: "https://www.google.com/maps/dir/?api=1&destination=Salisbury+MD+21804",
+          features: [
+            '<i class="fa-solid fa-fan"></i> Ventilation Testing Lab',
+            '<i class="fa-solid fa-faucet-drip"></i> Nipple Line Spares',
+            '<i class="fa-solid fa-truck-medical"></i> 24/7 Breakdown Dispatch'
+          ]
+        },
+        rotterdam: {
+          name: "EMEA Maritime Ocean Export Terminal",
+          state: "Rotterdam, Netherlands",
+          address: "Havenhaven 88, Port Industrial Complex, 3011 Rotterdam, Netherlands",
+          phone: "+31 10 555 0122",
+          hours: "Mon–Fri: 08:00 AM – 06:00 PM CET",
+          status: "Open Now · International Logistics",
+          coords: [51.9244, 4.4777],
+          zoom: 13,
+          directions: "https://www.google.com/maps/dir/?api=1&destination=Port+of+Rotterdam+Netherlands",
+          features: [
+            '<i class="fa-solid fa-ship"></i> Ocean Freight Staging',
+            '<i class="fa-solid fa-certificate"></i> CE Certification Lab',
+            '<i class="fa-solid fa-plane-departure"></i> Global Air Express'
+          ]
+        }
+      };
+
+      let activeLocationKey = 'atlanta';
+
+      function updateCardDetails(key) {
+        const data = locations[key];
+        if (!data) return;
+
+        const statusEl = document.getElementById('loc-status');
+        const stateEl = document.getElementById('loc-state');
+        const nameEl = document.getElementById('loc-name');
+        const addrEl = document.getElementById('loc-address');
+        const phoneEl = document.getElementById('loc-phone');
+        const hoursEl = document.getElementById('loc-hours');
+        const featuresEl = document.getElementById('loc-features');
+        const dirBtn = document.getElementById('loc-directions-btn');
+
+        if (statusEl) statusEl.textContent = data.status;
+        if (stateEl) stateEl.textContent = data.state;
+        if (nameEl) nameEl.textContent = data.name;
+        if (addrEl) addrEl.textContent = data.address;
+        if (phoneEl) phoneEl.textContent = data.phone;
+        if (hoursEl) hoursEl.textContent = data.hours;
+        if (dirBtn) dirBtn.href = data.directions;
+
+        if (featuresEl) {
+          featuresEl.innerHTML = data.features.map(f => `<span class="store-feature-chip">${f}</span>`).join('');
+        }
+      }
+
+      // Copy active store address button
+      const copyAddrBtn = document.getElementById('loc-copy-addr-btn');
+      if (copyAddrBtn) {
+        copyAddrBtn.addEventListener('click', () => {
+          const data = locations[activeLocationKey];
+          if (!data) return;
+          navigator.clipboard.writeText(data.address).then(() => {
+            const original = copyAddrBtn.innerHTML;
+            copyAddrBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #16A34A;"></i> Copied!';
+            if (window.showToast) {
+              window.showToast('Address Copied', data.address, 'check');
+            }
+            setTimeout(() => {
+              copyAddrBtn.innerHTML = original;
+            }, 2000);
+          });
+        });
+      }
+
+      // Initialize Leaflet Map if available
+      let map = null;
+      let markers = {};
+
+      if (window.L) {
+        try {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+          const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
+          map = L.map('store-locator-map', {
+            zoomControl: false,
+            scrollWheelZoom: false
+          }).setView(locations.atlanta.coords, locations.atlanta.zoom);
+
+          L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+          const tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+          }).addTo(map);
+
+          // Add markers for all stores
+          Object.keys(locations).forEach(key => {
+            const loc = locations[key];
+            const markerIcon = L.divIcon({
+              className: 'avitech-marker-wrapper',
+              html: `
+                <div class="avitech-map-marker ${key === 'atlanta' ? 'active' : ''}" data-marker-key="${key}" title="${loc.name}">
+                  <i class="fa-solid fa-industry"></i>
+                </div>
+              `,
+              iconSize: [42, 42],
+              iconAnchor: [21, 42]
+            });
+
+            const marker = L.marker(loc.coords, { icon: markerIcon }).addTo(map);
+            marker.on('click', () => {
+              switchStore(key);
+            });
+            markers[key] = marker;
+          });
+
+          // Theme switch listener
+          const observer = new MutationObserver(() => {
+            const nowDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            tileLayer.setUrl(nowDark ? darkTiles : lightTiles);
+          });
+          observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+        } catch (err) {
+          console.warn('Leaflet map initialization fallback:', err);
+        }
+      }
+
+      function switchStore(key) {
+        if (!locations[key]) return;
+        activeLocationKey = key;
+
+        // Update tab buttons
+        document.querySelectorAll('.store-tab-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-location') === key);
+        });
+
+        // Update card info
+        updateCardDetails(key);
+
+        // Update map view & marker highlight
+        if (map && locations[key]) {
+          map.flyTo(locations[key].coords, locations[key].zoom, { duration: 1.2 });
+          document.querySelectorAll('.avitech-map-marker').forEach(m => {
+            m.classList.toggle('active', m.getAttribute('data-marker-key') === key);
+          });
+        }
+      }
+
+      // Hook tab pills
+      document.querySelectorAll('.store-tab-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const locKey = btn.getAttribute('data-location');
+          if (locKey) switchStore(locKey);
+        });
+      });
+    }
+
+    // 3. Project Estimation Form & Success State
+    const contactForm = document.getElementById('contact-page-form');
+    const successCard = document.getElementById('contact-success-state');
+
+    if (contactForm && successCard) {
+      // Timeline pills
+      const timelinePills = contactForm.querySelectorAll('.timeline-pill');
+      const timelineInput = document.getElementById('contact-timeline');
+
+      timelinePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          timelinePills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          if (timelineInput) {
+            timelineInput.value = pill.getAttribute('data-timeline') || '';
+          }
+        });
+      });
+
+      // Blueprint dropzone simulation
+      const dropzone = document.getElementById('blueprint-dropzone');
+      const fileInput = document.getElementById('blueprint-file-input');
+      const dropText = document.getElementById('dropzone-text');
+
+      if (dropzone && fileInput) {
+        dropzone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            dropText.innerHTML = `<strong style="color: #16A34A;"><i class="fa-solid fa-file-circle-check"></i> ${file.name}</strong> (${(file.size / 1024 / 1024).toFixed(2)} MB attached)`;
+          }
+        });
+      }
+
+      // Form submit handler
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        const requiredFields = contactForm.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('is-invalid');
+            isValid = false;
+          } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+            field.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            field.classList.remove('is-invalid');
+          }
+        });
+
+        if (!isValid) return;
+
+        const submitBtn = document.getElementById('contact-submit-btn');
+        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Formulating Official Quotation...';
+        }
+
+        setTimeout(() => {
+          const nameVal = contactForm.querySelector('[name="name"]')?.value || 'Customer';
+          const locVal = contactForm.querySelector('[name="location"]')?.value || 'Georgia, USA';
+          const randomTicket = Math.floor(1000 + Math.random() * 9000);
+
+          const clientNameEl = document.getElementById('success-client-name');
+          const ticketIdEl = document.getElementById('success-ticket-id');
+          const deliveryLocEl = document.getElementById('success-delivery-loc');
+
+          if (clientNameEl) clientNameEl.textContent = nameVal;
+          if (ticketIdEl) ticketIdEl.textContent = `#AVI-2026-${randomTicket}`;
+          if (deliveryLocEl) deliveryLocEl.textContent = locVal;
+
+          contactForm.style.display = 'none';
+          successCard.style.display = 'block';
+
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+
+          if (window.showToast) {
+            window.showToast('Quotation Request Received', `Ticket #AVI-2026-${randomTicket} logged for ${nameVal}.`, 'check');
+          }
+
+          const headerOffset = document.querySelector('.site-header')?.offsetHeight || 80;
+          const rect = successCard.getBoundingClientRect();
+          window.scrollTo({
+            top: rect.top + window.pageYOffset - (headerOffset + 20),
+            behavior: 'smooth'
+          });
+        }, 600);
+      });
+
+      // Reset form button
+      const resetBtn = document.getElementById('reset-contact-form-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          contactForm.reset();
+          timelinePills.forEach((p, idx) => p.classList.toggle('active', idx === 0));
+          if (dropText) {
+            dropText.textContent = 'Click to browse or drag & drop PDF, DWG, PNG up to 25MB';
+          }
+          successCard.style.display = 'none';
+          contactForm.style.display = 'block';
+        });
+      }
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     initMobileDrawer();
@@ -1029,5 +1377,6 @@
     initSpecializedServicesSection();
     initServiceDetailsPage();
     initBlogPage();
+    initContactPageFeatures();
   });
 })();

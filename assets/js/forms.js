@@ -225,6 +225,7 @@
   function initContactPageForm() {
     const contactForm = document.getElementById('contact-page-form');
     if (!contactForm) return;
+    if (document.getElementById('contact-success-state')) return; // Handled by enhanced contact handler in main.js
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
