@@ -5137,6 +5137,204 @@ body.products-page .back-to-top {
   gap: 0.6rem;
 }
 
+/* Map View Mode Switcher */
+.map-view-switcher {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  display: flex;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+[dir="rtl"] .map-view-switcher {
+  right: auto;
+  left: 18px;
+}
+
+[data-theme="dark"] .map-view-switcher {
+  background: rgba(13, 27, 42, 0.92);
+  border-color: var(--border-medium);
+}
+
+.map-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #4B5563;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.map-view-btn:hover {
+  background: #F3F4F6;
+  color: #111827;
+}
+
+.map-view-btn.active {
+  background: #1B4332;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(27, 67, 50, 0.3);
+}
+
+[data-theme="dark"] .map-view-btn {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .map-view-btn:hover {
+  background: var(--bg-surface-secondary);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .map-view-btn.active {
+  background: var(--c-warm-sand);
+  color: var(--c-deep-navy);
+}
+
+.store-card-toggle-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface-secondary);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+[dir="rtl"] .store-card-toggle-btn {
+  right: auto;
+  left: 14px;
+}
+
+.store-card-toggle-btn:hover {
+  background: #1B4332;
+  color: #ffffff;
+}
+
+.store-floating-card.collapsed .store-card-body-collapsible {
+  display: none;
+}
+
+.store-floating-card.collapsed .store-card-toggle-btn i {
+  transform: rotate(180deg);
+}
+
+/* Custom Leaflet Pin Styling */
+.avitech-map-marker {
+  width: 40px;
+  height: 40px;
+  background: #1B4332;
+  border: 3px solid #ffffff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s;
+  position: relative;
+}
+
+.avitech-map-marker i {
+  transform: rotate(45deg);
+}
+
+.avitech-map-marker.active {
+  background: #D97706;
+  transform: rotate(-45deg) scale(1.22);
+}
+
+.avitech-map-marker.active::after {
+  content: '';
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid #D97706;
+  top: -10px;
+  left: -10px;
+  animation: radarPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Custom Leaflet Popup Styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.map-popup-inner {
+  padding: 1.15rem 1.35rem;
+}
+
+.map-popup-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #D97706;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.04em;
+}
+
+.map-popup-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.3rem;
+}
+
+.map-popup-address {
+  font-size: 0.84rem;
+  color: #4B5563;
+  margin-bottom: 0.85rem;
+}
+
+.map-popup-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1B4332;
+  text-decoration: underline;
+}
+
 /* Timeline Pills in Contact Form */
 .timeline-pills-wrap {
   display: flex;

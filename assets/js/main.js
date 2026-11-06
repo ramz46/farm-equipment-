@@ -1170,12 +1170,35 @@
       // Initialize Leaflet Map if available
       let map = null;
       let markers = {};
+      let currentTileLayer = null;
 
       if (window.L) {
         try {
-          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-          const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-          const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+          // Authentic Tile Providers (Zero API Key, Real Maps)
+          const tileProviders = {
+            streets: {
+              url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              options: {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              }
+            },
+            satellite: {
+              url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+              options: {
+                maxZoom: 19,
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+              }
+            },
+            topo: {
+              url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+              options: {
+                maxZoom: 19,
+                subdomains: ['a', 'b', 'c'],
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/">HOT</a>'
+              }
+            }
+          };
 
           map = L.map('store-locator-map', {
             zoomControl: false,
@@ -1183,14 +1206,12 @@
           }).setView(locations.atlanta.coords, locations.atlanta.zoom);
 
           L.control.zoom({ position: 'bottomright' }).addTo(map);
+          L.control.scale({ imperial: true, metric: true, position: 'bottomleft' }).addTo(map);
 
-          const tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19
-          }).addTo(map);
+          // Default Streets Layer (Full Color Real Street Map)
+          currentTileLayer = L.tileLayer(tileProviders.streets.url, tileProviders.streets.options).addTo(map);
 
-          // Add markers for all stores
+          // Add markers with popups for all stores
           Object.keys(locations).forEach(key => {
             const loc = locations[key];
             const markerIcon = L.divIcon({
@@ -1200,27 +1221,64 @@
                   <i class="fa-solid fa-industry"></i>
                 </div>
               `,
-              iconSize: [42, 42],
-              iconAnchor: [21, 42]
+              iconSize: [40, 40],
+              iconAnchor: [20, 40],
+              popupAnchor: [0, -38]
             });
 
             const marker = L.marker(loc.coords, { icon: markerIcon }).addTo(map);
+
+            const popupHtml = `
+              <div class="map-popup-inner">
+                <div class="map-popup-tag">${loc.state}</div>
+                <div class="map-popup-title">${loc.name}</div>
+                <div class="map-popup-address">${loc.address}</div>
+                <a href="${loc.directions}" target="_blank" rel="noopener noreferrer" class="map-popup-link">
+                  Get Driving Directions <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            `;
+            marker.bindPopup(popupHtml, { maxWidth: 280 });
+
             marker.on('click', () => {
               switchStore(key);
             });
             markers[key] = marker;
           });
 
-          // Theme switch listener
-          const observer = new MutationObserver(() => {
-            const nowDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            tileLayer.setUrl(nowDark ? darkTiles : lightTiles);
+          // Open default popup for Atlanta
+          if (markers.atlanta) {
+            markers.atlanta.openPopup();
+          }
+
+          // Map View Layer Switcher (Streets / Satellite / Topo)
+          document.querySelectorAll('.map-view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const layerKey = btn.getAttribute('data-map-layer');
+              if (!tileProviders[layerKey]) return;
+
+              document.querySelectorAll('.map-view-btn').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+
+              if (currentTileLayer) {
+                map.removeLayer(currentTileLayer);
+              }
+              currentTileLayer = L.tileLayer(tileProviders[layerKey].url, tileProviders[layerKey].options).addTo(map);
+            });
           });
-          observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
         } catch (err) {
           console.warn('Leaflet map initialization fallback:', err);
         }
+      }
+
+      // Card Collapse / Expand Toggle
+      const toggleCardBtn = document.getElementById('toggle-store-card-btn');
+      const storeCard = document.getElementById('store-floating-card');
+      if (toggleCardBtn && storeCard) {
+        toggleCardBtn.addEventListener('click', () => {
+          storeCard.classList.toggle('collapsed');
+        });
       }
 
       function switchStore(key) {
@@ -1235,12 +1293,17 @@
         // Update card info
         updateCardDetails(key);
 
-        // Update map view & marker highlight
+        // Update map view & marker highlight & popup
         if (map && locations[key]) {
           map.flyTo(locations[key].coords, locations[key].zoom, { duration: 1.2 });
           document.querySelectorAll('.avitech-map-marker').forEach(m => {
             m.classList.toggle('active', m.getAttribute('data-marker-key') === key);
           });
+          if (markers[key]) {
+            setTimeout(() => {
+              markers[key].openPopup();
+            }, 600);
+          }
         }
       }
 

@@ -230,31 +230,50 @@
           <!-- Leaflet Interactive Map -->
           <div id="store-locator-map"></div>
 
+          <!-- Floating Map Mode Controls -->
+          <div class="map-view-switcher" role="group" aria-label="Map style selector">
+            <button type="button" class="map-view-btn active" data-map-layer="streets" title="Standard Street Map View">
+              <i class="fa-solid fa-map"></i> <span>Streets</span>
+            </button>
+            <button type="button" class="map-view-btn" data-map-layer="satellite" title="Satellite Aerial Imagery">
+              <i class="fa-solid fa-satellite"></i> <span>Satellite</span>
+            </button>
+            <button type="button" class="map-view-btn" data-map-layer="topo" title="Topographic Elevation Map">
+              <i class="fa-solid fa-mountain"></i> <span>Topography</span>
+            </button>
+          </div>
+
           <!-- Floating Info Card -->
-          <div class="store-floating-card">
+          <div class="store-floating-card" id="store-floating-card">
+            <button type="button" id="toggle-store-card-btn" class="store-card-toggle-btn" title="Collapse / Expand Store Card" aria-label="Toggle Store Card">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
             <div class="store-status-badge" id="loc-status">Open Now · Visiting Welcome</div>
             <div class="store-state-badge" id="loc-state">Georgia, United States</div>
             <h3 class="store-name-title" id="loc-name">AviTech Global Headquarters & Campus</h3>
-            <p class="store-address-text" id="loc-address">742 Agritech Boulevard, Industrial Ag Zone, Atlanta, GA 30318, USA</p>
 
-            <div class="store-features-row" id="loc-features">
-              <span class="store-feature-chip"><i class="fa-solid fa-microchip"></i> Live Testing Shed</span>
-              <span class="store-feature-chip"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Depot</span>
-              <span class="store-feature-chip"><i class="fa-solid fa-truck"></i> Drive-In Loading Bay</span>
-            </div>
+            <div class="store-card-body-collapsible">
+              <p class="store-address-text" id="loc-address">742 Agritech Boulevard, Industrial Ag Zone, Atlanta, GA 30318, USA</p>
 
-            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
-              <div><strong>Direct Phone:</strong> <span id="loc-phone">+1 (800) 459-2848</span></div>
-              <div><strong>Visiting Hours:</strong> <span id="loc-hours">Mon–Sat: 07:00 AM – 06:00 PM EST</span></div>
-            </div>
+              <div class="store-features-row" id="loc-features">
+                <span class="store-feature-chip"><i class="fa-solid fa-microchip"></i> Live Testing Shed</span>
+                <span class="store-feature-chip"><i class="fa-solid fa-boxes-stacked"></i> Spare Parts Depot</span>
+                <span class="store-feature-chip"><i class="fa-solid fa-truck"></i> Drive-In Loading Bay</span>
+              </div>
 
-            <div class="store-actions-grid">
-              <a id="loc-directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Atlanta+GA+30318" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                Get Directions <i class="fa-solid fa-diamond-turn-right"></i>
-              </a>
-              <button type="button" id="loc-copy-addr-btn" class="btn btn-outline btn-sm">
-                Copy Address <i class="fa-regular fa-copy"></i>
-              </button>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                <div><strong>Direct Phone:</strong> <span id="loc-phone">+1 (800) 459-2848</span></div>
+                <div><strong>Visiting Hours:</strong> <span id="loc-hours">Mon–Sat: 07:00 AM – 06:00 PM EST</span></div>
+              </div>
+
+              <div class="store-actions-grid">
+                <a id="loc-directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Atlanta+GA+30318" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  Get Directions <i class="fa-solid fa-diamond-turn-right"></i>
+                </a>
+                <button type="button" id="loc-copy-addr-btn" class="btn btn-outline btn-sm">
+                  Copy Address <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
