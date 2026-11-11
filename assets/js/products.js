@@ -1069,6 +1069,21 @@
       });
     }
 
+    // Hook Download PDF Specs button on detail page
+    const detailDownloadBtn = document.getElementById('p-detail-download-btn');
+    if (detailDownloadBtn) {
+      const pdfPath = `assets/docs/${product.id}-spec-sheet.pdf`;
+      const cleanDownloadName = `AviTech-${product.name.replace(/[^a-zA-Z0-9]+/g, '-')}-Specifications.pdf`;
+      detailDownloadBtn.href = pdfPath;
+      detailDownloadBtn.setAttribute('download', cleanDownloadName);
+      detailDownloadBtn.setAttribute('target', '_blank');
+      detailDownloadBtn.onclick = function () {
+        if (window.showToast) {
+          window.showToast('Spec Sheet Downloaded', `${product.name} CAD technical specifications downloaded.`, 'check');
+        }
+      };
+    }
+
     // Render Related Products (same category or others)
     const relatedGrid = document.getElementById('related-products-grid');
     if (relatedGrid) {
