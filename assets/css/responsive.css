@@ -356,8 +356,8 @@
   .hero-slide-content .hero-title,
   .hero-title {
     font-size: clamp(1.85rem, 7vw, 2.45rem) !important;
-    line-height: 1.2 !important;
-    letter-spacing: -0.02em !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.015em !important;
     margin-bottom: 0.85rem !important;
   }
 
