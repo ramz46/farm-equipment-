@@ -5000,12 +5000,27 @@ body.products-page .back-to-top {
 /* Quick Service Cards in Top Grid */
 .service-quick-card {
   cursor: pointer;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.service-quick-card p {
+  flex-grow: 1 !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.service-quick-card .service-explore-btn {
+  margin-top: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+}
+
 .service-quick-card:hover {
-  border-color: #1B4332;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: var(--c-slate-blue);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 /* --------------------------------------------------------------------------

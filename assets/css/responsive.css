@@ -598,8 +598,9 @@
     justify-content: center !important;
   }
 
-  .service-card {
-    padding: 1.35rem !important;
+  .service-card,
+  .service-quick-card {
+    padding: 1.65rem 1.35rem !important;
   }
 
   /* Blog & Editorial Alignment in Inspect / Mobile Mode */
