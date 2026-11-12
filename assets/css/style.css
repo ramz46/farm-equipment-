@@ -5032,17 +5032,28 @@ body.products-page .back-to-top {
 }
 
 /* Field Reliability Showcase & Tag Alignment */
+.field-showcase-section {
+  padding-block: clamp(4.5rem, 8vw, 7rem) !important;
+  position: relative;
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .field-showcase-section {
+  border-top-color: var(--border-medium);
+}
+
 .field-reliability-tag {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0.6rem !important;
-  padding: 0.55rem 1.3rem !important;
-  font-size: 0.86rem !important;
+  gap: 0.65rem !important;
+  padding: 0.6rem 1.35rem !important;
+  font-size: 0.88rem !important;
   font-weight: 700 !important;
   line-height: 1.15 !important;
   border-radius: var(--radius-full) !important;
-  margin-block-end: 1.15rem !important;
+  margin-block-end: 1.25rem !important;
   letter-spacing: 0.06em !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: all var(--transition-fast);
