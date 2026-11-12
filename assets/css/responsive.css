@@ -608,8 +608,14 @@
   }
 
   .service-card,
-  .service-quick-card {
+  .service-quick-card,
+  .process-step-card {
     padding: 1.65rem 1.35rem !important;
+  }
+
+  .process-step-card h3 {
+    min-height: auto !important;
+    margin-bottom: 0.5rem !important;
   }
 
   /* Field Reliability Showcase Responsive Alignment */
