@@ -194,6 +194,8 @@
             </div>
           </div>
 
+          <h2 id="p-detail-heading" style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-main); line-height: 1.25;">Automated Broiler Pan Feeder System</h2>
+
           <div style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 800; color: var(--c-slate-blue); margin-bottom: 1.25rem;" id="p-detail-price">
             Quote on Spec
           </div>
@@ -206,11 +208,11 @@
           </div>
 
           <!-- Quick Action Buttons -->
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+          <div class="product-action-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
             <button type="button" id="p-detail-add-cart-btn" class="btn btn-primary btn-lg" style="background: #1B4332; border-color: #1B4332;">
               <i class="fa-solid fa-cart-plus"></i> Add to Cart
             </button>
-            <button type="button" id="p-detail-quote-btn" class="btn btn-secondary btn-lg">
+            <button type="button" id="p-detail-quote-btn" class="btn btn-secondary btn-lg" data-open-quote data-product-name="Automated Broiler Pan Feeder System" data-category="Poultry Feeders">
               Request Sized Quotation <i class="fa-solid fa-file-invoice"></i>
             </button>
             <a href="assets/docs/pan-feeder-pro-spec-sheet.pdf" id="p-detail-download-btn" class="btn btn-outline btn-lg" download="AviTech-Automated-Broiler-Pan-Feeder-Specs.pdf">
@@ -363,6 +365,32 @@
     </div>
   </section>
 
+  <!-- ==================== CALL TO ACTION SECTION ==================== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner reveal-up">
+        <div class="cta-text-wrap">
+          <span class="section-tag"
+            style="background: rgba(255,255,255,0.15); color: var(--c-warm-sand); border: 1px solid rgba(255,255,255,0.25);">
+            <i class="fa-solid fa-calculator"></i> Custom Poultry House Engineering
+          </span>
+          <h2>Need Custom Equipment Sizing for Your Sheds?</h2>
+          <p>
+            Our agricultural engineers calculate exact feed line lengths, pan counts, and suspension winch load specs tailored to your poultry house blueprints.
+          </p>
+        </div>
+        <div class="cta-buttons">
+          <button type="button" id="p-detail-bottom-quote-btn" class="btn btn-secondary btn-lg" data-open-quote data-product-name="Automated Broiler Pan Feeder System" data-category="Poultry Feeders">
+            Request Custom Layout Quote <i class="fa-solid fa-file-invoice"></i>
+          </button>
+          <a href="contact.html" class="btn btn-outline-white btn-lg">
+            Speak With an Engineer <i class="fa-solid fa-phone"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
@@ -420,8 +448,8 @@
           <form class="newsletter-form" novalidate>
             <div class="newsletter-box">
               <input type="email" class="newsletter-input" placeholder="Your farm email..." required>
-              <button type="submit" class="newsletter-btn" aria-label="Subscribe">
-                <i class="fa-solid fa-paper-plane"></i>
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+                <span>Subscribe</span> <i class="fa-solid fa-paper-plane" style="margin-inline-start: 6px;"></i>
               </button>
             </div>
           </form>

@@ -826,6 +826,19 @@
     justify-content: center !important;
   }
 
+  /* Product Details Action Buttons on Mobile */
+  .product-action-buttons {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+
+  .product-action-buttons .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
   /* Video Card Wrapper on about.html */
   .video-card-wrapper {
     width: 100% !important;

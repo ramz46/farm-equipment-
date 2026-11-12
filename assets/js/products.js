@@ -1008,6 +1008,7 @@
 
     // Populate title, category, breadcrumbs
     const titleEl = document.getElementById('p-detail-title');
+    const headingEl = document.getElementById('p-detail-heading');
     const catEl = document.getElementById('p-detail-category');
     const breadcrumbEl = document.getElementById('p-detail-breadcrumb');
     const mainImgEl = document.getElementById('p-detail-main-img');
@@ -1016,6 +1017,7 @@
     const specsTableEl = document.getElementById('p-detail-specs-table');
 
     if (titleEl) titleEl.textContent = product.name;
+    if (headingEl) headingEl.textContent = product.name;
     if (catEl) catEl.textContent = product.categoryLabel;
     if (breadcrumbEl) breadcrumbEl.textContent = product.name;
     if (mainImgEl) {
@@ -1062,7 +1064,21 @@
     // Hook Request Quote button on detail page
     const detailQuoteBtn = document.getElementById('p-detail-quote-btn');
     if (detailQuoteBtn) {
+      detailQuoteBtn.setAttribute('data-product-name', product.name);
+      detailQuoteBtn.setAttribute('data-category', product.categoryLabel);
       detailQuoteBtn.addEventListener('click', () => {
+        if (window.openQuoteModal) {
+          window.openQuoteModal(product.name, product.categoryLabel);
+        }
+      });
+    }
+
+    // Hook Bottom CTA Request Quote button on detail page
+    const bottomQuoteBtn = document.getElementById('p-detail-bottom-quote-btn');
+    if (bottomQuoteBtn) {
+      bottomQuoteBtn.setAttribute('data-product-name', product.name);
+      bottomQuoteBtn.setAttribute('data-category', product.categoryLabel);
+      bottomQuoteBtn.addEventListener('click', () => {
         if (window.openQuoteModal) {
           window.openQuoteModal(product.name, product.categoryLabel);
         }
