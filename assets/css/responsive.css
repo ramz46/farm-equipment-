@@ -704,9 +704,12 @@
   .blog-card {
     width: 100% !important;
     max-width: 100% !important;
+    height: 100% !important;
     padding: 0 !important;
     border-radius: var(--radius-md, 12px) !important;
     overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .blog-img-box {
@@ -715,19 +718,34 @@
   }
 
   .blog-body {
-    padding: 1.25rem 1.15rem !important;
+    padding: 1.35rem 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
   }
 
   .blog-title {
     font-size: 1.12rem !important;
     line-height: 1.35 !important;
-    margin-bottom: 0.5rem !important;
+    min-height: 4.65rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: 0.65rem !important;
   }
 
   .blog-snippet {
     font-size: 0.88rem !important;
     line-height: 1.55 !important;
-    margin-bottom: 1rem !important;
+    min-height: 4.4rem !important;
+    margin-bottom: 1.15rem !important;
+    flex-grow: 1 !important;
+  }
+
+  .blog-body .btn-text {
+    margin-top: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
   }
 
   .blog-sidebar {
@@ -735,7 +753,8 @@
     width: 100% !important;
   }
 
-  .blog-widget {
+  .blog-widget,
+  .blog-cta-widget {
     padding: 1.25rem !important;
     border-radius: var(--radius-md, 12px) !important;
   }
