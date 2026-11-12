@@ -609,7 +609,8 @@
 
   .service-card,
   .service-quick-card,
-  .process-step-card {
+  .process-step-card,
+  .feature-card {
     padding: 1.65rem 1.35rem !important;
   }
 
@@ -674,7 +675,7 @@
   }
 
   .blog-featured-content {
-    padding: 1.35rem 1.15rem !important;
+    padding: 1.35rem 1.25rem !important;
   }
 
   .blog-featured-title {
@@ -1025,7 +1026,8 @@
     height: 36px !important;
   }
 
-  .modal-dialog {
+  .modal-dialog,
+  .modal-content {
     width: 95% !important;
     max-width: 95% !important;
     padding: 1.5rem 1.25rem !important;
@@ -1125,19 +1127,89 @@
     display: none !important;
   }
 
+  .service-detail-pane,
   .service-tab-pane {
+    padding: 0 !important;
+  }
+
+  .service-pane-card {
+    border-radius: var(--radius-lg, 16px) !important;
+    overflow: hidden !important;
+  }
+
+  .service-pane-image-box {
+    height: 210px !important;
+    width: 100% !important;
+  }
+
+  .service-pane-img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .service-pane-content {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .service-pane-title {
+    font-size: 1.28rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .service-pane-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .service-checklist-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .service-specs-table {
+    grid-template-columns: 1fr !important;
+    padding: 0.9rem 1rem !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .service-actions-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .service-actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.25rem !important;
+    min-height: 44px !important;
+  }
+
+  /* Case Studies Mobile Padding */
+  .case-study-card {
+    border-radius: var(--radius-lg, 16px) !important;
+  }
+
+  .case-study-header {
+    padding: 1.35rem 1.25rem 0.75rem !important;
+  }
+
+  .case-study-body {
     padding: 1.25rem !important;
   }
 
-  .service-tab-pane .split-layout {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
+  /* Accordion Mobile Padding */
+  .accordion-header {
+    padding: 1rem 1.15rem !important;
   }
 
-  .service-tab-pane img {
-    height: 220px !important;
-    width: 100% !important;
-    object-fit: cover !important;
+  .accordion-body {
+    padding: 0 1.15rem 1.15rem !important;
   }
 
   /* Store Locator Google Maps Mobile Alignment (Exact Match to Reference Platform) */
