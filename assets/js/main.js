@@ -87,15 +87,68 @@
      -------------------------------------------------------------------------- */
   function highlightActiveNavLink() {
     const path = window.location.pathname;
-    const pageName = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+    let pageName = path.substring(path.lastIndexOf('/') + 1);
+    if (!pageName || pageName === '/') pageName = 'index.html';
 
+    // Desktop and mobile main nav links
     const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
-      if (href && (href === pageName || (pageName === '' && href === 'index.html'))) {
+      let isMatch = false;
+
+      if (pageName === 'index.html' || pageName === 'index-2.html') {
+        if (href === 'index.html' || href === 'index-2.html') isMatch = true;
+      } else if (pageName === 'products.html' || pageName.startsWith('product-details.html')) {
+        if (href === 'products.html') isMatch = true;
+      } else if (pageName === 'services.html' || pageName.startsWith('service-details.html')) {
+        if (href === 'services.html') isMatch = true;
+      } else if (pageName === 'blog.html' || pageName.startsWith('blog-details.html')) {
+        if (href === 'blog.html') isMatch = true;
+      } else if (href === pageName) {
+        isMatch = true;
+      }
+
+      if (isMatch) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
+      }
+    });
+
+    // Submenu links (desktop dropdown-link and mobile-submenu-link)
+    const subLinks = document.querySelectorAll('.dropdown-link, .mobile-submenu-link');
+    subLinks.forEach(sub => {
+      const href = sub.getAttribute('href');
+      let isSubMatch = false;
+
+      if (href) {
+        if (href === pageName) {
+          isSubMatch = true;
+        } else if (href.includes('?') && pageName.includes('?')) {
+          if (href === pageName) isSubMatch = true;
+        } else if (href.split('?')[0] === pageName.split('?')[0]) {
+          const fullCur = window.location.search ? pageName + window.location.search : pageName;
+          if (href === fullCur || href === pageName) isSubMatch = true;
+        }
+      }
+
+      if (isSubMatch) {
+        sub.classList.add('active');
+        // If this is a mobile submenu link, keep parent dropdown open
+        const parentSubmenu = sub.closest('.mobile-submenu');
+        if (parentSubmenu) {
+          parentSubmenu.classList.add('active');
+          const parentToggle = parentSubmenu.previousElementSibling;
+          if (parentToggle) {
+            const icon = parentToggle.querySelector('.mobile-chevron');
+            if (icon) {
+              icon.classList.remove('fa-chevron-down');
+              icon.classList.add('fa-chevron-up');
+            }
+          }
+        }
+      } else {
+        sub.classList.remove('active');
       }
     });
   }

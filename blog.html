@@ -120,14 +120,40 @@
       </a>
       <button type="button" class="control-btn drawer-close-btn" aria-label="Close Drawer"><i class="fa-solid fa-xmark"></i></button>
     </div>
-    <div class="mobile-nav-menu">
-      <a href="index.html" class="mobile-nav-link">Home</a>
+        <div class="mobile-nav-menu">
+      <div>
+        <a href="index.html" class="mobile-nav-link mobile-dropdown-toggle">
+          <span>Home</span> <i class="fa-solid fa-chevron-down mobile-chevron"></i>
+        </a>
+        <div class="mobile-submenu">
+          <a href="index.html" class="mobile-submenu-link"><i class="fa-solid fa-house-chimney"></i> Modern Ag Landing</a>
+          <a href="index-2.html" class="mobile-submenu-link"><i class="fa-solid fa-industry"></i> Equipment Specialized</a>
+        </div>
+      </div>
       <a href="about.html" class="mobile-nav-link">About Us</a>
-      <a href="products.html" class="mobile-nav-link">Products Catalog</a>
-      <a href="services.html" class="mobile-nav-link">Farm Services</a>
+      <div>
+        <a href="products.html" class="mobile-nav-link mobile-dropdown-toggle">
+          <span>Products</span> <i class="fa-solid fa-chevron-down mobile-chevron"></i>
+        </a>
+        <div class="mobile-submenu">
+          <a href="products.html" class="mobile-submenu-link"><i class="fa-solid fa-boxes-stacked"></i> All Equipment</a>
+          <a href="product-details.html?id=pan-feeder-pro" class="mobile-submenu-link"><i class="fa-solid fa-wheat-awn"></i> Feeder Line System</a>
+          <a href="product-details.html?id=layer-battery-cage" class="mobile-submenu-link"><i class="fa-solid fa-table-cells"></i> Layer Battery Cages</a>
+          <a href="product-details.html?id=industrial-egg-incubator" class="mobile-submenu-link"><i class="fa-solid fa-egg"></i> Egg Incubators</a>
+        </div>
+      </div>
+      <div>
+        <a href="services.html" class="mobile-nav-link mobile-dropdown-toggle">
+          <span>Services</span> <i class="fa-solid fa-chevron-down mobile-chevron"></i>
+        </a>
+        <div class="mobile-submenu">
+          <a href="services.html" class="mobile-submenu-link"><i class="fa-solid fa-screwdriver-wrench"></i> All Farm Services</a>
+          <a href="service-details.html" class="mobile-submenu-link"><i class="fa-solid fa-hammer"></i> Turnkey Installation</a>
+        </div>
+      </div>
       <a href="farming-tips.html" class="mobile-nav-link">Farming Tips</a>
       <a href="blog.html" class="mobile-nav-link active">Blog & News</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
+      <a href="contact.html" class="mobile-nav-link">Contact Us</a>
     </div>
     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
       <button type="button" class="btn btn-secondary w-100" data-open-quote>
