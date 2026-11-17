@@ -64,19 +64,35 @@
       }
     });
 
-    // Mobile submenu toggle
+    // Mobile submenu toggle with smooth accordion transition
     const dropdownToggles = drawer.querySelectorAll('.mobile-dropdown-toggle');
     dropdownToggles.forEach(toggle => {
       toggle.addEventListener('click', (e) => {
         e.preventDefault();
         const submenu = toggle.nextElementSibling;
-        if (submenu) {
-          submenu.classList.toggle('active');
-          const icon = toggle.querySelector('.mobile-chevron');
-          if (icon) {
-            icon.classList.toggle('fa-chevron-up');
-            icon.classList.toggle('fa-chevron-down');
+        if (!submenu) return;
+
+        const isCurrentlyOpen = submenu.classList.contains('active');
+
+        // Smoothly collapse any other open submenus first (accordion behavior)
+        dropdownToggles.forEach(otherToggle => {
+          if (otherToggle !== toggle) {
+            otherToggle.classList.remove('open');
+            otherToggle.setAttribute('aria-expanded', 'false');
+            const otherSub = otherToggle.nextElementSibling;
+            if (otherSub) otherSub.classList.remove('active');
           }
+        });
+
+        // Toggle clicked submenu
+        if (isCurrentlyOpen) {
+          submenu.classList.remove('active');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          submenu.classList.add('active');
+          toggle.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
         }
       });
     });
@@ -140,11 +156,8 @@
           parentSubmenu.classList.add('active');
           const parentToggle = parentSubmenu.previousElementSibling;
           if (parentToggle) {
-            const icon = parentToggle.querySelector('.mobile-chevron');
-            if (icon) {
-              icon.classList.remove('fa-chevron-down');
-              icon.classList.add('fa-chevron-up');
-            }
+            parentToggle.classList.add('open');
+            parentToggle.setAttribute('aria-expanded', 'true');
           }
         }
       } else {

@@ -343,11 +343,11 @@
 
   .header-actions .header-search-open-btn,
   .header-actions .hamburger-btn {
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-    border-radius: 10px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 12px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1730,17 +1730,17 @@
   .action-btn,
   .control-btn,
   .hamburger-btn {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-    font-size: 0.92rem !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    font-size: 0.95rem !important;
     flex-shrink: 0 !important;
     padding: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: var(--radius-md) !important;
+    border-radius: 12px !important;
   }
 
   .header-cart-badge {
@@ -1768,11 +1768,12 @@
   .action-btn,
   .control-btn,
   .hamburger-btn {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-    font-size: 0.9rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 11px !important;
+    font-size: 0.92rem !important;
   }
 
   .nav-actions,
@@ -1802,10 +1803,11 @@
   .action-btn,
   .control-btn,
   .hamburger-btn {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-    min-height: 36px !important;
-    font-size: 0.85rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    border-radius: 10px !important;
+    font-size: 0.88rem !important;
   }
 }
