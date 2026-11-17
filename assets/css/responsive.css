@@ -268,10 +268,17 @@
     --header-height: 64px;
   }
 
-  /* Inspect Mode / Mobile Navigation Bar: Hide RTL/LTR button from top bar */
+  /* Inspect Mode / Mobile Navigation Bar: Clean, uncluttered actions */
   .header-actions .rtl-toggle-btn,
   .nav-actions .rtl-toggle-btn,
-  .control-btn.rtl-toggle-btn {
+  .control-btn.rtl-toggle-btn,
+  .header-actions .header-cart-btn,
+  .nav-actions .header-cart-btn,
+  .control-btn.header-cart-btn,
+  .header-actions .theme-toggle-btn,
+  .nav-actions .theme-toggle-btn,
+  .control-btn.theme-toggle-btn,
+  .header-actions [data-open-quote] {
     display: none !important;
   }
 
@@ -290,6 +297,60 @@
     right: 0 !important;
     width: 100% !important;
     z-index: 1000 !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  }
+
+  .navbar-inner {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .site-logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo-badge {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    font-size: 1.05rem !important;
+  }
+
+  .logo-text {
+    font-size: clamp(1.1rem, 4.5vw, 1.25rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .header-actions .header-search-open-btn,
+  .header-actions .hamburger-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .container,
@@ -1719,11 +1780,9 @@
     gap: 0.22rem !important;
   }
 
-  /* On ultra-compact screens, search is always accessible in the mobile drawer */
-  .nav-actions .search-toggle-btn,
-  .header-actions .search-toggle-btn,
+  /* On ultra-compact screens, search remains accessible in top bar next to hamburger */
   .header-actions .header-search-open-btn {
-    display: none !important;
+    display: inline-flex !important;
   }
 }
 
