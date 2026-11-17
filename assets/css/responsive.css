@@ -207,6 +207,11 @@
     gap: 1.5rem;
   }
   
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2.5rem !important;
+  }
+  
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -999,21 +1004,53 @@
 
   .newsletter-form-wrap,
   .newsletter-box {
+    display: flex !important;
     flex-direction: column !important;
     background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
     padding: 0 !important;
-    gap: 0.65rem !important;
+    gap: 0.75rem !important;
     width: 100% !important;
   }
 
+  .newsletter-box:focus-within {
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  input[type="email"].newsletter-input,
   .newsletter-input {
     background: #ffffff !important;
+    border: 1.5px solid rgba(212, 196, 168, 0.6) !important;
     border-radius: var(--radius-full, 9999px) !important;
+    color: #0D1B2A !important;
+    -webkit-text-fill-color: #0D1B2A !important;
     padding: 0 1.25rem !important;
     height: 48px !important;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+  }
+
+  input[type="email"].newsletter-input::placeholder,
+  .newsletter-input::placeholder {
+    color: #6C7A89 !important;
+    -webkit-text-fill-color: #6C7A89 !important;
+    opacity: 1 !important;
+  }
+
+  input[type="email"].newsletter-input:focus,
+  .newsletter-input:focus {
+    border-color: var(--c-warm-sand) !important;
+    box-shadow: 0 0 0 3px rgba(212, 196, 168, 0.4) !important;
+    outline: none !important;
   }
 
   .newsletter-form-wrap .btn,
@@ -1021,8 +1058,28 @@
     width: 100% !important;
     height: 48px !important;
     border-radius: var(--radius-full, 9999px) !important;
+    background-color: var(--c-slate-blue) !important;
+    color: #ffffff !important;
     font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
     justify-content: center !important;
+    gap: 0.5rem !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(65, 90, 119, 0.35) !important;
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+  }
+
+  .newsletter-form-wrap .btn:hover,
+  .newsletter-form-wrap .btn:active,
+  .newsletter-btn:hover,
+  .newsletter-btn:active {
+    background-color: var(--c-sage-green) !important;
+    color: var(--c-deep-navy) !important;
+    box-shadow: 0 6px 18px rgba(163, 177, 138, 0.4) !important;
+    transform: translateY(-1px) !important;
   }
 
   /* Drawers & Modals on Mobile */
