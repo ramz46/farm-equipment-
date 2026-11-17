@@ -308,8 +308,17 @@
   .grid-auto,
   .split-layout,
   .article-layout-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 1.35rem !important;
+  }
+
+  .split-layout > *,
+  .grid-2 > *,
+  .grid-3 > *,
+  .grid-4 > *,
+  .grid-auto > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 
   .article-layout-grid aside {
@@ -338,6 +347,7 @@
   .hero-slide {
     display: flex !important;
     align-items: center !important;
+    overflow: hidden !important;
   }
 
   .hero-slide:not(.active) {
@@ -1261,8 +1271,10 @@
   }
 
   .map-view-switcher {
-    top: 12px !important;
-    right: 12px !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    max-width: calc(100% - 20px) !important;
     padding: 3px !important;
     gap: 3px !important;
     background: rgba(255, 255, 255, 0.95) !important;
@@ -1275,15 +1287,19 @@
   }
 
   .map-view-btn {
-    padding: 0.4rem 0.65rem !important;
-    font-size: 0.78rem !important;
+    flex: 1 1 0 !important;
+    padding: 0.35rem 0.4rem !important;
+    font-size: 0.74rem !important;
     border: none !important;
     background: transparent !important;
     border-radius: 8px !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.35rem !important;
+    justify-content: center !important;
+    gap: 0.28rem !important;
     font-weight: 700 !important;
+    min-height: 36px !important;
+    white-space: nowrap !important;
   }
 
   .store-floating-card {
@@ -1310,6 +1326,156 @@
   .store-actions-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 0.6rem !important;
+  }
+
+  .store-actions-grid .btn {
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.84rem !important;
+  }
+
+  /* Component Touch Target & Layout Polish Across Pages */
+  .contact-card-action.copy-text-btn {
+    min-height: 38px !important;
+    padding: 0.45rem 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--bg-surface-secondary) !important;
+    font-size: 0.82rem !important;
+  }
+
+  .map-view-btn {
+    min-height: 38px !important;
+    padding: 0.45rem 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.84rem !important;
+  }
+
+  .service-quick-card .service-explore-btn {
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  .blog-cta-widget .btn {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Product Details Page Responsive Image & Actions */
+  #product-details-content .split-layout > div:first-child > div:first-child {
+    height: clamp(240px, 60vw, 360px) !important;
+  }
+
+  .gallery-thumb {
+    height: clamp(65px, 18vw, 85px) !important;
+  }
+
+  .product-action-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .product-action-buttons .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 46px !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  [data-tabs-group] > div:first-child {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+
+  [data-tabs-group] > div:first-child::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  [data-tabs-group] .tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Service Details Page Image & Sticky Card Overrides */
+  #sd-image {
+    object-fit: cover !important;
+  }
+
+  #service-details-content .reveal-left > div[style*="height: 340px"] {
+    height: clamp(210px, 52vw, 320px) !important;
+  }
+
+  #service-details-content .reveal-right > div[style*="position: sticky"] {
+    position: static !important;
+    padding: 1.5rem 1.25rem !important;
+    margin-top: 1.5rem !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  /* About Page Turnkey Showcase Banner */
+  .reveal-zoom img[src*="turnkey-poultry-project.jpg"] {
+    height: clamp(250px, 58vw, 360px) !important;
+  }
+
+  .reveal-zoom div[style*="position: absolute"] {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .reveal-zoom div[style*="position: absolute"] h3 {
+    font-size: clamp(1.05rem, 3.8vw, 1.35rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .reveal-zoom div[style*="position: absolute"] p {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* About Page Timeline Mobile Spacing */
+  div[style*="max-width: 800px"] div[style*="display: flex; gap: 2rem"] {
+    gap: 1rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  div[style*="max-width: 800px"] div[style*="width: 50px; height: 50px"] {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 0.88rem !important;
+  }
+
+  div[style*="max-width: 800px"] div[style*="left: 24px"] {
+    left: 20px !important;
+  }
+
+  /* Table Mobile Scroll and Padding */
+  table {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  table th,
+  table td {
+    padding: 0.75rem 0.85rem !important;
+    font-size: 0.86rem !important;
+    white-space: nowrap !important;
   }
 
   /* Footer on Mobile */
@@ -1436,11 +1602,17 @@
   .action-btn,
   .control-btn,
   .hamburger-btn {
-    width: 33px !important;
-    height: 33px !important;
-    font-size: 0.82rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 0.92rem !important;
     flex-shrink: 0 !important;
     padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: var(--radius-md) !important;
   }
 
   .header-cart-badge {
@@ -1468,9 +1640,11 @@
   .action-btn,
   .control-btn,
   .hamburger-btn {
-    width: 31px !important;
-    height: 31px !important;
-    font-size: 0.78rem !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 0.9rem !important;
   }
 
   .nav-actions,
@@ -1483,5 +1657,29 @@
   .header-actions .search-toggle-btn,
   .header-actions .header-search-open-btn {
     display: none !important;
+  }
+}
+
+/* Max Width 350px (Ultra Compact Screens) */
+@media (max-width: 350px) {
+  .brand-name,
+  .logo-text {
+    font-size: 0.88rem !important;
+  }
+
+  .brand-icon-box,
+  .logo-badge {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .action-btn,
+  .control-btn,
+  .hamburger-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 0.85rem !important;
   }
 }
