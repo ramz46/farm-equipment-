@@ -96,6 +96,42 @@
         }
       });
     });
+
+    // Auto-close drawer on all non-dropdown link clicks & quote buttons
+    drawer.querySelectorAll('a:not(.mobile-dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href') || '';
+        const currentPath = window.location.pathname;
+        const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+
+        if (href.includes('#')) {
+          const parts = href.split('#');
+          const targetPage = parts[0] ? parts[0].substring(parts[0].lastIndexOf('/') + 1) : currentPage;
+          const targetId = '#' + parts[1];
+
+          // If on the same page, smooth scroll directly to target section
+          if (targetPage === currentPage || !parts[0]) {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              closeDrawer();
+              setTimeout(() => {
+                const header = document.querySelector('.site-header');
+                const headerHeight = header ? header.offsetHeight : 80;
+                const rect = targetEl.getBoundingClientRect();
+                const offset = rect.top + window.pageYOffset - (headerHeight + 20);
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+                if (history.pushState) history.pushState(null, null, targetId);
+              }, 320);
+              return;
+            }
+          }
+        }
+
+        // Navigating to other page: close drawer so back navigation is clean
+        closeDrawer();
+      });
+    });
   }
 
   /* --------------------------------------------------------------------------
@@ -314,33 +350,62 @@
      9. SMOOTH ANCHOR LINK SCROLLING WITH STICKY HEADER OFFSET
      -------------------------------------------------------------------------- */
   function initSmoothAnchorScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Handle on-page anchor link clicks
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#' || targetId === '') return;
+        const href = this.getAttribute('href') || '';
+        if (href === '#' || href === '') return;
 
+        const hashIndex = href.indexOf('#');
+        const targetId = href.substring(hashIndex);
+        const targetPage = href.substring(0, hashIndex).split('/').pop();
+        const curPage = window.location.pathname.split('/').pop() || 'index.html';
+
+        // Check if anchor is for current page
+        if (!targetPage || targetPage === curPage) {
+          try {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              const headerHeight = document.querySelector('.site-header')?.offsetHeight || 75;
+              const elementPosition = targetEl.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - (headerHeight + 20);
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+
+              if (history.pushState) {
+                history.pushState(null, null, targetId);
+              }
+            }
+          } catch (err) {
+            // Fallback
+          }
+        }
+      });
+    });
+
+    // Handle deep-link scrolling on initial page load if hash is present
+    if (window.location.hash) {
+      setTimeout(() => {
         try {
-          const targetEl = document.querySelector(targetId);
+          const targetEl = document.querySelector(window.location.hash);
           if (targetEl) {
-            e.preventDefault();
             const headerHeight = document.querySelector('.site-header')?.offsetHeight || 75;
             const elementPosition = targetEl.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - (headerHeight + 20);
-
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'
             });
-
-            if (history.pushState) {
-              history.pushState(null, null, targetId);
-            }
           }
         } catch (err) {
-          // If selector syntax was invalid, fallback to default behavior
+          // Ignore
         }
-      });
-    });
+      }, 350);
+    }
   }
 
   /* --------------------------------------------------------------------------

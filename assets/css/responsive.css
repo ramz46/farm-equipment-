@@ -1173,6 +1173,140 @@
     border-radius: var(--radius-lg, 16px) !important;
   }
 
+  /* Quote Request Modal Mobile Alignment & Padding Overhaul */
+  #quote-request-modal.modal-overlay {
+    padding: 0.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 3100 !important;
+  }
+
+  #quote-request-modal .modal-content,
+  #quote-request-modal .quote-modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem 1.15rem !important;
+    margin: 0 auto !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .quote-modal-header {
+    margin-bottom: 1.25rem !important;
+    padding-right: 2.5rem !important;
+  }
+
+  [dir="rtl"] .quote-modal-header {
+    padding-right: 0 !important;
+    padding-left: 2.5rem !important;
+  }
+
+  .quote-modal-title {
+    font-size: clamp(1.25rem, 5vw, 1.5rem) !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.35rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .quote-modal-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .quote-grid-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .quote-grid-row .form-group {
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+
+  .quote-modal-actions {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 0.65rem !important;
+    width: 100% !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .quote-modal-actions .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    font-size: 0.95rem !important;
+    border-radius: 10px !important;
+  }
+
+  /* Dedicated Quote Section on Contact & Index-2 Pages */
+  .quote-section-wrap {
+    padding-block: 2.75rem 2.5rem !important;
+  }
+
+  .quote-split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+
+  .quote-form-card {
+    padding: 1.5rem 1.15rem !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .quote-form-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important;
+    margin-block: 0.4rem 0.6rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .quote-form-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .quote-side-card {
+    padding: 1.5rem 1.15rem !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .timeline-pills-wrap {
+    gap: 0.45rem !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .timeline-pill {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.82rem !important;
+    border-radius: 8px !important;
+  }
+
+  .blueprint-drop-mock {
+    padding: 1rem 0.85rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  #contact-submit-btn {
+    width: 100% !important;
+    min-height: 50px !important;
+    font-size: 0.98rem !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+  }
+
   .quickview-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
@@ -1784,6 +1918,28 @@
   /* On ultra-compact screens, search remains accessible in top bar next to hamburger */
   .header-actions .header-search-open-btn {
     display: inline-flex !important;
+  }
+
+  /* Compact Quote Section & Modal Rules */
+  #quote-request-modal.modal-overlay {
+    padding: 0.4rem !important;
+  }
+
+  #quote-request-modal .modal-content,
+  #quote-request-modal .quote-modal-content {
+    padding: 1.25rem 0.95rem !important;
+    border-radius: 14px !important;
+  }
+
+  .quote-form-card,
+  .quote-side-card {
+    padding: 1.25rem 0.95rem !important;
+    border-radius: 14px !important;
+  }
+
+  .timeline-pill {
+    width: 100% !important;
+    text-align: center !important;
   }
 }
 

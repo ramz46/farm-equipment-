@@ -62,17 +62,17 @@
     modal.id = 'quote-request-modal';
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-      <div class="modal-content" style="max-width: 680px;">
+      <div class="modal-content quote-modal-content">
         <button type="button" class="modal-close-btn" aria-label="Close modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <div style="margin-bottom: 1.5rem;">
+        <div class="quote-modal-header">
           <span class="section-tag"><i class="fa-solid fa-calculator"></i> Direct Commercial Pricing</span>
-          <h2 style="font-size: 1.75rem; margin-top: 0.35rem;">Request Equipment Quotation</h2>
-          <p style="font-size: 0.95rem; color: var(--text-secondary);">Fill in your farm details and our agricultural engineers will prepare a technical proposal within 24 hours.</p>
+          <h2 class="quote-modal-title">Request Equipment Quotation</h2>
+          <p class="quote-modal-desc">Fill in your farm details and our agricultural engineers will prepare a technical proposal within 24 hours.</p>
         </div>
         <form id="global-quote-form" novalidate>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <div class="quote-grid-row">
             <div class="form-group">
               <label class="form-label" for="quote-name">Full Name <span class="required">*</span></label>
               <input type="text" id="quote-name" name="name" class="form-control" placeholder="e.g. John Miller" required>
@@ -84,7 +84,7 @@
               <span class="form-error">Please enter a valid email address.</span>
             </div>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <div class="quote-grid-row">
             <div class="form-group">
               <label class="form-label" for="quote-phone">Phone / WhatsApp <span class="required">*</span></label>
               <input type="tel" id="quote-phone" name="phone" class="form-control" placeholder="+1 (555) 019-2834" inputmode="tel" autocomplete="tel" required>
@@ -96,7 +96,7 @@
               <span class="form-error">Please enter your farm or business name.</span>
             </div>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <div class="quote-grid-row">
             <div class="form-group">
               <label class="form-label" for="quote-category">Equipment Category <span class="required">*</span></label>
               <select id="quote-category" name="category" class="form-control" required>
@@ -117,7 +117,7 @@
               <input type="text" id="quote-product" name="product" class="form-control" placeholder="e.g. Pan Feeder Line (120m)">
             </div>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <div class="quote-grid-row">
             <div class="form-group">
               <label class="form-label" for="quote-capacity">Estimated Bird Capacity / Quantity</label>
               <input type="text" id="quote-capacity" name="capacity" class="form-control" placeholder="e.g. 20,000 Broilers or 4 Lines">
@@ -132,10 +132,10 @@
             <label class="form-label" for="quote-message">Project Notes / Requirements</label>
             <textarea id="quote-message" name="message" class="form-control" rows="3" placeholder="Describe shed dimensions, power voltage (e.g. 380V/220V), or installation timeline..."></textarea>
           </div>
-          <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+          <div class="quote-modal-actions">
             <button type="button" class="btn btn-outline modal-cancel-btn">Cancel</button>
-            <button type="submit" class="btn btn-primary">
-              Submit Quotation Request <i class="fa-solid fa-paper-plane"></i>
+            <button type="submit" class="btn btn-primary quote-modal-submit-btn">
+              <span>Submit Quotation Request</span> <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
         </form>
@@ -196,6 +196,14 @@
         }
       }
     }
+
+    // Automatically close mobile navigation drawer and overlay if open
+    const drawer = document.querySelector('.mobile-drawer');
+    const overlay = document.querySelector('.drawer-overlay');
+    const hamburger = document.querySelector('.hamburger-btn');
+    if (drawer) drawer.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    if (hamburger) hamburger.classList.remove('active');
 
     modal.classList.add('active');
     document.body.classList.add('drawer-open');

@@ -2783,7 +2783,7 @@ html:not([data-theme="dark"]) .theme-toggle-btn:hover i.fa-sun {
   height: 100%;
   background-color: var(--bg-overlay);
   backdrop-filter: blur(8px);
-  z-index: 2000;
+  z-index: 3000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6010,3 +6010,97 @@ body.products-page .back-to-top {
   margin: 0 auto 1.5rem;
   box-shadow: 0 0 25px rgba(22, 163, 74, 0.25);
 }
+
+/* --------------------------------------------------------------------------
+   25. REQUEST A QUOTE SECTION & GLOBAL QUOTE MODAL ARCHITECTURE
+   -------------------------------------------------------------------------- */
+#quote-request-modal {
+  z-index: 3100 !important;
+}
+
+.quote-modal-content {
+  max-width: 680px;
+  width: 100%;
+}
+
+.quote-modal-header {
+  margin-bottom: 1.5rem;
+  padding-right: 2.5rem;
+}
+
+[dir="rtl"] .quote-modal-header {
+  padding-right: 0;
+  padding-left: 2.5rem;
+}
+
+.quote-modal-header .section-tag {
+  margin-bottom: 0.5rem;
+}
+
+.quote-modal-title {
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote-modal-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.quote-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Dedicated Quote Section on Contact & Home-2 Pages */
+.quote-section-wrap {
+  scroll-margin-top: 100px;
+}
+
+.quote-form-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: var(--shadow-xl);
+}
+
+.quote-form-title {
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+.quote-form-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.quote-side-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.75rem;
+}
+
