@@ -6104,3 +6104,44 @@ body.products-page .back-to-top {
   margin-bottom: 1.75rem;
 }
 
+/* Product Details Primary Action Buttons Consistency */
+#p-detail-add-cart-btn,
+#p-detail-quote-btn,
+#p-detail-bottom-quote-btn {
+  background: #1B4332 !important;
+  border-color: #1B4332 !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(27, 67, 50, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#p-detail-add-cart-btn:hover,
+#p-detail-quote-btn:hover,
+#p-detail-bottom-quote-btn:hover {
+  background: #2D6A4F !important;
+  border-color: #2D6A4F !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(27, 67, 50, 0.35);
+}
+
+[data-theme="dark"] #p-detail-add-cart-btn,
+[data-theme="dark"] #p-detail-quote-btn,
+[data-theme="dark"] #p-detail-bottom-quote-btn {
+  background: var(--c-warm-sand) !important;
+  border-color: var(--c-warm-sand) !important;
+  color: var(--c-deep-navy) !important;
+  box-shadow: 0 4px 14px rgba(212, 163, 115, 0.25);
+}
+
+[data-theme="dark"] #p-detail-add-cart-btn:hover,
+[data-theme="dark"] #p-detail-quote-btn:hover,
+[data-theme="dark"] #p-detail-bottom-quote-btn:hover {
+  background: #e2ba8c !important;
+  border-color: #e2ba8c !important;
+  color: var(--c-deep-navy) !important;
+  box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
+}
+
+
